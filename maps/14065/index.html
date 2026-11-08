@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14065 SW 48th Ave — Milano · Interactive Electrical Map (DRAFT — IN REVIEW)</title>
+<style>
+  :root{
+    --ink:#1c2733; --mut:#5b6770; --line:#d7dde3; --panel:#ffffff; --bg:#eef0f2;
+    --blue:#0696d7; --red:#c0271f; --amber:#9a6a00;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  header.status{background:#12325e;color:#fff;padding:10px 16px 12px;border-bottom:4px solid #f0a93b}
+  header.status h1{font-size:17px;margin:0 0 6px;font-weight:650;letter-spacing:.2px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);
+    padding:2px 9px;border-radius:999px;font-size:12px}
+  .chip.draft{background:#f0a93b;color:#231a00;border-color:#f0a93b;font-weight:700}
+  .chip.stamp{background:#fff;color:var(--red);border:2px solid var(--red);font-weight:700;letter-spacing:.4px}
+  main{display:flex;gap:12px;padding:12px;align-items:flex-start}
+  aside{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+  #sidebar{width:308px;flex:0 0 308px;max-height:calc(100vh - 130px);display:flex;flex-direction:column}
+  #rightcol{width:330px;flex:0 0 330px;max-height:calc(100vh - 130px);overflow:auto}
+  #mapwrap{flex:1 1 auto;min-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin:2px 0 8px}
+  #circuitList{overflow:auto;margin:0 -4px;padding:0 4px}
+  .ckt{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:#fff;
+    border:1px solid var(--line);border-radius:8px;padding:6px 8px;margin:0 0 5px;cursor:pointer;font:inherit}
+  .ckt:hover{border-color:var(--blue)}
+  .ckt.sel{border-color:var(--blue);box-shadow:0 0 0 2px rgba(6,150,215,.35)}
+  .ckt .sw{width:14px;height:14px;border-radius:4px;flex:0 0 14px;border:1px solid rgba(0,0,0,.25)}
+  .ckt .t{flex:1 1 auto;min-width:0}
+  .ckt .t b{font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ckt .t span{font-size:11px;color:var(--mut)}
+  .ckt .ft{font-size:11px;color:var(--mut);white-space:nowrap}
+  .ckt.all{font-weight:650}
+  #readout{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:12.5px}
+  #readout table{width:100%;border-collapse:collapse}
+  #readout td{padding:2.5px 4px;vertical-align:top}
+  #readout td.k{color:var(--mut);width:96px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+  .toolbar button{background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 11px;
+    font:inherit;font-size:12.5px;cursor:pointer}
+  .toolbar button:hover{border-color:var(--blue)}
+  .toolbar button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .toolbar .note{font-size:11.5px;color:var(--mut);flex:1 1 260px}
+  #svgbox{width:100%;aspect-ratio:2435/2733;background:#f7f8f9;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  svg#map{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+  svg#map.panning{cursor:grabbing}
+  .run{fill:none;stroke-width:7;opacity:.5;stroke-linejoin:round;stroke-linecap:round}
+  .homerun{fill:none;stroke-width:7;opacity:.55;stroke-dasharray:26 14;stroke-linecap:round}
+  .leg{fill:none;stroke-width:3.5;stroke-dasharray:9 8;opacity:.75}
+  .dev{cursor:pointer}
+  .dev .hit{fill:transparent}
+  svg.has-sel .run,svg.has-sel .homerun{opacity:.05}
+  svg.has-sel .leg{opacity:.05}
+  svg.has-sel .dev{opacity:.16}
+  svg.has-sel .run.sel,svg.has-sel .homerun.sel{opacity:.95;stroke-width:11}
+  svg.has-sel .leg.sel{opacity:.9}
+  svg.has-sel .dev.sel,svg.has-sel .dev.always{opacity:1}
+  #inspector{font-size:12.5px}
+  #inspector .key{font-size:16px;font-weight:700}
+  #inspector table{width:100%;border-collapse:collapse;margin-top:4px}
+  #inspector td{padding:2.5px 4px;vertical-align:top}
+  #inspector td.k{color:var(--mut);width:86px}
+  .unassigned{color:var(--red);font-weight:700}
+  #holds{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+  #holds h2{color:var(--red)}
+  #holds ul{margin:0;padding-left:17px;font-size:12px;line-height:1.45}
+  #holds li{margin-bottom:6px}
+  .kindlegend{font-size:11.5px;color:var(--mut);line-height:1.5;border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+  footer{padding:0 14px 14px;font-size:11.5px;color:var(--mut);max-width:1500px}
+  @media (max-width:1080px){
+    main{flex-direction:column}
+    #sidebar,#rightcol{width:100%;flex:1 1 auto;max-height:none}
+    #mapwrap{width:100%}
+  }
+</style>
+</head>
+<body>
+<header class="status">
+  <h1>14065 SW 48th Ave — Milano · EXJ Root LLC · Permit BLDR-26-07-19613</h1>
+  <div class="chips">
+    <span class="chip draft">DRAFT — IN REVIEW</span>
+    <span class="chip">Set Rev 1 · revised 2026-11-07</span>
+    <span class="chip">Interactive map exported from BuzzDrafts register (standalone copy — no live connection)</span>
+    <span class="chip stamp">NOT FOR BUILDING DEPARTMENT SUBMISSION</span>
+    <span class="chip stamp">NOT FOR CONSTRUCTION</span>
+  </div>
+</header>
+
+<main>
+  <aside id="sidebar">
+    <h2>Circuits — Panel SN (30 spaces)</h2>
+    <div id="circuitList"></div>
+    <div id="readout"><i>Select a circuit to see its register readout.</i></div>
+  </aside>
+
+  <section id="mapwrap">
+    <div class="toolbar">
+      <button id="zoomIn" type="button">Zoom +</button>
+      <button id="zoomOut" type="button">Zoom −</button>
+      <button id="zoomReset" type="button">Reset view</button>
+      <button id="tglRuns" type="button" class="on">Circuit runs</button>
+      <button id="tglLegs" type="button" class="on">Switch legs</button>
+      <span class="note">Runs are <b>schematic</b> circuit routing, chained in register order — not a verified installed cable path. Cable lengths are <b>provisional / assumed</b>. Device positions are normalized plan coordinates — not physical measurements.</span>
+    </div>
+    <div id="svgbox">
+      <svg id="map" viewBox="0 0 2435 2733" preserveAspectRatio="xMidYMid meet" aria-label="Milano electrical plan map">
+        <g id="cam">
+          <image id="planImg" href="plan-a2.png" x="0" y="0" width="2435" height="2733" opacity="0.55"></image>
+          <g id="layerRuns"></g>
+          <g id="layerLegs"></g>
+          <g id="layerDevs"></g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <aside id="rightcol">
+    <h2>Device inspector</h2>
+    <div id="inspector"><i>Tap any device marker on the plan to inspect it.</i></div>
+    <div class="kindlegend">
+      <b>Markers:</b> ● device (filled in its circuit colour) · □ switch (takes its circuit through its switch leg) ·
+      ■ panel · ◎ meter · <span class="unassigned">◌ red ring = powered device with NO circuit assigned</span> ·
+      grey = low-voltage / by-design unassigned.
+    </div>
+    <div id="holds">
+      <h2>Engineering holds — open</h2>
+      <ul>
+        <li><b>Panel fit:</b> 34 pole/space demands vs 30 spaces in the 200A MLO (brand/model not shown on source A7) — snapshot arithmetic, <b>not a final capacity ruling</b>. A 2-pole breaker occupies spaces <i>n</i> and <i>n</i>+2 vertically on the same side; physical collisions are at spaces <b>3</b> (Range 1/3 vs Kitchen SA-1 at 3), <b>10</b> (Dryer 8/10), <b>12</b> (Water Heater 10/12) and <b>14</b> (Condenser 12/14). An even start is not inherently invalid where the listed panel allows it. Panel listing: <b>HOLD</b>. Ruling pending: 40-space panel, listed tandems where allowed, or consolidation.</li>
+        <li><b>3 powered devices unassigned:</b> hall_r (Hall), b4_tv (Bedroom #4), lau_r (Laundry) — shown with red rings. Proposals exist; nothing applied.</li>
+        <li><b>HVAC nameplates open:</b> circuits 11 (air handler) and 12 (A/C condenser) are per-nameplate — MCA/MOCP not on file; condenser breaker and conductor are blank in the register and are NOT guessed here. Circuit 11's register breaker/conductor entry (15A · 1P · 14/2) is <b>unsupported — per-nameplate HOLD, not approved</b>.</li>
+        <li><b>Alarm model (DRAFT — UNAPPROVED TOPOLOGY):</b> eight source alarm points to be modeled as one unswitched area feed + continuous 14/3 interconnect chain (seven links). Feed-circuit selection: <b>HOLD</b>. Manufacturer/product compatibility: <b>HOLD</b>. The current register still shows alarms distributed on lighting circuits (spaces 17, 19, 20, 22, 24, 27) — the draft model is not yet applied.</li>
+        <li><b>Fault current / AIC not on record</b> — approval blocker (PNL-007 / PNL-008). Neither the available fault current nor the gear AIC rating is in the register.</li>
+        <li><b>Load calc incomplete:</b> NEC 220.82 worksheet is not complete. The register calc (18,306 VA = 76.3A) is a <b>floor, not a final adequacy finding</b> — 20 of 30 circuits carry no load VA in the register.</li>
+        <li><b>Lengths provisional / assumed:</b> total cable 3,705 ft (provisional). Scale calibration against a known dimension, source-page rotation handling, a feasible installed route, and actual per-device drops / make-up are not yet evidenced. Waste is excluded and accounted separately.</li>
+        <li><b>124 inter-circuit line crossings</b> on the schematic = visual congestion of schematic lines, <b>not</b> electrical faults.</li>
+        <li><b>Meter:</b> model QU816D400SL150 per the A7 riser label — verify against utility requirements. Owner-confirmed fact only: the garage-side exterior meter sits directly back-to-back with the interior panel. Compass direction, exact offsets, heights and utility acceptance are holds.</li>
+        <li><b>Overlay not human-verified:</b> device confidence / human-verified values are null in the register; all 30 circuits are unconfirmed by Sanjay / Mike Holt.</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  Source: BuzzDrafts job 5 register (Milano v2 draft — devices read off source A7, plotted on A2 plan geometry), exported 2026-11-08.
+  Base plan: sheet A2 of the approved source set (PDF page 2), rendered upright from the set's rotation metadata and cropped to the plan frame the register coordinates were read against.
+  This file is a standalone copy: it makes no network requests and has no connection to BuzzDrafts or Muse. Set status at export: DRAFT — IN REVIEW, Set Rev 1.
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+"use strict";
+var D = window.MILANO_DATA;
+var F = D.meta.frame, FW = F.w, FH = F.h, OX = F.imgOffX, OY = F.imgOffY;
+var VBW = F.imgW, VBH = F.imgH;
+var devById = {}, cktById = {};
+D.devices.forEach(function(d){ devById[d.id]=d; });
+D.circuits.forEach(function(c){ cktById[c.id]=c; });
+var panel = D.devices.filter(function(d){return d.kind==='panel';})[0];
+
+var KIND = {rec:'Receptacle', gfi:'GFCI receptacle', sw:'Switch', can:'Recessed can light',
+  fan:'Ceiling fan / fan prewire', van:'Vanity light', exh:'Exhaust fan', sd:'Smoke / CO detector',
+  tv:'TV outlet', wp:'Weatherproof receptacle', appl:'Appliance / equipment', lv:'Low voltage',
+  panel:'Panel', meter:'Meter'};
+
+var swCkts = {};
+D.legs.forEach(function(l){
+  [l.from, l.to].forEach(function(id){
+    var dv = devById[id];
+    if(dv && dv.kind==='sw'){
+      if(!swCkts[id]) swCkts[id]=[];
+      if(swCkts[id].indexOf(l.circuitId)<0) swCkts[id].push(l.circuitId);
+    }
+  });
+});
+Object.keys(swCkts).forEach(function(id){
+  swCkts[id].sort(function(a,b){ return cktById[a].space - cktById[b].space; });
+});
+var swCkt = {};
+Object.keys(swCkts).forEach(function(id){ swCkt[id]=swCkts[id][0]; });
+function isUnassigned(d){ return d.circuitId==null && ['sw','panel','meter','lv'].indexOf(d.kind)<0; }
+function devCircuit(d){
+  if(d.circuitId!=null) return d.circuitId;
+  if(d.kind==='sw' && swCkt[d.id]!=null) return swCkt[d.id];
+  return null;
+}
+function devCircuits(d){
+  if(d.circuitId!=null) return [d.circuitId];
+  if(d.kind==='sw' && swCkts[d.id]) return swCkts[d.id];
+  return [];
+}
+function devColor(d){
+  if(isUnassigned(d)) return '#c0271f';
+  var cid = devCircuit(d);
+  if(cid!=null && cktById[cid]) return cktById[cid].color;
+  if(d.kind==='panel'||d.kind==='meter') return '#12325e';
+  return '#8a8f98';
+}
+function px(d){ return OX + d.x*FW; }
+function py(d){ return OY + d.y*FH; }
+
+var svg = document.getElementById('map');
+var cam = document.getElementById('cam');
+var NS = 'http://www.w3.org/2000/svg';
+function el(name, attrs, parent){
+  var e = document.createElementNS(NS, name);
+  for(var k in attrs) e.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+
+/* ---------- runs + homeruns ---------- */
+var layerRuns = document.getElementById('layerRuns');
+var layerLegs = document.getElementById('layerLegs');
+var layerDevs = document.getElementById('layerDevs');
+D.circuits.forEach(function(c){
+  var devs = c.deviceIds.map(function(id){ return devById[id]; }).filter(Boolean);
+  if(!devs.length || !panel) return;
+  var pts = devs.map(function(d){ return px(d)+','+py(d); }).join(' ');
+  el('polyline', {'class':'run', 'data-ckt':c.id, points: px(panel)+','+py(panel)+' '+pts,
+    stroke: c.color}, layerRuns);
+  el('line', {'class':'homerun', 'data-ckt':c.id,
+    x1:px(panel), y1:py(panel), x2:px(devs[0]), y2:py(devs[0]), stroke:c.color}, layerRuns);
+});
+/* meter–panel back-to-back link */
+var meter = D.devices.filter(function(d){return d.kind==='meter';})[0];
+if(panel && meter){
+  el('line', {'class':'service-link', x1:px(panel), y1:py(panel), x2:px(meter), y2:py(meter),
+    stroke:'#12325e', 'stroke-width':6, 'stroke-dasharray':'4 10', 'stroke-linecap':'round'}, layerRuns);
+}
+/* ---------- switch legs ---------- */
+D.legs.forEach(function(l){
+  var a = devById[l.from], b = devById[l.to];
+  if(!a || !b) return;
+  var c = cktById[l.circuitId];
+  el('line', {'class':'leg', 'data-ckt':l.circuitId, x1:px(a), y1:py(a), x2:px(b), y2:py(b),
+    stroke: c ? c.color : '#8a8f98'}, layerLegs);
+});
+/* ---------- devices ---------- */
+D.devices.forEach(function(d){
+  var g = el('g', {'class':'dev'+((d.kind==='panel'||d.kind==='meter')?' always':''), 'data-id':d.id}, layerDevs);
+  var x = px(d), y = py(d), col = devColor(d);
+  if(d.kind==='panel'){
+    el('rect', {x:x-27, y:y-27, width:54, height:54, rx:7, fill:'#12325e', stroke:'#fff', 'stroke-width':4}, g);
+    el('text', {x:x, y:y+8, 'text-anchor':'middle', fill:'#fff', 'font-size':26, 'font-weight':700}, g).textContent='P';
+  } else if(d.kind==='meter'){
+    el('circle', {cx:x, cy:y, r:25, fill:'#fff', stroke:'#12325e', 'stroke-width':6}, g);
+    el('circle', {cx:x, cy:y, r:9, fill:'#12325e'}, g);
+  } else if(isUnassigned(d)){
+    el('circle', {cx:x, cy:y, r:28, fill:'none', stroke:'#c0271f', 'stroke-width':4, 'stroke-dasharray':'7 6'}, g);
+    el('circle', {cx:x, cy:y, r:17, fill:'#fff', stroke:'#c0271f', 'stroke-width':6}, g);
+  } else if(d.kind==='sw'){
+    el('rect', {x:x-14, y:y-14, width:28, height:28, rx:5, fill:'#fff', stroke:col, 'stroke-width':5}, g);
+  } else if(d.kind==='lv'){
+    el('circle', {cx:x, cy:y, r:12, fill:'#fff', stroke:'#8a8f98', 'stroke-width':4}, g);
+  } else {
+    el('circle', {cx:x, cy:y, r:15, fill:col, stroke:'#fff', 'stroke-width':3.5}, g);
+  }
+  el('circle', {'class':'hit', cx:x, cy:y, r:32}, g);
+});
+
+/* ---------- circuit list + readout ---------- */
+var list = document.getElementById('circuitList');
+var readout = document.getElementById('readout');
+var selected = null;
+function breakerText(c){
+  if(c.breakerAmps==null) return '— per nameplate';
+  return c.breakerAmps + 'A · ' + c.poles + 'P';
+}
+function row(k,v){ return '<tr><td class="k">'+k+'</td><td>'+v+'</td></tr>'; }
+function selectCircuit(cid, scroll){
+  selected = cid;
+  var items = list.querySelectorAll('.ckt');
+  items.forEach(function(it){ it.classList.toggle('sel', +it.getAttribute('data-ckt')===cid); });
+  svg.classList.toggle('has-sel', cid!=null);
+  [layerRuns, layerLegs].forEach(function(layer){
+    layer.querySelectorAll('[data-ckt]').forEach(function(n){
+      n.classList.toggle('sel', +n.getAttribute('data-ckt')===cid);
+    });
+  });
+  layerDevs.querySelectorAll('.dev').forEach(function(n){
+    var d = devById[+n.getAttribute('data-id')];
+    n.classList.toggle('sel', !!d && devCircuits(d).indexOf(cid)>=0);
+  });
+  if(cid==null){
+    readout.innerHTML = '<i>Select a circuit to see its register readout.</i>';
+    return;
+  }
+  var c = cktById[cid];
+  readout.innerHTML = '<table>'
+    + row('Circuit', '<b>Space ' + c.space + '</b> — ' + c.description)
+    + row('Breaker', breakerText(c))
+    + row('Conductor', c.wire ? c.wire + ' NM-B' : '— (blank in register)')
+    + row('Load', c.loadVa==null ? 'not in register' : c.loadVa.toLocaleString('en-US') + ' VA')
+    + row('Devices', c.deviceIds.length)
+    + row('Cable', c.cableFt + ' ft — <b>provisional</b>')
+    + (c.space===11 ? row('Register note', 'Breaker / conductor above are the <b>register entry — unsupported, per-nameplate HOLD, not approved.</b> MCA/MOCP not on file.') : '')
+    + '</table>';
+}
+var allBtn = document.createElement('button');
+allBtn.type='button'; allBtn.className='ckt all';
+allBtn.innerHTML = '<span class="sw" style="background:#12325e"></span><span class="t"><b>All circuits</b><span>30 circuits · 143 devices · 3,705 ft cable (provisional)</span></span>';
+allBtn.addEventListener('click', function(){ selectCircuit(null); });
+list.appendChild(allBtn);
+D.circuits.forEach(function(c){
+  var b = document.createElement('button');
+  b.type='button'; b.className='ckt'; b.setAttribute('data-ckt', c.id);
+  b.innerHTML = '<span class="sw" style="background:'+c.color+'"></span>'
+    + '<span class="t"><b>Space ' + c.space + ' · ' + c.description + '</b>'
+    + '<span>' + breakerText(c) + (c.wire ? ' · ' + c.wire : '') + '</span></span>'
+    + '<span class="ft">' + c.cableFt + ' ft</span>';
+  b.addEventListener('click', function(){
+    selectCircuit(selected===c.id ? null : c.id);
+  });
+  list.appendChild(b);
+});
+
+/* ---------- device inspector ---------- */
+var inspector = document.getElementById('inspector');
+function inspect(d){
+  var cid = devCircuit(d);
+  var cktTxt;
+  if(isUnassigned(d)) cktTxt = '<span class="unassigned">UNASSIGNED — no circuit</span>';
+  else if(d.circuitId!=null && cktById[d.circuitId]) cktTxt = 'Space ' + cktById[d.circuitId].space + ' — ' + cktById[d.circuitId].description;
+  else if(d.kind==='sw' && devCircuits(d).length>1) cktTxt = 'Switch bank — via switch legs on <b>' + devCircuits(d).length + ' circuits</b>: ' + devCircuits(d).map(function(x){ return 'Space ' + cktById[x].space + ' — ' + cktById[x].description; }).join(' · ');
+  else if(d.kind==='sw' && cid!=null) cktTxt = 'via switch leg → Space ' + cktById[cid].space + ' — ' + cktById[cid].description;
+  else if(d.kind==='panel') cktTxt = 'Service panel — interior, directly back-to-back with the garage-side exterior meter (relationship owner-confirmed; compass direction, exact offsets, heights and utility acceptance are holds)';
+  else if(d.kind==='meter') cktTxt = 'Exterior meter — garage-side, directly back-to-back with the interior panel (relationship owner-confirmed; exact offsets are a hold)';
+  else cktTxt = 'Not circuit-assigned by design';
+  inspector.innerHTML = '<div class="key">' + d.devKey + '</div><table>'
+    + row('Register ID', d.id)
+    + row('Type', KIND[d.kind] || d.kind)
+    + row('Room', d.room)
+    + row('Circuit', cktTxt)
+    + (d.circuitId!=null ? row('Chain order', d.chainOrder) : '')
+    + row('Position', 'x ' + d.x + ' · y ' + d.y + '<br><span style="color:var(--mut)">normalized plan position (not a physical measurement)</span>')
+    + '</table>';
+  if(cid!=null && cktById[cid] && devCircuits(d).length<=1) selectCircuit(cid);
+}
+
+/* ---------- zoom / pan ---------- */
+var state = {k:1, tx:0, ty:0};
+function apply(){ cam.setAttribute('transform', 'translate('+state.tx+' '+state.ty+') scale('+state.k+')'); }
+function svgPoint(cx, cy){
+  var r = svg.getBoundingClientRect();
+  return { x:(cx-r.left)*VBW/r.width, y:(cy-r.top)*VBH/r.height };
+}
+function zoomAt(cx, cy, factor){
+  var s = svgPoint(cx, cy);
+  var px = (s.x - state.tx)/state.k, py = (s.y - state.ty)/state.k;
+  state.k = Math.min(14, Math.max(0.6, state.k*factor));
+  state.tx = s.x - px*state.k; state.ty = s.y - py*state.k;
+  apply();
+}
+svg.addEventListener('wheel', function(e){
+  e.preventDefault();
+  zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY*0.0016));
+}, {passive:false});
+document.getElementById('zoomIn').addEventListener('click', function(){
+  var r = svg.getBoundingClientRect(); zoomAt(r.left+r.width/2, r.top+r.height/2, 1.35);
+});
+document.getElementById('zoomOut').addEventListener('click', function(){
+  var r = svg.getBoundingClientRect(); zoomAt(r.left+r.width/2, r.top+r.height/2, 1/1.35);
+});
+document.getElementById('zoomReset').addEventListener('click', function(){
+  state = {k:1, tx:0, ty:0}; apply();
+});
+var pointers = {}, dragStart = null, moved = false, pinch = null;
+svg.addEventListener('pointerdown', function(e){
+  pointers[e.pointerId] = {x:e.clientX, y:e.clientY};
+  svg.setPointerCapture(e.pointerId);
+  if(Object.keys(pointers).length===1){
+    dragStart = {x:e.clientX, y:e.clientY, tx:state.tx, ty:state.ty};
+    moved = false;
+  } else if(Object.keys(pointers).length===2){
+    var p = Object.values(pointers);
+    pinch = {d: Math.hypot(p[0].x-p[1].x, p[0].y-p[1].y), k: state.k};
+    dragStart = null;
+  }
+});
+svg.addEventListener('pointermove', function(e){
+  if(!(e.pointerId in pointers)) return;
+  pointers[e.pointerId] = {x:e.clientX, y:e.clientY};
+  var ids = Object.keys(pointers);
+  if(ids.length===2 && pinch){
+    var p = Object.values(pointers);
+    var nd = Math.hypot(p[0].x-p[1].x, p[0].y-p[1].y);
+    if(nd>0){
+      var mx = (p[0].x+p[1].x)/2, my = (p[0].y+p[1].y)/2;
+      var s = svgPoint(mx, my);
+      var px = (s.x - state.tx)/state.k, py = (s.y - state.ty)/state.k;
+      state.k = Math.min(14, Math.max(0.6, pinch.k * nd/pinch.d));
+      state.tx = s.x - px*state.k; state.ty = s.y - py*state.k;
+      apply(); moved = true;
+    }
+    return;
+  }
+  if(!dragStart) return;
+  var dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+  if(Math.abs(dx)+Math.abs(dy) > 5) moved = true;
+  if(moved){
+    var r = svg.getBoundingClientRect();
+    state.tx = dragStart.tx + dx*VBW/r.width;
+    state.ty = dragStart.ty + dy*VBH/r.height;
+    apply(); svg.classList.add('panning');
+  }
+});
+function endPointer(e){
+  var wasTap = dragStart && !moved && (e.pointerId in pointers);
+  var target = e.target;
+  delete pointers[e.pointerId];
+  if(Object.keys(pointers).length<2) pinch = null;
+  if(Object.keys(pointers).length===0){ dragStart = null; svg.classList.remove('panning'); }
+  if(wasTap){
+    var g = target && target.closest ? target.closest('.dev') : null;
+    if(g) inspect(devById[+g.getAttribute('data-id')]);
+  }
+}
+svg.addEventListener('pointerup', endPointer);
+svg.addEventListener('pointercancel', endPointer);
+
+/* ---------- layer toggles ---------- */
+function toggle(btn, layer){
+  btn.addEventListener('click', function(){
+    var on = btn.classList.toggle('on');
+    layer.style.display = on ? '' : 'none';
+  });
+}
+toggle(document.getElementById('tglRuns'), layerRuns);
+toggle(document.getElementById('tglLegs'), layerLegs);
+apply();
+})();
+</script>
+</body>
+</html>
