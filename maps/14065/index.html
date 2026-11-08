@@ -2,52 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>14065 SW 48th Ave — Milano · Interactive Electrical Map (DRAFT — IN REVIEW)</title>
 <style>
   :root{
     --ink:#1c2733; --mut:#5b6770; --line:#d7dde3; --panel:#ffffff; --bg:#eef0f2;
-    --blue:#0696d7; --red:#c0271f; --amber:#9a6a00;
+    --blue:#0696d7; --red:#c0271f; --amber:#9a6a00; --navy:#12325e;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-  header.status{background:#12325e;color:#fff;padding:10px 16px 12px;border-bottom:4px solid #f0a93b}
-  header.status h1{font-size:17px;margin:0 0 6px;font-weight:650;letter-spacing:.2px}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  body{display:flex;flex-direction:column;height:100dvh}
+
+  /* ---------- slim top bar ---------- */
+  #topbar{background:var(--navy);color:#fff;padding:8px 12px;display:flex;align-items:center;gap:8px;flex:0 0 auto;border-bottom:3px solid #f0a93b}
+  #topbar .ttl{flex:1 1 auto;min-width:0}
+  #topbar .ttl b{font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #topbar .ttl span{font-size:11px;opacity:.85;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);
-    padding:2px 9px;border-radius:999px;font-size:12px}
+    padding:2px 8px;border-radius:999px;font-size:11px;white-space:nowrap}
   .chip.draft{background:#f0a93b;color:#231a00;border-color:#f0a93b;font-weight:700}
-  .chip.stamp{background:#fff;color:var(--red);border:2px solid var(--red);font-weight:700;letter-spacing:.4px}
-  main{display:flex;gap:12px;padding:12px;align-items:flex-start}
-  aside{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
-  #sidebar{width:308px;flex:0 0 308px;max-height:calc(100vh - 130px);display:flex;flex-direction:column}
-  #rightcol{width:330px;flex:0 0 330px;max-height:calc(100vh - 130px);overflow:auto}
-  #mapwrap{flex:1 1 auto;min-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
-  h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin:2px 0 8px}
-  #circuitList{overflow:auto;margin:0 -4px;padding:0 4px}
-  .ckt{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:#fff;
-    border:1px solid var(--line);border-radius:8px;padding:6px 8px;margin:0 0 5px;cursor:pointer;font:inherit}
-  .ckt:hover{border-color:var(--blue)}
-  .ckt.sel{border-color:var(--blue);box-shadow:0 0 0 2px rgba(6,150,215,.35)}
-  .ckt .sw{width:14px;height:14px;border-radius:4px;flex:0 0 14px;border:1px solid rgba(0,0,0,.25)}
-  .ckt .t{flex:1 1 auto;min-width:0}
-  .ckt .t b{font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ckt .t span{font-size:11px;color:var(--mut)}
-  .ckt .ft{font-size:11px;color:var(--mut);white-space:nowrap}
-  .ckt.all{font-weight:650}
-  #readout{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:12.5px}
-  #readout table{width:100%;border-collapse:collapse}
-  #readout td{padding:2.5px 4px;vertical-align:top}
-  #readout td.k{color:var(--mut);width:96px}
-  .toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
-  .toolbar button{background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 11px;
-    font:inherit;font-size:12.5px;cursor:pointer}
-  .toolbar button:hover{border-color:var(--blue)}
-  .toolbar button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-  .toolbar .note{font-size:11.5px;color:var(--mut);flex:1 1 260px}
-  #svgbox{width:100%;aspect-ratio:2435/2733;background:#f7f8f9;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-  svg#map{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+  .chip.stamp{background:#fff;color:var(--red);border:2px solid var(--red);font-weight:700;letter-spacing:.3px}
+  #topbar .tbtn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:8px;padding:6px 10px;font:inherit;font-size:12.5px;cursor:pointer;white-space:nowrap}
+  #topbar .tbtn.on{background:var(--blue);border-color:var(--blue)}
+  @media (max-width:640px){ .chip.stamp{display:none} #topbar .ttl span{display:none} }
+
+  /* ---------- plan area ---------- */
+  #planarea{flex:1 1 auto;position:relative;background:#f7f8f9;min-height:0}
+  svg#map{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
   svg#map.panning{cursor:grabbing}
   .run{fill:none;stroke-width:7;opacity:.5;stroke-linejoin:round;stroke-linecap:round}
   .homerun{fill:none;stroke-width:7;opacity:.55;stroke-dasharray:26 14;stroke-linecap:round}
@@ -60,84 +43,111 @@
   svg.has-sel .run.sel,svg.has-sel .homerun.sel{opacity:.95;stroke-width:11}
   svg.has-sel .leg.sel{opacity:.9}
   svg.has-sel .dev.sel,svg.has-sel .dev.always{opacity:1}
-  #inspector{font-size:12.5px}
-  #inspector .key{font-size:16px;font-weight:700}
-  #inspector table{width:100%;border-collapse:collapse;margin-top:4px}
-  #inspector td{padding:2.5px 4px;vertical-align:top}
-  #inspector td.k{color:var(--mut);width:86px}
-  .unassigned{color:var(--red);font-weight:700}
-  #holds{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
-  #holds h2{color:var(--red)}
-  #holds ul{margin:0;padding-left:17px;font-size:12px;line-height:1.45}
-  #holds li{margin-bottom:6px}
-  .kindlegend{font-size:11.5px;color:var(--mut);line-height:1.5;border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
-  footer{padding:0 14px 14px;font-size:11.5px;color:var(--mut);max-width:1500px}
-  @media (max-width:1080px){
-    main{flex-direction:column}
-    #sidebar,#rightcol{width:100%;flex:1 1 auto;max-height:none}
-    #mapwrap{width:100%}
-  }
 
-  #svgbox{position:relative}
-  #selBanner{position:absolute;top:10px;left:10px;z-index:6;display:none;align-items:center;gap:8px;background:rgba(18,50,94,.94);color:#fff;border-radius:999px;padding:6px 8px 6px 12px;font-size:13px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.25);pointer-events:none;max-width:calc(100% - 20px)}
+  /* selected-circuit pill, fixed on the plan */
+  #selBanner{position:absolute;top:10px;left:10px;z-index:6;display:none;align-items:center;gap:8px;
+    background:rgba(18,50,94,.94);color:#fff;border-radius:999px;padding:6px 8px 6px 12px;
+    font-size:13px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.25);pointer-events:none;max-width:calc(100% - 76px)}
   #selBanner.show{display:flex}
   #selBanner .sw{width:14px;height:14px;border-radius:4px;flex:0 0 14px;border:1px solid rgba(255,255,255,.6)}
   #selBanner .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #selBanner button{pointer-events:auto;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;width:22px;height:22px;line-height:1;font-size:14px;cursor:pointer;flex:0 0 22px;padding:0}
-  #selBanner button:hover{background:rgba(255,255,255,.32)}
+  #selBanner button{pointer-events:auto;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45);
+    border-radius:999px;width:22px;height:22px;line-height:1;font-size:14px;cursor:pointer;flex:0 0 22px;padding:0}
+
+  /* floating zoom controls */
+  #zoomer{position:absolute;top:10px;right:10px;z-index:6;display:flex;flex-direction:column;gap:6px}
+  #zoomer button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;
+    font-size:19px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);color:var(--ink)}
+  #zoomer button:active{background:#e8f4fb}
+
+  /* ---------- detail card (slides over the bottom of the plan) ---------- */
+  #detail{position:absolute;left:8px;right:8px;bottom:8px;z-index:7;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.22);
+    max-height:46%;display:none;flex-direction:column;overflow:hidden}
+  #detail.show{display:flex}
+  #detail .dhead{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line)}
+  #detail .dhead .sw{width:15px;height:15px;border-radius:4px;flex:0 0 15px;border:1px solid rgba(0,0,0,.25)}
+  #detail .dhead b{flex:1 1 auto;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #detail .dhead button{background:#fff;border:1px solid var(--line);border-radius:999px;width:26px;height:26px;
+    font-size:15px;line-height:1;cursor:pointer;flex:0 0 26px;padding:0}
+  #detail .dbody{overflow:auto;padding:8px 12px 10px;font-size:13px}
+  #detail table{width:100%;border-collapse:collapse}
+  #detail td{padding:2.5px 4px;vertical-align:top}
+  #detail td.k{color:var(--mut);width:92px}
+  #detail .dnote{font-size:11.5px;color:var(--mut);margin-top:7px}
+  #detail .dbtn{display:inline-block;margin-top:8px;background:var(--blue);color:#fff;border:0;border-radius:8px;
+    padding:7px 12px;font:inherit;font-size:12.5px;cursor:pointer}
+  .unassigned{color:var(--red);font-weight:700}
+
+  /* ---------- circuit rail (thumb zone) ---------- */
+  #railwrap{flex:0 0 auto;background:var(--panel);border-top:1px solid var(--line);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+  #rail{display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding:2px}
+  #rail::-webkit-scrollbar{display:none}
+  .rchip{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-height:52px;max-width:190px;
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px 11px;cursor:pointer;font:inherit;text-align:left}
+  .rchip .sw{width:15px;height:15px;border-radius:4px;flex:0 0 15px;border:1px solid rgba(0,0,0,.25)}
+  .rchip .t{min-width:0}
+  .rchip .t b{font-size:13px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rchip .t span{font-size:11px;color:var(--mut);display:block;white-space:nowrap}
+  .rchip.sel{border-color:var(--blue);box-shadow:0 0 0 2px rgba(6,150,215,.4)}
+  .rchip.all b{font-size:13px}
+
+  /* ---------- holds / info overlay ---------- */
+  #holds{position:absolute;inset:0;z-index:9;background:rgba(238,240,242,.97);display:none;overflow:auto;padding:14px}
+  #holds.show{display:block}
+  #holds .hhead{display:flex;align-items:center;gap:8px;max-width:860px;margin:0 auto 8px}
+  #holds .hhead h2{flex:1 1 auto;font-size:15px;color:var(--red);margin:0;text-transform:uppercase;letter-spacing:.6px}
+  #holds .hhead button{background:#fff;border:1px solid var(--line);border-radius:999px;width:30px;height:30px;font-size:16px;cursor:pointer}
+  #holds .hbody{max-width:860px;margin:0 auto;font-size:13px;line-height:1.5}
+  #holds ul{margin:0;padding-left:18px}
+  #holds li{margin-bottom:7px}
+  #holds .sec{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+  #holds h3{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin:0 0 6px}
 </style>
 </head>
 <body>
-<header class="status">
-  <h1>14065 SW 48th Ave — Milano · EXJ Root LLC · Permit BLDR-26-07-19613</h1>
-  <div class="chips">
-    <span class="chip draft">DRAFT — IN REVIEW</span>
-    <span class="chip">Set Rev 1 · revised 2026-11-07</span>
-    <span class="chip">Interactive map exported from BuzzDrafts register (standalone copy — no live connection)</span>
-    <span class="chip stamp">NOT FOR BUILDING DEPARTMENT SUBMISSION</span>
-    <span class="chip stamp">NOT FOR CONSTRUCTION</span>
+
+<header id="topbar">
+  <div class="ttl">
+    <b>14065 SW 48th Ave — Milano · Interactive Electrical Map</b>
+    <span>EXJ Root LLC · Permit BLDR-26-07-19613 · Panel SN (30 spaces) · standalone copy — no live connection to BuzzDrafts</span>
   </div>
+  <span class="chip draft">DRAFT — IN REVIEW</span>
+  <span class="chip">Set Rev 1</span>
+  <span class="chip stamp">NOT FOR BUILDING DEPARTMENT SUBMISSION</span>
+  <button id="tglRuns" type="button" class="tbtn on">Runs</button>
+  <button id="tglLegs" type="button" class="tbtn on">Legs</button>
+  <button id="btnHolds" type="button" class="tbtn">ⓘ Holds</button>
 </header>
 
-<main>
-  <aside id="sidebar">
-    <h2>Circuits — Panel SN (30 spaces)</h2>
-    <div id="circuitList"></div>
-    <div id="readout"><i>Select a circuit to see its register readout.</i></div>
-  </aside>
+<section id="planarea">
+  <svg id="map" viewBox="0 0 2435 2733" preserveAspectRatio="xMidYMid meet" aria-label="Milano electrical plan map">
+    <g id="cam">
+      <image id="planImg" href="plan-a2.png" x="0" y="0" width="2435" height="2733" opacity="0.55"></image>
+      <g id="layerRuns"></g>
+      <g id="layerLegs"></g>
+      <g id="layerDevs"></g>
+    </g>
+  </svg>
 
-  <section id="mapwrap">
-    <div class="toolbar">
-      <button id="zoomIn" type="button">Zoom +</button>
-      <button id="zoomOut" type="button">Zoom −</button>
-      <button id="zoomReset" type="button">Reset view</button>
-      <button id="tglRuns" type="button" class="on">Circuit runs</button>
-      <button id="tglLegs" type="button" class="on">Switch legs</button>
-      <span class="note">Runs are <b>schematic</b> circuit routing, chained in register order — not a verified installed cable path. Cable lengths are <b>provisional / assumed</b>. Device positions are normalized plan coordinates — not physical measurements.</span>
-    </div>
-    <div id="svgbox">
-      <div id="selBanner" role="status"><span class="sw" id="selBannerSw"></span><span class="txt" id="selBannerTxt"></span><button id="selClear" type="button" title="Clear selection" aria-label="Clear selected circuit">×</button></div>
-      <svg id="map" viewBox="0 0 2435 2733" preserveAspectRatio="xMidYMid meet" aria-label="Milano electrical plan map">
-        <g id="cam">
-          <image id="planImg" href="plan-a2.png" x="0" y="0" width="2435" height="2733" opacity="0.55"></image>
-          <g id="layerRuns"></g>
-          <g id="layerLegs"></g>
-          <g id="layerDevs"></g>
-        </g>
-      </svg>
-    </div>
-  </section>
+  <div id="selBanner" role="status"><span class="sw" id="selBannerSw"></span><span class="txt" id="selBannerTxt"></span><button id="selClear" type="button" title="Clear selection" aria-label="Clear selected circuit">×</button></div>
 
-  <aside id="rightcol">
-    <h2>Device inspector</h2>
-    <div id="inspector"><i>Tap any device marker on the plan to inspect it.</i></div>
-    <div class="kindlegend">
-      <b>Markers:</b> ● device (filled in its circuit colour) · □ switch (takes its circuit through its switch leg) ·
-      ■ panel · ◎ meter · <span class="unassigned">◌ red ring = powered device with NO circuit assigned</span> ·
-      grey = low-voltage / by-design unassigned.
-    </div>
-    <div id="holds">
-      <h2>Engineering holds — open</h2>
+  <div id="zoomer">
+    <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+    <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+    <button id="zoomReset" type="button" aria-label="Reset view">⌂</button>
+  </div>
+
+  <div id="detail">
+    <div class="dhead"><span class="sw" id="dSw"></span><b id="dTitle"></b><button id="dClose" type="button" title="Close" aria-label="Close details">×</button></div>
+    <div class="dbody" id="dBody"></div>
+  </div>
+
+  <div id="holds">
+    <div class="hhead"><h2>Engineering holds — open</h2><button id="holdsClose" type="button" title="Close" aria-label="Close holds">×</button></div>
+    <div class="hbody">
       <ul>
         <li><b>Panel fit:</b> 34 pole/space demands vs 30 spaces in the 200A MLO (brand/model not shown on source A7) — snapshot arithmetic, <b>not a final capacity ruling</b>. A 2-pole breaker occupies spaces <i>n</i> and <i>n</i>+2 vertically on the same side; physical collisions are at spaces <b>3</b> (Range 1/3 vs Kitchen SA-1 at 3), <b>10</b> (Dryer 8/10), <b>12</b> (Water Heater 10/12) and <b>14</b> (Condenser 12/14). An even start is not inherently invalid where the listed panel allows it. Panel listing: <b>HOLD</b>. Ruling pending: 40-space panel, listed tandems where allowed, or consolidation.</li>
         <li><b>3 powered devices unassigned:</b> hall_r (Hall), b4_tv (Bedroom #4), lau_r (Laundry) — shown with red rings. Proposals exist; nothing applied.</li>
@@ -150,14 +160,25 @@
         <li><b>Meter:</b> model QU816D400SL150 per the A7 riser label — verify against utility requirements. Owner-confirmed fact only: the garage-side exterior meter sits directly back-to-back with the interior panel. Compass direction, exact offsets, heights and utility acceptance are holds.</li>
         <li><b>Overlay not human-verified:</b> device confidence / human-verified values are null in the register; all 30 circuits are unconfirmed by Sanjay / Mike Holt.</li>
       </ul>
+      <div class="sec">
+        <h3>How to read this map</h3>
+        Runs are <b>schematic</b> circuit routing, chained in register order — not a verified installed cable path. Cable lengths are <b>provisional / assumed</b>. Device positions are normalized plan coordinates — not physical measurements.<br>
+        <b>Markers:</b> ● device (filled in its circuit colour) · □ switch (takes its circuit through its switch leg) ·
+        ■ panel · ◎ meter · <span class="unassigned">◌ red ring = powered device with NO circuit assigned</span> ·
+        grey = low-voltage / by-design unassigned.
+      </div>
+      <div class="sec">
+        <h3>Source</h3>
+        BuzzDrafts job 5 register (Milano v2 draft — devices read off source A7, plotted on A2 plan geometry), exported 2026-11-08.
+        Base plan: sheet A2 of the approved source set (PDF page 2), rendered upright from the set's rotation metadata and cropped to the plan frame the register coordinates were read against.
+        Set status at export: DRAFT — IN REVIEW, Set Rev 1. This page makes no network requests and has no connection to BuzzDrafts or Muse.
+      </div>
     </div>
-  </aside>
-</main>
+  </div>
+</section>
 
-<footer>
-  Source: BuzzDrafts job 5 register (Milano v2 draft — devices read off source A7, plotted on A2 plan geometry), exported 2026-11-08.
-  Base plan: sheet A2 of the approved source set (PDF page 2), rendered upright from the set's rotation metadata and cropped to the plan frame the register coordinates were read against.
-  This file is a standalone copy: it makes no network requests and has no connection to BuzzDrafts or Muse. Set status at export: DRAFT — IN REVIEW, Set Rev 1.
+<footer id="railwrap">
+  <div id="rail" role="listbox" aria-label="Circuits"></div>
 </footer>
 
 <script src="data.js"></script>
@@ -273,31 +294,48 @@ D.devices.forEach(function(d){
   el('circle', {'class':'hit', cx:x, cy:y, r:32}, g);
 });
 
-/* ---------- circuit list + readout ---------- */
-var list = document.getElementById('circuitList');
-var readout = document.getElementById('readout');
-var selected = null;
+/* ---------- detail card ---------- */
+var detail = document.getElementById('detail');
+var dSw = document.getElementById('dSw');
+var dTitle = document.getElementById('dTitle');
+var dBody = document.getElementById('dBody');
+function row(k,v){ return '<tr><td class="k">'+k+'</td><td>'+v+'</td></tr>'; }
+function showDetail(){ detail.classList.add('show'); }
+function hideDetail(){ detail.classList.remove('show'); }
+document.getElementById('dClose').addEventListener('click', hideDetail);
 function breakerText(c){
   if(c.breakerAmps==null) return '— per nameplate';
   return c.breakerAmps + 'A · ' + c.poles + 'P';
 }
-function row(k,v){ return '<tr><td class="k">'+k+'</td><td>'+v+'</td></tr>'; }
-function selectCircuit(cid, scroll){
-  /* Selecting a circuit must never move the view: capture every scroll
-     position (page, circuit list, inspector column) and restore it after
-     the DOM updates, which otherwise shift layout and make the view jump. */
-  var keepWX = window.scrollX, keepWY = window.scrollY;
-  var keepList = list.scrollTop;
-  var rcEl = document.getElementById('rightcol');
-  var keepRC = rcEl ? rcEl.scrollTop : 0;
-  function keepScroll(){
-    if(window.scrollX!==keepWX || window.scrollY!==keepWY) window.scrollTo(keepWX, keepWY);
-    if(list.scrollTop!==keepList) list.scrollTop = keepList;
-    if(rcEl && rcEl.scrollTop!==keepRC) rcEl.scrollTop = keepRC;
-  }
+var SCHEM_NOTE = '<div class="dnote">Runs are <b>schematic</b> routing in register order — not a verified installed cable path. Lengths are <b>provisional / assumed</b>.</div>';
+
+/* ---------- circuit selection ---------- */
+var rail = document.getElementById('rail');
+var selected = null;
+function circuitDetail(c){
+  dSw.style.background = c.color;
+  dTitle.textContent = 'Space ' + c.space + ' · ' + c.description;
+  dBody.innerHTML = '<table>'
+    + row('Breaker', breakerText(c))
+    + row('Conductor', c.wire ? c.wire + ' NM-B' : '— (blank in register)')
+    + row('Load', c.loadVa==null ? 'not in register' : c.loadVa.toLocaleString('en-US') + ' VA')
+    + row('Devices', c.deviceIds.length)
+    + row('Cable', c.cableFt + ' ft — <b>provisional</b>')
+    + (c.space===11 ? row('Register note', 'Breaker / conductor above are the <b>register entry — unsupported, per-nameplate HOLD, not approved.</b> MCA/MOCP not on file.') : '')
+    + '</table>' + SCHEM_NOTE;
+  showDetail();
+}
+function selectCircuit(cid, keepDetail){
   selected = cid;
-  var items = list.querySelectorAll('.ckt');
-  items.forEach(function(it){ it.classList.toggle('sel', +it.getAttribute('data-ckt')===cid); });
+  rail.querySelectorAll('.rchip').forEach(function(it){
+    var on = cid!=null && +it.getAttribute('data-ckt')===cid;
+    it.classList.toggle('sel', on);
+    if(on){
+      /* keep the selected chip in view inside the rail only (page never scrolls) */
+      var r = rail.getBoundingClientRect(), b = it.getBoundingClientRect();
+      rail.scrollLeft += (b.left + b.width/2) - (r.left + r.width/2);
+    }
+  });
   svg.classList.toggle('has-sel', cid!=null);
   [layerRuns, layerLegs].forEach(function(layer){
     layer.querySelectorAll('[data-ckt]').forEach(function(n){
@@ -309,59 +347,36 @@ function selectCircuit(cid, scroll){
     n.classList.toggle('sel', !!d && devCircuits(d).indexOf(cid)>=0);
   });
   var banner = document.getElementById('selBanner');
-  if(banner) banner.classList.toggle('show', cid!=null);
+  banner.classList.toggle('show', cid!=null);
   if(cid!=null && cktById[cid]){
     var bc = cktById[cid];
-    var bsw = document.getElementById('selBannerSw'); if(bsw) bsw.style.background = bc.color;
-    var btx = document.getElementById('selBannerTxt');
-    if(btx) btx.textContent = 'Space ' + bc.space + ' \u00b7 ' + bc.description + ' \u2014 ' + bc.deviceIds.length + ' device' + (bc.deviceIds.length===1 ? '' : 's') + ' shown';
+    document.getElementById('selBannerSw').style.background = bc.color;
+    document.getElementById('selBannerTxt').textContent = 'Space ' + bc.space + ' · ' + bc.description + ' — ' + bc.deviceIds.length + ' device' + (bc.deviceIds.length===1 ? '' : 's') + ' shown';
+    if(!keepDetail) circuitDetail(bc);
+  } else if(!keepDetail){
+    hideDetail();
   }
-  if(cid==null){
-    readout.innerHTML = '<i>Select a circuit to see its register readout.</i>';
-    keepScroll(); requestAnimationFrame(keepScroll);
-    return;
-  }
-  var c = cktById[cid];
-  readout.innerHTML = '<table>'
-    + row('Circuit', '<b>Space ' + c.space + '</b> — ' + c.description)
-    + row('Breaker', breakerText(c))
-    + row('Conductor', c.wire ? c.wire + ' NM-B' : '— (blank in register)')
-    + row('Load', c.loadVa==null ? 'not in register' : c.loadVa.toLocaleString('en-US') + ' VA')
-    + row('Devices', c.deviceIds.length)
-    + row('Cable', c.cableFt + ' ft — <b>provisional</b>')
-    + (c.space===11 ? row('Register note', 'Breaker / conductor above are the <b>register entry — unsupported, per-nameplate HOLD, not approved.</b> MCA/MOCP not on file.') : '')
-    + '</table>';
-  keepScroll(); requestAnimationFrame(keepScroll);
 }
-var allBtn = document.createElement('button');
-allBtn.type='button'; allBtn.className='ckt all';
-allBtn.innerHTML = '<span class="sw" style="background:#12325e"></span><span class="t"><b>All circuits</b><span>30 circuits · 143 devices · 3,705 ft cable (provisional)</span></span>';
-allBtn.addEventListener('click', function(){ selectCircuit(null); });
-list.appendChild(allBtn);
+document.getElementById('selClear').addEventListener('click', function(){ selectCircuit(null); });
+
+var allChip = document.createElement('button');
+allChip.type='button'; allChip.className='rchip all';
+allChip.innerHTML = '<span class="sw" style="background:#12325e"></span><span class="t"><b>All circuits</b><span>30 ckts · 143 dev</span></span>';
+allChip.addEventListener('click', function(){ selectCircuit(null); });
+rail.appendChild(allChip);
 D.circuits.forEach(function(c){
   var b = document.createElement('button');
-  b.type='button'; b.className='ckt'; b.setAttribute('data-ckt', c.id);
+  b.type='button'; b.className='rchip'; b.setAttribute('data-ckt', c.id); b.setAttribute('role','option');
   b.innerHTML = '<span class="sw" style="background:'+c.color+'"></span>'
-    + '<span class="t"><b>Space ' + c.space + ' · ' + c.description + '</b>'
-    + '<span>' + breakerText(c) + (c.wire ? ' · ' + c.wire : '') + '</span></span>'
-    + '<span class="ft">' + c.cableFt + ' ft</span>';
+    + '<span class="t"><b>' + c.space + ' · ' + c.description + '</b>'
+    + '<span>' + breakerText(c) + (c.wire ? ' · ' + c.wire : '') + ' · ' + c.cableFt + ' ft</span></span>';
   b.addEventListener('click', function(){
     selectCircuit(selected===c.id ? null : c.id);
   });
-  list.appendChild(b);
+  rail.appendChild(b);
 });
 
-/* ---------- device inspector ---------- */
-/* Selected-circuit banner sits ON the plan (position absolute in #svgbox),
-   so the circuit being viewed stays identified while scrolling, panning and
-   zooming — even when the sidebar list/readout is scrolled out of sight. */
-document.getElementById('selClear').addEventListener('click', function(){ selectCircuit(null); });
-/* Pressing a circuit button must not focus-scroll the list/page on click. */
-list.addEventListener('mousedown', function(e){
-  if(e.target.closest && e.target.closest('.ckt')) e.preventDefault();
-});
-
-var inspector = document.getElementById('inspector');
+/* ---------- device inspector (into the same detail card) ---------- */
 function inspect(d){
   var cid = devCircuit(d);
   var cktTxt;
@@ -372,15 +387,22 @@ function inspect(d){
   else if(d.kind==='panel') cktTxt = 'Service panel — interior, directly back-to-back with the garage-side exterior meter (relationship owner-confirmed; compass direction, exact offsets, heights and utility acceptance are holds)';
   else if(d.kind==='meter') cktTxt = 'Exterior meter — garage-side, directly back-to-back with the interior panel (relationship owner-confirmed; exact offsets are a hold)';
   else cktTxt = 'Not circuit-assigned by design';
-  inspector.innerHTML = '<div class="key">' + d.devKey + '</div><table>'
-    + row('Register ID', d.id)
+  dSw.style.background = devColor(d);
+  dTitle.textContent = d.devKey;
+  dBody.innerHTML = '<table>'
     + row('Type', KIND[d.kind] || d.kind)
     + row('Room', d.room)
     + row('Circuit', cktTxt)
     + (d.circuitId!=null ? row('Chain order', d.chainOrder) : '')
     + row('Position', 'x ' + d.x + ' · y ' + d.y + '<br><span style="color:var(--mut)">normalized plan position (not a physical measurement)</span>')
-    + '</table>';
-  if(cid!=null && cktById[cid] && devCircuits(d).length<=1) selectCircuit(cid);
+    + '</table>'
+    + (cid!=null && cktById[cid] && devCircuits(d).length<=1
+        ? '<button type="button" class="dbtn" id="dShowCkt">Show circuit — Space ' + cktById[cid].space + ' · ' + cktById[cid].description + '</button>'
+        : '');
+  showDetail();
+  var sc = document.getElementById('dShowCkt');
+  if(sc) sc.addEventListener('click', function(){ selectCircuit(cid); });
+  if(cid!=null && cktById[cid] && devCircuits(d).length<=1) selectCircuit(cid, true);
 }
 
 /* ---------- zoom / pan ---------- */
@@ -392,9 +414,9 @@ function svgPoint(cx, cy){
 }
 function zoomAt(cx, cy, factor){
   var s = svgPoint(cx, cy);
-  var px = (s.x - state.tx)/state.k, py = (s.y - state.ty)/state.k;
+  var px2 = (s.x - state.tx)/state.k, py2 = (s.y - state.ty)/state.k;
   state.k = Math.min(14, Math.max(0.6, state.k*factor));
-  state.tx = s.x - px*state.k; state.ty = s.y - py*state.k;
+  state.tx = s.x - px2*state.k; state.ty = s.y - py2*state.k;
   apply();
 }
 svg.addEventListener('wheel', function(e){
@@ -433,9 +455,9 @@ svg.addEventListener('pointermove', function(e){
     if(nd>0){
       var mx = (p[0].x+p[1].x)/2, my = (p[0].y+p[1].y)/2;
       var s = svgPoint(mx, my);
-      var px = (s.x - state.tx)/state.k, py = (s.y - state.ty)/state.k;
+      var qx = (s.x - state.tx)/state.k, qy = (s.y - state.ty)/state.k;
       state.k = Math.min(14, Math.max(0.6, pinch.k * nd/pinch.d));
-      state.tx = s.x - px*state.k; state.ty = s.y - py*state.k;
+      state.tx = s.x - qx*state.k; state.ty = s.y - qy*state.k;
       apply(); moved = true;
     }
     return;
@@ -472,7 +494,7 @@ function endPointer(e){
 svg.addEventListener('pointerup', endPointer);
 svg.addEventListener('pointercancel', endPointer);
 
-/* ---------- layer toggles ---------- */
+/* ---------- layer toggles + holds ---------- */
 function toggle(btn, layer){
   btn.addEventListener('click', function(){
     var on = btn.classList.toggle('on');
@@ -481,6 +503,9 @@ function toggle(btn, layer){
 }
 toggle(document.getElementById('tglRuns'), layerRuns);
 toggle(document.getElementById('tglLegs'), layerLegs);
+var holds = document.getElementById('holds');
+document.getElementById('btnHolds').addEventListener('click', function(){ holds.classList.add('show'); });
+document.getElementById('holdsClose').addEventListener('click', function(){ holds.classList.remove('show'); });
 apply();
 })();
 </script>
