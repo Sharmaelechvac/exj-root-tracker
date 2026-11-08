@@ -419,6 +419,14 @@ function endPointer(e){
   if(wasTap){
     var g = target && target.closest ? target.closest('.dev') : null;
     if(g) inspect(devById[+g.getAttribute('data-id')]);
+    else {
+      /* pointer capture retargets taps to the svg itself — hit-test by coordinates */
+      var s = svgPoint(e.clientX, e.clientY);
+      var rx = (s.x - state.tx) / state.k, ry = (s.y - state.ty) / state.k;
+      var best = null, bd = 1e9;
+      D.devices.forEach(function(d){ var dist = Math.hypot(px(d) - rx, py(d) - ry); if(dist < bd){ bd = dist; best = d; } });
+      if(best && bd <= 42) inspect(best);
+    }
   }
 }
 svg.addEventListener('pointerup', endPointer);
