@@ -77,6 +77,14 @@
     #sidebar,#rightcol{width:100%;flex:1 1 auto;max-height:none}
     #mapwrap{width:100%}
   }
+
+  #svgbox{position:relative}
+  #selBanner{position:absolute;top:10px;left:10px;z-index:6;display:none;align-items:center;gap:8px;background:rgba(18,50,94,.94);color:#fff;border-radius:999px;padding:6px 8px 6px 12px;font-size:13px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.25);pointer-events:none;max-width:calc(100% - 20px)}
+  #selBanner.show{display:flex}
+  #selBanner .sw{width:14px;height:14px;border-radius:4px;flex:0 0 14px;border:1px solid rgba(255,255,255,.6)}
+  #selBanner .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #selBanner button{pointer-events:auto;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;width:22px;height:22px;line-height:1;font-size:14px;cursor:pointer;flex:0 0 22px;padding:0}
+  #selBanner button:hover{background:rgba(255,255,255,.32)}
 </style>
 </head>
 <body>
@@ -108,6 +116,7 @@
       <span class="note">Runs are <b>schematic</b> circuit routing, chained in register order — not a verified installed cable path. Cable lengths are <b>provisional / assumed</b>. Device positions are normalized plan coordinates — not physical measurements.</span>
     </div>
     <div id="svgbox">
+      <div id="selBanner" role="status"><span class="sw" id="selBannerSw"></span><span class="txt" id="selBannerTxt"></span><button id="selClear" type="button" title="Clear selection" aria-label="Clear selected circuit">×</button></div>
       <svg id="map" viewBox="0 0 2435 2733" preserveAspectRatio="xMidYMid meet" aria-label="Milano electrical plan map">
         <g id="cam">
           <image id="planImg" href="plan-a2.png" x="0" y="0" width="2435" height="2733" opacity="0.55"></image>
@@ -274,6 +283,18 @@ function breakerText(c){
 }
 function row(k,v){ return '<tr><td class="k">'+k+'</td><td>'+v+'</td></tr>'; }
 function selectCircuit(cid, scroll){
+  /* Selecting a circuit must never move the view: capture every scroll
+     position (page, circuit list, inspector column) and restore it after
+     the DOM updates, which otherwise shift layout and make the view jump. */
+  var keepWX = window.scrollX, keepWY = window.scrollY;
+  var keepList = list.scrollTop;
+  var rcEl = document.getElementById('rightcol');
+  var keepRC = rcEl ? rcEl.scrollTop : 0;
+  function keepScroll(){
+    if(window.scrollX!==keepWX || window.scrollY!==keepWY) window.scrollTo(keepWX, keepWY);
+    if(list.scrollTop!==keepList) list.scrollTop = keepList;
+    if(rcEl && rcEl.scrollTop!==keepRC) rcEl.scrollTop = keepRC;
+  }
   selected = cid;
   var items = list.querySelectorAll('.ckt');
   items.forEach(function(it){ it.classList.toggle('sel', +it.getAttribute('data-ckt')===cid); });
@@ -287,8 +308,17 @@ function selectCircuit(cid, scroll){
     var d = devById[+n.getAttribute('data-id')];
     n.classList.toggle('sel', !!d && devCircuits(d).indexOf(cid)>=0);
   });
+  var banner = document.getElementById('selBanner');
+  if(banner) banner.classList.toggle('show', cid!=null);
+  if(cid!=null && cktById[cid]){
+    var bc = cktById[cid];
+    var bsw = document.getElementById('selBannerSw'); if(bsw) bsw.style.background = bc.color;
+    var btx = document.getElementById('selBannerTxt');
+    if(btx) btx.textContent = 'Space ' + bc.space + ' \u00b7 ' + bc.description + ' \u2014 ' + bc.deviceIds.length + ' device' + (bc.deviceIds.length===1 ? '' : 's') + ' shown';
+  }
   if(cid==null){
     readout.innerHTML = '<i>Select a circuit to see its register readout.</i>';
+    keepScroll(); requestAnimationFrame(keepScroll);
     return;
   }
   var c = cktById[cid];
@@ -301,6 +331,7 @@ function selectCircuit(cid, scroll){
     + row('Cable', c.cableFt + ' ft — <b>provisional</b>')
     + (c.space===11 ? row('Register note', 'Breaker / conductor above are the <b>register entry — unsupported, per-nameplate HOLD, not approved.</b> MCA/MOCP not on file.') : '')
     + '</table>';
+  keepScroll(); requestAnimationFrame(keepScroll);
 }
 var allBtn = document.createElement('button');
 allBtn.type='button'; allBtn.className='ckt all';
@@ -321,6 +352,15 @@ D.circuits.forEach(function(c){
 });
 
 /* ---------- device inspector ---------- */
+/* Selected-circuit banner sits ON the plan (position absolute in #svgbox),
+   so the circuit being viewed stays identified while scrolling, panning and
+   zooming — even when the sidebar list/readout is scrolled out of sight. */
+document.getElementById('selClear').addEventListener('click', function(){ selectCircuit(null); });
+/* Pressing a circuit button must not focus-scroll the list/page on click. */
+list.addEventListener('mousedown', function(e){
+  if(e.target.closest && e.target.closest('.ckt')) e.preventDefault();
+});
+
 var inspector = document.getElementById('inspector');
 function inspect(d){
   var cid = devCircuit(d);
