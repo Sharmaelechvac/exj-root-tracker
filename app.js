@@ -645,6 +645,7 @@
     if (hv2) hv2.hidden = phase !== "htrim";
     if (hv3) hv3.hidden = phase !== "hstart";
     var te = document.getElementById("tabs-elec"); if (te) { te.hidden = trade !== "elec"; te.style.display = trade === "elec" ? "" : "none"; }
+    var ed = document.getElementById("elec-details"); if (ed) ed.hidden = trade !== "elec";
     var th = document.getElementById("tabs-hvac"); if (th) { th.hidden = trade !== "hvac"; th.style.display = trade === "hvac" ? "" : "none"; }
     document.querySelectorAll(".tradeswitch button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-trade") === trade);
