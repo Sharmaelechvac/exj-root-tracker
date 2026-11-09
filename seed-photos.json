@@ -1,42 +1,18 @@
 [
   {
     "job": "212",
-    "caption": "TUG · Meter base — open (200A main, GFCI breaker)",
-    "url": "seed-photos/212-meter-base-open.jpg",
-    "name": "212-meter-base-open.jpg",
-    "taken_at": "2026-11-09T13:40:00",
+    "caption": "TUG · Finished — intersystem bridge & GFCI",
+    "url": "seed-photos/212-finished-bridge-gfci.jpg",
+    "name": "212-finished-bridge-gfci.jpg",
+    "taken_at": "2026-11-09T14:19:00",
     "media_type": "image/jpeg"
   },
   {
     "job": "212",
-    "caption": "TUG · Meter base — mounted",
-    "url": "seed-photos/212-meter-base-mounted.jpg",
-    "name": "212-meter-base-mounted.jpg",
-    "taken_at": "2026-11-09T13:40:05",
-    "media_type": "image/jpeg"
-  },
-  {
-    "job": "212",
-    "caption": "TUG · Meter base — door label",
-    "url": "seed-photos/212-meter-base-door-label.jpg",
-    "name": "212-meter-base-door-label.jpg",
-    "taken_at": "2026-11-09T13:40:10",
-    "media_type": "image/jpeg"
-  },
-  {
-    "job": "212",
-    "caption": "TUG · TUG Service GFCI Outlet & ground rod",
-    "url": "seed-photos/212-tug-gfci-and-grounding.jpg",
-    "name": "212-tug-gfci-and-grounding.jpg",
-    "taken_at": "2026-11-09T13:40:15",
-    "media_type": "image/jpeg"
-  },
-  {
-    "job": "212",
-    "caption": "TUG · TUG complete — wide shot",
-    "url": "seed-photos/212-tug-complete-wide-shot.jpg",
-    "name": "212-tug-complete-wide-shot.jpg",
-    "taken_at": "2026-11-09T13:40:20",
+    "caption": "TUG · Finished product — TUG complete",
+    "url": "seed-photos/212-finished-complete.jpg",
+    "name": "212-finished-complete.jpg",
+    "taken_at": "2026-11-09T14:19:05",
     "media_type": "image/jpeg"
   },
   {
