@@ -19,22 +19,24 @@
     padding:2px 9px;border-radius:999px;font-size:12px}
   .chip.draft{background:#f0a93b;color:#231a00;border-color:#f0a93b;font-weight:700}
   .chip.stamp{background:#fff;color:var(--red);border:2px solid var(--red);font-weight:700;letter-spacing:.4px}
-  main{display:flex;gap:12px;padding:12px;align-items:flex-start}
+  main{display:flex;flex-direction:column;gap:12px;padding:12px;align-items:stretch}
+  #below{display:flex;gap:12px;align-items:flex-start;width:100%}
   aside{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
-  #sidebar{width:308px;flex:0 0 308px;max-height:calc(100vh - 130px);display:flex;flex-direction:column}
-  #rightcol{width:330px;flex:0 0 330px;max-height:calc(100vh - 130px);overflow:auto}
+  #sidebar{flex:1 1 540px;width:auto}
+  #rightcol{flex:1 1 320px;width:auto}
   #mapwrap{flex:1 1 auto;min-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
   h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin:2px 0 8px}
-  #circuitList{overflow:auto;margin:0 -4px;padding:0 4px}
-  .ckt{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:#fff;
-    border:1px solid var(--line);border-radius:8px;padding:6px 8px;margin:0 0 5px;cursor:pointer;font:inherit}
+  #circuitList{display:flex;flex-wrap:wrap;gap:5px}
+  .ckt{display:flex;gap:5px;align-items:center;width:auto;text-align:left;background:#fff;
+    border:1px solid var(--line);border-radius:999px;padding:3px 9px 3px 6px;margin:0;cursor:pointer;font:inherit}
   .ckt:hover{border-color:var(--blue)}
   .ckt.sel{border-color:var(--blue);box-shadow:0 0 0 2px rgba(6,150,215,.35)}
-  .ckt .sw{width:14px;height:14px;border-radius:4px;flex:0 0 14px;border:1px solid rgba(0,0,0,.25)}
+  .ckt .sw{width:10px;height:10px;border-radius:3px;flex:0 0 10px;border:1px solid rgba(0,0,0,.25)}
   .ckt .t{flex:1 1 auto;min-width:0}
-  .ckt .t b{font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ckt .t b{font-size:11.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .ckt .t span{font-size:11px;color:var(--mut)}
   .ckt .ft{font-size:11px;color:var(--mut);white-space:nowrap}
+  .ckt .t span,.ckt .ft{display:none}
   .ckt.all{font-weight:650}
   #readout{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:12.5px}
   #readout table{width:100%;border-collapse:collapse}
@@ -77,8 +79,8 @@
   .kindlegend{font-size:11.5px;color:var(--mut);line-height:1.5;border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
   footer{padding:0 14px 14px;font-size:11.5px;color:var(--mut);max-width:1500px}
   @media (max-width:1080px){
-    main{flex-direction:column}
-    #sidebar,#rightcol{width:100%;flex:1 1 auto;max-height:none}
+    #below{flex-direction:column}
+    #sidebar,#rightcol{width:100%;flex:1 1 auto}
     #mapwrap{width:100%}
   }
 
@@ -106,12 +108,6 @@
 </header>
 
 <main>
-  <aside id="sidebar">
-    <h2>Circuits — Panel SN (30 spaces)</h2>
-    <div id="circuitList"></div>
-    <div id="readout"><i>Select a circuit to see its register readout.</i></div>
-  </aside>
-
   <section id="mapwrap">
     <div class="toolbar">
       <button id="zoomIn" type="button">Zoom +</button>
@@ -135,6 +131,12 @@
     </div>
   </section>
 
+<div id="below">
+  <aside id="sidebar">
+    <h2>Circuits — Panel SN (30 spaces)</h2>
+    <div id="circuitList"></div>
+    <div id="readout"><i>Select a circuit to see its register readout.</i></div>
+  </aside>
   <aside id="rightcol">
     <h2>Device inspector</h2>
     <div id="inspector"><i>Tap any device marker on the plan to inspect it.</i></div>
@@ -169,6 +171,7 @@
       </ul>
     </div>
   </aside>
+  </div>
 </main>
 
 <footer>
