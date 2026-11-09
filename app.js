@@ -442,7 +442,7 @@
   function renderJobMeta() {
     var set = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
     var permitEl = document.getElementById("jm-permit"); if (permitEl && jobMeta.permit) permitEl.textContent = metaText(jobMeta.permit);
-    set("jm-lot", metaText(jobMeta.lot));
+    var lotEl = document.getElementById("jm-lot"); if (lotEl && jobMeta.lot) lotEl.textContent = metaText(jobMeta.lot);
     set("jm-crew", metaText(jobMeta.crew));
     var dateEl = document.getElementById("jm-date"); if (dateEl && jobMeta.date) dateEl.textContent = metaText(jobMeta.date);
     set("jm-insp", inspLabel());
