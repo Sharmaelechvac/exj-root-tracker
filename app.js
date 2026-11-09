@@ -48,6 +48,9 @@
     { en: "Final walkthrough — plates on, covers clean", es: "Recorrido final — placas puestas, tapas limpias", pt: "Vistoria final — espelhos colocados, tampas limpas" }
   ];
 
+  var TUG_FREE_PREFIX = "TUG \u00b7 ";
+  /* TUG captions — legacy preset list (kept only so photos filed under the
+     old caption-entry system still land in the TUG gallery). */
   /* TUG captions — temporary underground service install (8). Added at
      Sanjay's direction 2026-11-06 as its own section, separate from
      Underground. EN strings are the storage keys, like ROUGH/TRIM. */
@@ -128,7 +131,7 @@
       roughIn: "Electrical Rough-in", trimIn: "Electrical Trim", tugIn: "TUG Install", ugIn: "Underground", hroughIn: "HVAC Rough-in", htrimIn: "HVAC Machine & Trims Install", done16: "of 16 done", done12: "of 12 done", done8: "of 8 done", done7: "of 7 done", done6: "of 6 done", done11: "of 11 done",
       tabRough: "Rough-in", tabTrim: "Trim", tabTug: "TUG", tabUg: "Underground", tabHRough: "HVAC Rough", tabHTrim: "Machine & Trims", tabHvac: "HVAC", tradeElec: "Electric", tradeHvac: "HVAC", tabHStart: "Start-Up", hstartIn: "HVAC Start-Up",
       needsPhoto: "Needs photo", camera: "Camera", gallery: "Gallery",
-      otherPhotos: "OTHER PHOTOS", otherSub: "Anything that doesn't fit a caption above.", videoRule: "Videos: 15 seconds max",
+      otherPhotos: "OTHER PHOTOS", otherSub: "Anything that doesn't fit a caption above.", videoRule: "Videos: 15 seconds max", tugCapPh: "Write a caption for the photo(s)", photosWord: "photos",
       yourName: "Your name", otherCamera: "Other camera", otherGallery: "Other gallery",
       nameFirst: "Type your name in the bar below first.",
       uploading: "Uploading…", uploaded: "Uploaded.", uploadFail: "Upload failed — try again.",
@@ -154,7 +157,7 @@
       roughIn: "Instalación eléctrica preliminar", trimIn: "Acabado eléctrico", tugIn: "Instalación TUG", ugIn: "Subterráneo", hroughIn: "Instalación HVAC preliminar", htrimIn: "Instalación de máquina y remates HVAC", done16: "de 16 listos", done12: "de 12 listos", done8: "de 8 listos", done7: "de 7 listos", done6: "de 6 listos", done11: "de 11 listos",
       tabRough: "Preliminar", tabTrim: "Remates", tabTug: "TUG", tabUg: "Subterráneo", tabHRough: "HVAC Preliminar", tabHTrim: "Máquina y Remates", tabHvac: "HVAC", tradeElec: "Eléctrico", tradeHvac: "HVAC", tabHStart: "Arranque", hstartIn: "Arranque HVAC",
       needsPhoto: "Falta foto", camera: "Cámara", gallery: "Galería",
-      otherPhotos: "OTRAS FOTOS", otherSub: "Lo que no encaje en un título de arriba.", videoRule: "Videos: máximo 15 segundos",
+      otherPhotos: "OTRAS FOTOS", otherSub: "Lo que no encaje en un título de arriba.", videoRule: "Videos: máximo 15 segundos", tugCapPh: "Escribe un título para la(s) foto(s)", photosWord: "fotos",
       yourName: "Tu nombre", otherCamera: "Otra cámara", otherGallery: "Otra galería",
       nameFirst: "Escribe tu nombre en la barra de abajo primero.",
       uploading: "Subiendo…", uploaded: "Subido.", uploadFail: "La subida falló — inténtalo de nuevo.",
@@ -180,7 +183,7 @@
       roughIn: "Instalação elétrica bruta", trimIn: "Acabamento elétrico", tugIn: "Instalação TUG", ugIn: "Subterrâneo", hroughIn: "Instalação HVAC bruta", htrimIn: "Instalação da máquina e acabamentos HVAC", done16: "de 16 prontos", done12: "de 12 prontos", done8: "de 8 prontos", done7: "de 7 prontos", done6: "de 6 prontos", done11: "de 11 prontos",
       tabRough: "Bruto", tabTrim: "Acabamento", tabTug: "TUG", tabUg: "Subterrâneo", tabHRough: "HVAC Bruto", tabHTrim: "Máquina e Acabamentos", tabHvac: "HVAC", tradeElec: "Elétrica", tradeHvac: "HVAC", tabHStart: "Partida", hstartIn: "Partida HVAC",
       needsPhoto: "Falta foto", camera: "Câmera", gallery: "Galeria",
-      otherPhotos: "OUTRAS FOTOS", otherSub: "Qualquer coisa que não caiba numa legenda acima.", videoRule: "Vídeos: no máximo 15 segundos",
+      otherPhotos: "OUTRAS FOTOS", otherSub: "Qualquer coisa que não caiba numa legenda acima.", videoRule: "Vídeos: no máximo 15 segundos", tugCapPh: "Escreva uma legenda para a(s) foto(s)", photosWord: "fotos",
       yourName: "Seu nome", otherCamera: "Outra câmera", otherGallery: "Outra galeria",
       nameFirst: "Seu nome é opcional. Adicione-o abaixo apenas se quiser suas fotos identificadas.",
       uploading: "Enviando…", uploaded: "Enviado.", uploadFail: "O envio falhou — tente de novo.",
@@ -396,11 +399,11 @@
     var n = document.getElementById("upload-note");
     if (n) n.textContent = txt;
   }
-  function handleFiles(fileList, phaseName, captionIdx) {
+  function handleFiles(fileList, phaseName, captionIdx, freeCaption) {
     var name = getName();
     if (!fileList || !fileList.length) return;
     var files = Array.prototype.slice.call(fileList);
-    var caption = captionIdx == null ? "Other photos" : listFor(phaseName)[captionIdx].en;
+    var caption = freeCaption != null ? TUG_FREE_PREFIX + (String(freeCaption).trim() || "Photo") : captionIdx == null ? "Other photos" : listFor(phaseName)[captionIdx].en;
     setNote(t().uploading);
     getPosition().then(function (pos) {
       var chain = Promise.resolve();
@@ -533,6 +536,28 @@
     });
     return html + "</div>";
   }
+  function isTugPhoto(p) {
+    if (!p || !p.caption) return false;
+    if (p.caption.indexOf(TUG_FREE_PREFIX) === 0) return true;
+    return TUG.some(function (c) { return p.caption === c.en; });
+  }
+  function tugTilesHtml(rows) {
+    if (!rows.length) return "";
+    var html = '<div class="tiles">';
+    rows.forEach(function (p) {
+      var u = esc(fileUrl(p));
+      var isVideo = /\.(mp4|mov|webm|m4v)$/i.test(p.key || p.url || "") || (p.content_type || "").indexOf("video") === 0;
+      var capText = p.caption.indexOf(TUG_FREE_PREFIX) === 0 ? p.caption.slice(TUG_FREE_PREFIX.length) : p.caption;
+      var parts = [];
+      if (p.uploader) parts.push(esc(p.uploader));
+      if (p.taken_at) parts.push(esc(new Date(p.taken_at).toLocaleString()));
+      html += "<figure>" + (isVideo
+        ? '<video src="' + u + '" controls preload="metadata"></video>'
+        : '<a href="' + u + '" target="_blank" rel="noopener"><img src="' + u + '" alt="" loading="lazy"></a>') +
+        "<figcaption><b>" + esc(capText) + "</b>" + (parts.length ? "<span>" + parts.join(" \u00b7 ") + "</span>" : "") + "</figcaption></figure>";
+    });
+    return html + "</div>";
+  }
   function renderList(phaseName, merged) {
     var list = listFor(phaseName), prefix = prefixFor(phaseName), done = 0;
     list.forEach(function (c, i) {
@@ -551,7 +576,10 @@
     var merged = allPhotos();
     var roughDone = renderList("rough", merged);
     var trimDone = renderList("trim", merged);
-    var tugDone = renderList("tug", merged);
+    var tugRows = merged.filter(isTugPhoto);
+    var tugTilesEl = document.getElementById("tug-tiles");
+    if (tugTilesEl) tugTilesEl.innerHTML = tugTilesHtml(tugRows);
+    var tugDone = tugRows.length;
     var ugDone = renderList("ug", merged);
     var hroughDone = renderList("hrough", merged);
     var htrimDone = renderList("htrim", merged);
@@ -562,7 +590,7 @@
     // Section headings carry each phase's own count
     var rd = document.getElementById("rough-done"); if (rd) rd.textContent = roughDone + " " + t().done16;
     var td = document.getElementById("trim-done"); if (td) td.textContent = trimDone + " " + t().done12;
-    var gd = document.getElementById("tug-done"); if (gd) gd.textContent = tugDone + " " + t().done6;
+    var gd = document.getElementById("tug-done"); if (gd) gd.textContent = tugDone + " " + t().photosWord;
     var ud = document.getElementById("ug-done"); if (ud) ud.textContent = ugDone + " " + t().done8;
     var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().done6;
     var hd2 = document.getElementById("htrim-done"); if (hd2) hd2.textContent = htrimDone + " " + t().done12;
@@ -570,6 +598,7 @@
     // Ring + job bar reflect the ACTIVE phase
     var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : phase === "hstart" ? hstartDone : roughDone;
     var total = listFor(phase).length;
+    if (phase === "tug") total = tugDone || 1;
     var pct = total ? done / total : 0;
     var ring = document.getElementById("ring-fg");
     if (ring) {
@@ -578,10 +607,12 @@
       ring.style.strokeDashoffset = C * (1 - pct);
     }
     var label = done + "/" + total;
+    if (phase === "tug") label = String(tugDone);
     var num = document.getElementById("ring-num"); if (num) num.textContent = label;
     var jbn = document.getElementById("jobbar-num"); if (jbn) jbn.textContent = label;
     var sub = document.getElementById("ring-sub");
     if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : phase === "hstart" ? t().captions8 : phase === "tug" ? t().captions6 : phase === "ug" ? t().captions8 : t().captions16);
+    if (sub && phase === "tug") sub.textContent = tugDone + " " + t().photosWord;
   }
   function applyPhase() {
     var r = document.getElementById("phase-rough");
@@ -612,6 +643,10 @@
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var k = el.getAttribute("data-i18n");
       if (UI[lang][k] != null && typeof UI[lang][k] === "string") el.textContent = UI[lang][k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-ph");
+      if (UI[lang][k] != null && typeof UI[lang][k] === "string") el.placeholder = UI[lang][k];
     });
     document.querySelectorAll("[data-step]").forEach(function (el) {
       el.textContent = t().steps[Number(el.getAttribute("data-step"))];
@@ -679,7 +714,12 @@
   document.querySelectorAll("input[type=file][data-caption]").forEach(function (inp) {
     inp.addEventListener("change", function () {
       var idx = inp.getAttribute("data-caption");
-      if (idx === "other") handleFiles(inp.files, null, null);
+      if (idx === "tugfree") {
+        var tc = document.getElementById("tug-caption");
+        handleFiles(inp.files, "tug", null, tc ? tc.value : "");
+        if (tc) tc.value = "";
+      }
+      else if (idx === "other") handleFiles(inp.files, null, null);
       else handleFiles(inp.files, inp.getAttribute("data-phase") || "rough", Number(idx));
       inp.value = "";
     });

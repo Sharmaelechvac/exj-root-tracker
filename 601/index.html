@@ -4,7 +4,7 @@
 <title>SHARMATRACK — 601 Marion Oaks Golf Way</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=17">
+  <link rel="stylesheet" href="../styles.css?v=18">
 <link rel="icon" href="../sharmatrack-app-icon.png">
 <link rel="apple-touch-icon" href="../sharmatrack-app-icon.png">
 <script>try{if(localStorage.getItem("sharma-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
@@ -164,53 +164,18 @@
     </div>
   </div>
   </div>
-  <div class="section" id="phase-tug" hidden>
-    <h2><span data-i18n="tugIn">TUG Install</span> — <span id="tug-done">0 of 6 done</span></h2>
-
-  <div class="capcard" id="gcap-0">
-    <div class="top"><span class="cap">Meter base mounted</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="0" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="0" data-phase="tug"></label>
+    <div class="section" id="phase-tug" hidden>
+    <h2><span data-i18n="tugIn">TUG Install</span> — <span id="tug-done">0 photos</span></h2>
+    <div id="tug-tiles"></div>
+    <div class="freecap">
+      <input type="text" id="tug-caption" data-i18n-ph="tugCapPh" placeholder="Write a caption for the photo(s)" autocomplete="off">
+      <div class="btns">
+        <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="tugfree"></label>
+        <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="tugfree"></label>
+      </div>
     </div>
   </div>
-  <div class="capcard" id="gcap-1">
-    <div class="top"><span class="cap">TUG Service GFCI Outlet</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="1" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="1" data-phase="tug"></label>
-    </div>
-  </div>
-  <div class="capcard" id="gcap-2">
-    <div class="top"><span class="cap">Intersystem grounding bridge</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="2" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="2" data-phase="tug"></label>
-    </div>
-  </div>
-  <div class="capcard" id="gcap-3">
-    <div class="top"><span class="cap">Locknut & bushing check</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="3" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="3" data-phase="tug"></label>
-    </div>
-  </div>
-  <div class="capcard" id="gcap-4">
-    <div class="top"><span class="cap">Ground rod & grounding — TUG</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="4" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="4" data-phase="tug"></label>
-    </div>
-  </div>
-  <div class="capcard" id="gcap-5">
-    <div class="top"><span class="cap">TUG complete — wide shot</span><span class="status">Needs photo</span></div>
-    <div class="btns">
-      <label class="cam"><span data-i18n="camera">Camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="5" data-phase="tug"></label>
-      <label class="gal"><span data-i18n="gallery">Gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="5" data-phase="tug"></label>
-    </div>
-  </div>
-  </div>
-  <div class="section" id="phase-rough">
+<div class="section" id="phase-rough">
     <h2><span data-i18n="roughIn">Electrical Rough-in</span> — <span id="rough-done">0 of 16 done</span></h2>
 
   <div class="capcard" id="cap-0">
@@ -624,5 +589,5 @@
   <label class="ogal"><span data-i18n="otherGallery">Other gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="other"></label>
 </div></div>
 <script>window.JOB_PAGE = { id: "601", address: "601 Marion Oaks Golf Way, Ocala, FL 34473", phase: "tug" };</script>
-<script src="../app.js?v=23"></script>
+<script src="../app.js?v=24"></script>
 </body></html>
