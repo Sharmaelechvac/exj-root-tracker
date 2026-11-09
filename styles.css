@@ -488,3 +488,12 @@ html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;box
 .phasetabs button.on{background:#0058a3;color:#fff;box-shadow:0 6px 16px rgba(0,88,163,.35)}
 html[data-theme="dark"] .phasetabs button{background:rgba(120,180,240,.12);color:#bcd8f5}
 html[data-theme="dark"] .phasetabs button.on{background:#0058a3;color:#fff}
+
+/* ——— All-caps Archivo treatment (2026-11-09, Sanjay: "proper grammar — get an all caps font") ———
+   Archivo throughout; UI chrome displays in caps with light tracking.
+   Underlying text keeps its proper casing — display transform only. */
+body{font-family:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+h1,h2,h3,.hero,.jobbar,.tradeswitch button,.phasetabs button,.capcard .cap,
+.capcard .btns label,.jm-rows dt,.pill,.section h2,.prints a,.gear .card h3,
+.otherbar button,.langbar button,.jmedit,.jmsave{text-transform:uppercase;letter-spacing:.03em}
+.capcard .cap{font-weight:700}
