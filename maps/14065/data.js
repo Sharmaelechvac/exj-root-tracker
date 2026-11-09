@@ -1,5 +1,10 @@
-// Milano interactive map — data frozen from BuzzDrafts job 5 register (set Rev 1, DRAFT — IN REVIEW).
-// Exported 2026-11-08 from register backup. Local data only — no network use.
+// Milano interactive map — data frozen from BuzzDrafts job 5 register (set Rev 5, DRAFT — IN REVIEW).
+// Cut 2026-11-08 from the canonical Rev 5 register; register SHA-256 bbbb21e772b54ad9af656a3c63f23f4455f94570085864326e15585ab3a65dd8 (verified before building, from the production Rev 5 register bundle file stored on job 5).
+// Supersedes the Rev 4 bundle. Local data only — no network use.
+// Counts: 30 circuits / 148 physical devices + 1 virtual proposal node (149 register devices) / 53 legs.
+// Cable total 3,794 ft — PROVISIONAL / ASSUMED (per-circuit feet carried unchanged from the Rev 3 PDF E-3 subtotals; the register JSON carries no per-circuit cable figures).
+// Rev 5 deltas in this projection: 27 register positions updated (26 A7 placement moves + REC-015 device 15); 5 NEW source-candidate devices (145–149, circuitId null, candidateStatus 'SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED'); devices 76/77/78 kind ceiling_fixture_outlet (generic Ceiling Fixture Outlet per the A7 legend — NOT pendant, NOT recessed can; the Rev 4 projection's 'pendant' typing is superseded); 17 legs carry legNote SOURCE_SUPPORTED_CONTROL_INTENT_ONLY annotations (metadata only — endpoints/circuits unchanged; NOT installed control wiring).
+// Projection note: this data.js is a REDUCED projection of the canonical register (subset of fields, plus derived color/cableFt/deviceIds); it serializes to different bytes and a different hash than the canonical register — see Register-14065-Rev5-SERIALIZATION.md.
 window.MILANO_DATA = {
  "meta": {
   "address": "14065 SW 48th Ave",
@@ -7,12 +12,12 @@ window.MILANO_DATA = {
   "plan": "Milano",
   "builder": "EXJ Root LLC",
   "owner": null,
-  "ownerNote": "Owner not verified in the Milano source/baseline \u2014 omitted (owner direction 2026-11-08). Builder of record: EXJ Root LLC.",
+  "ownerNote": "Owner not verified in the Milano source/baseline — omitted (owner direction 2026-11-08). Builder of record: EXJ Root LLC.",
   "permit": "BLDR-26-07-19613",
-  "status": "DRAFT \u2014 IN REVIEW",
-  "setRev": 1,
-  "setRevLabel": "Draft \u2014 in review",
-  "revisedAt": "2026-11-07",
+  "status": "DRAFT — IN REVIEW",
+  "setRev": 5,
+  "setRevLabel": "Draft — in review",
+  "revisedAt": "2026-11-08",
   "stamp": "NOT FOR BUILDING DEPARTMENT SUBMISSION",
   "serviceAmps": 200,
   "panelSpaces": 30,
@@ -25,7 +30,14 @@ window.MILANO_DATA = {
    "imgW": 2435,
    "imgH": 2733
   },
-  "totalCableFt": 3705
+  "totalCableFt": 3794,
+  "registerSha256": "bbbb21e772b54ad9af656a3c63f23f4455f94570085864326e15585ab3a65dd8",
+  "registerSource": "BuzzDrafts job 5 canonical register at set Rev 5 (revised 2026-11-08T22:24:10Z). Production Rev 5 register bundle file IS stored on job 5: Register-Bundle-14065-sw-48th-ave-Rev5.json (202,710 B, file SHA-256 c0d747df9422bc8baeca2de6d35d6847ea755ee3fddadf95d0d6717a17fe891a); its register section was re-serialized per the app's canonical rule (circuits by space, devices/legs by id, fixed field order, compact JSON, UTF-8) and its SHA-256 verified against registerSha256 (bbbb21e7…65dd8) before building. Production also stores Source-Mapping-Manifest-14065-Rev5.json (30,883 B, file SHA-256 63b4a0a9a8f9b5affc7ee10f328ba05058c3ca28c7a8d17da377f8fa058de88e) and the Rev 4 bundle (127,390 B, file SHA-256 06f957c64b67c4ceefe86593b217f2039f1c60bc83faf98bc755ec47e72a242f).",
+  "cableNote": "PROVISIONAL / ASSUMED — not measured routing or a takeoff. Per-circuit feet are carried unchanged from the Rev 3 PDF set's E-3 subtotals (same total 3,794 ft; no new PDF set was generated in Rev 4 or Rev 5); the register JSON itself carries no per-circuit cable figures.",
+  "physicalDevices": 148,
+  "virtualNodes": 1,
+  "totalDevices": 149,
+  "legCount": 53
  },
  "circuits": [
   {
@@ -156,11 +168,12 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "12/2",
    "loadVa": 1500,
-   "cableFt": 95,
+   "cableFt": 118,
    "deviceIds": [
     121,
     119,
-    122
+    122,
+    123
    ]
   },
   {
@@ -292,7 +305,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 168,
+   "cableFt": 163,
    "deviceIds": [
     9,
     11,
@@ -313,7 +326,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "12/2",
    "loadVa": null,
-   "cableFt": 212,
+   "cableFt": 253,
    "deviceIds": [
     57,
     56,
@@ -321,7 +334,8 @@ window.MILANO_DATA = {
     26,
     25,
     16,
-    15
+    15,
+    100
    ]
   },
   {
@@ -333,7 +347,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 326,
+   "cableFt": 328,
    "deviceIds": [
     90,
     80,
@@ -356,7 +370,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 142,
+   "cableFt": 143,
    "deviceIds": [
     63,
     62,
@@ -393,7 +407,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 167,
+   "cableFt": 161,
    "deviceIds": [
     104,
     106,
@@ -413,13 +427,14 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "12/2",
    "loadVa": null,
-   "cableFt": 144,
+   "cableFt": 177,
    "deviceIds": [
     110,
     109,
     108,
     111,
-    112
+    112,
+    113
    ]
   },
   {
@@ -431,7 +446,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 58,
+   "cableFt": 60,
    "deviceIds": [
     114,
     116
@@ -466,7 +481,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 201,
+   "cableFt": 198,
    "deviceIds": [
     140,
     139,
@@ -483,7 +498,7 @@ window.MILANO_DATA = {
    "poles": 1,
    "wire": "14/2",
    "loadVa": null,
-   "cableFt": 105,
+   "cableFt": 106,
    "deviceIds": [
     125,
     126,
@@ -589,8 +604,8 @@ window.MILANO_DATA = {
    "devKey": "b2_fan",
    "kind": "fan",
    "room": "Bedroom #2",
-   "x": 0.115,
-   "y": 0.035,
+   "x": 0.105473,
+   "y": 0.095914,
    "circuitId": 81,
    "chainOrder": 3
   },
@@ -629,8 +644,8 @@ window.MILANO_DATA = {
    "devKey": "bath2_can",
    "kind": "can",
    "room": "Bath #2",
-   "x": 0.26,
-   "y": 0.03,
+   "x": 0.257005,
+   "y": 0.021752,
    "circuitId": 81,
    "chainOrder": 2
   },
@@ -659,8 +674,8 @@ window.MILANO_DATA = {
    "devKey": "lanai_fan",
    "kind": "fan",
    "room": "Rear Lanai",
-   "x": 0.435,
-   "y": 0.03,
+   "x": 0.449109,
+   "y": 0.041258,
    "circuitId": 83,
    "chainOrder": 7
   },
@@ -679,10 +694,11 @@ window.MILANO_DATA = {
    "devKey": "lanai_rec",
    "kind": "rec",
    "room": "Rear Lanai",
-   "x": 0.385,
-   "y": 0.045,
+   "x": 0.325843,
+   "y": 0.055016,
    "circuitId": 82,
-   "chainOrder": 6
+   "chainOrder": 6,
+   "censusNote": "CENSUS (Rev 5): RECEPTACLE — NOT one of the two rear-lanai recessed lights. Moved to its own A7 source position this round (REC-015-SOURCE, vector 11695). The two rear-lanai recessed points are now RECORDED as source candidates lanai_lt_r (device 145) and lanai_lt_l (device 146) — SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED; they do not count as verified lighting coverage until a human verifies them. Do not count this receptacle as lighting coverage."
   },
   {
    "id": 16,
@@ -709,8 +725,8 @@ window.MILANO_DATA = {
    "devKey": "din_can",
    "kind": "can",
    "room": "Dining",
-   "x": 0.5,
-   "y": 0.115,
+   "x": 0.449109,
+   "y": 0.163667,
    "circuitId": 83,
    "chainOrder": 6
   },
@@ -719,6 +735,7 @@ window.MILANO_DATA = {
    "devKey": "chime",
    "kind": "lv",
    "room": "Dining",
+   "label": "CHIME",
    "x": 0.325,
    "y": 0.09,
    "circuitId": null,
@@ -729,8 +746,8 @@ window.MILANO_DATA = {
    "devKey": "corr_can1",
    "kind": "can",
    "room": "Hall",
-   "x": 0.045,
-   "y": 0.175,
+   "x": 0.048939,
+   "y": 0.213139,
    "circuitId": 81,
    "chainOrder": 7
   },
@@ -739,8 +756,8 @@ window.MILANO_DATA = {
    "devKey": "corr_can2",
    "kind": "can",
    "room": "Hall",
-   "x": 0.125,
-   "y": 0.175,
+   "x": 0.125537,
+   "y": 0.213139,
    "circuitId": 81,
    "chainOrder": 6
   },
@@ -749,8 +766,9 @@ window.MILANO_DATA = {
    "devKey": "attic1",
    "kind": "can",
    "room": "Hall",
-   "x": 0.16,
-   "y": 0.17,
+   "label": "ATTIC",
+   "x": 0.155799,
+   "y": 0.203245,
    "circuitId": 81,
    "chainOrder": 5
   },
@@ -758,9 +776,9 @@ window.MILANO_DATA = {
    "id": 23,
    "devKey": "hall_sd1",
    "kind": "sd",
-   "room": "Hall",
-   "x": 0.155,
-   "y": 0.115,
+   "room": "Bedroom #2",
+   "x": 0.142829,
+   "y": 0.164704,
    "circuitId": 81,
    "chainOrder": 4
   },
@@ -769,8 +787,8 @@ window.MILANO_DATA = {
    "devKey": "hall_sd2",
    "kind": "sd",
    "room": "Hall",
-   "x": 0.255,
-   "y": 0.115,
+   "x": 0.240877,
+   "y": 0.164704,
    "circuitId": 83,
    "chainOrder": 8
   },
@@ -819,8 +837,8 @@ window.MILANO_DATA = {
    "devKey": "gat_fan",
    "kind": "fan",
    "room": "Gathering Room",
-   "x": 0.37,
-   "y": 0.265,
+   "x": 0.340143,
+   "y": 0.294368,
    "circuitId": 83,
    "chainOrder": 9
   },
@@ -829,6 +847,7 @@ window.MILANO_DATA = {
    "devKey": "gat_sw3",
    "kind": "sw",
    "room": "Gathering Room",
+   "label": "3",
    "x": 0.235,
    "y": 0.148,
    "circuitId": null,
@@ -879,8 +898,8 @@ window.MILANO_DATA = {
    "devKey": "mb_tub",
    "kind": "can",
    "room": "M. Bath",
-   "x": 0.105,
-   "y": 0.24,
+   "x": 0.105029,
+   "y": 0.276087,
    "circuitId": 79,
    "chainOrder": 7
   },
@@ -889,8 +908,8 @@ window.MILANO_DATA = {
    "devKey": "mb_shw",
    "kind": "can",
    "room": "M. Bath",
-   "x": 0.09,
-   "y": 0.285,
+   "x": 0.182181,
+   "y": 0.297195,
    "circuitId": 79,
    "chainOrder": 6
   },
@@ -919,8 +938,8 @@ window.MILANO_DATA = {
    "devKey": "wc_can",
    "kind": "can",
    "room": "M. Bath WC",
-   "x": 0.16,
-   "y": 0.35,
+   "x": 0.159124,
+   "y": 0.369472,
    "circuitId": 79,
    "chainOrder": 4
   },
@@ -949,8 +968,8 @@ window.MILANO_DATA = {
    "devKey": "clo_l1",
    "kind": "can",
    "room": "Closets",
-   "x": 0.035,
-   "y": 0.42,
+   "x": 0.044838,
+   "y": 0.426577,
    "circuitId": 79,
    "chainOrder": 10
   },
@@ -959,8 +978,8 @@ window.MILANO_DATA = {
    "devKey": "clo_l2",
    "kind": "can",
    "room": "Closets",
-   "x": 0.17,
-   "y": 0.435,
+   "x": 0.165554,
+   "y": 0.440712,
    "circuitId": 79,
    "chainOrder": 2
   },
@@ -969,8 +988,8 @@ window.MILANO_DATA = {
    "devKey": "clo_l3",
    "kind": "can",
    "room": "Closets",
-   "x": 0.105,
-   "y": 0.44,
+   "x": 0.105473,
+   "y": 0.443068,
    "circuitId": 79,
    "chainOrder": 1
   },
@@ -1069,8 +1088,8 @@ window.MILANO_DATA = {
    "devKey": "mbed_fan",
    "kind": "fan",
    "room": "M. Bedroom",
-   "x": 0.105,
-   "y": 0.625,
+   "x": 0.105473,
+   "y": 0.599117,
    "circuitId": 79,
    "chainOrder": 0
   },
@@ -1109,8 +1128,8 @@ window.MILANO_DATA = {
    "devKey": "foy_can1",
    "kind": "can",
    "room": "Foyer",
-   "x": 0.305,
-   "y": 0.515,
+   "x": 0.287822,
+   "y": 0.509219,
    "circuitId": 84,
    "chainOrder": 4
   },
@@ -1119,8 +1138,8 @@ window.MILANO_DATA = {
    "devKey": "foy_can2",
    "kind": "can",
    "room": "Foyer",
-   "x": 0.465,
-   "y": 0.515,
+   "x": 0.433146,
+   "y": 0.509219,
    "circuitId": 84,
    "chainOrder": 5
   },
@@ -1129,8 +1148,8 @@ window.MILANO_DATA = {
    "devKey": "foy_sd",
    "kind": "sd",
    "room": "Foyer",
-   "x": 0.25,
-   "y": 0.525,
+   "x": 0.240877,
+   "y": 0.511858,
    "circuitId": 84,
    "chainOrder": 3
   },
@@ -1139,8 +1158,8 @@ window.MILANO_DATA = {
    "devKey": "hall_sd3",
    "kind": "sd",
    "room": "Hall",
-   "x": 0.14,
-   "y": 0.525,
+   "x": 0.142829,
+   "y": 0.511858,
    "circuitId": 84,
    "chainOrder": 2
   },
@@ -1149,8 +1168,8 @@ window.MILANO_DATA = {
    "devKey": "ent_l1",
    "kind": "can",
    "room": "Front Entry",
-   "x": 0.315,
-   "y": 0.665,
+   "x": 0.302232,
+   "y": 0.63747,
    "circuitId": 84,
    "chainOrder": 1
   },
@@ -1159,8 +1178,8 @@ window.MILANO_DATA = {
    "devKey": "ent_l2",
    "kind": "can",
    "room": "Front Entry",
-   "x": 0.45,
-   "y": 0.665,
+   "x": 0.418625,
+   "y": 0.63747,
    "circuitId": 84,
    "chainOrder": 0
   },
@@ -1189,6 +1208,7 @@ window.MILANO_DATA = {
    "devKey": "bell",
    "kind": "lv",
    "room": "Foyer",
+   "label": "BELL",
    "x": 0.35,
    "y": 0.625,
    "circuitId": null,
@@ -1199,6 +1219,7 @@ window.MILANO_DATA = {
    "devKey": "foy_sw3",
    "kind": "sw",
    "room": "Foyer",
+   "label": "3",
    "x": 0.225,
    "y": 0.475,
    "circuitId": null,
@@ -1287,40 +1308,43 @@ window.MILANO_DATA = {
   {
    "id": 76,
    "devKey": "k_can_i1",
-   "kind": "can",
+   "kind": "ceiling_fixture_outlet",
    "room": "Kitchen",
-   "x": 0.515,
-   "y": 0.23,
+   "x": 0.478595,
+   "y": 0.254602,
    "circuitId": 83,
-   "chainOrder": 3
+   "chainOrder": 3,
+   "censusNote": "CENSUS (Rev 5): Ceiling Fixture Outlet — the A7 legend's GENERIC ceiling fixture outlet (ERRATA-01, owner-adjudicated). NOT a pendant and NOT a recessed can; the legend does not select hardware, and fixture/product selection stays HOLD. Register kind is ceiling_fixture_outlet (converted from can at Rev 5); Rev 4's 'pendant' typing is SUPERSEDED. Position source-registered at Rev 4 (A7 index 9681)."
   },
   {
    "id": 77,
    "devKey": "k_can_i2",
-   "kind": "can",
+   "kind": "ceiling_fixture_outlet",
    "room": "Kitchen",
-   "x": 0.515,
-   "y": 0.265,
+   "x": 0.478595,
+   "y": 0.289656,
    "circuitId": 83,
-   "chainOrder": 4
+   "chainOrder": 4,
+   "censusNote": "CENSUS (Rev 5): Ceiling Fixture Outlet — the A7 legend's GENERIC ceiling fixture outlet (ERRATA-01, owner-adjudicated). NOT a pendant and NOT a recessed can; the legend does not select hardware, and fixture/product selection stays HOLD. Register kind is ceiling_fixture_outlet (converted from can at Rev 5); Rev 4's 'pendant' typing is SUPERSEDED. Repositioned to its A7 vector centre this round (PLAC-077)."
   },
   {
    "id": 78,
    "devKey": "k_can_i3",
-   "kind": "can",
+   "kind": "ceiling_fixture_outlet",
    "room": "Kitchen",
-   "x": 0.515,
-   "y": 0.31,
+   "x": 0.478595,
+   "y": 0.324711,
    "circuitId": 83,
-   "chainOrder": 2
+   "chainOrder": 2,
+   "censusNote": "CENSUS (Rev 5): Ceiling Fixture Outlet — the A7 legend's GENERIC ceiling fixture outlet (ERRATA-01, owner-adjudicated). NOT a pendant and NOT a recessed can; the legend does not select hardware, and fixture/product selection stays HOLD. Register kind is ceiling_fixture_outlet (converted from can at Rev 5); Rev 4's 'pendant' typing is SUPERSEDED. Repositioned to its A7 vector centre this round (PLAC-078)."
   },
   {
    "id": 79,
    "devKey": "k_can_e1",
    "kind": "can",
    "room": "Kitchen",
-   "x": 0.625,
-   "y": 0.235,
+   "x": 0.588559,
+   "y": 0.258465,
    "circuitId": 83,
    "chainOrder": 5
   },
@@ -1329,8 +1353,8 @@ window.MILANO_DATA = {
    "devKey": "k_can_e2",
    "kind": "can",
    "room": "Kitchen",
-   "x": 0.625,
-   "y": 0.335,
+   "x": 0.588559,
+   "y": 0.344406,
    "circuitId": 83,
    "chainOrder": 1
   },
@@ -1339,6 +1363,7 @@ window.MILANO_DATA = {
    "devKey": "range",
    "kind": "appl",
    "room": "Kitchen",
+   "label": "RANGE",
    "x": 0.66,
    "y": 0.28,
    "circuitId": 65,
@@ -1349,6 +1374,7 @@ window.MILANO_DATA = {
    "devKey": "micro",
    "kind": "appl",
    "room": "Kitchen",
+   "label": "MICRO",
    "x": 0.66,
    "y": 0.252,
    "circuitId": 66,
@@ -1359,6 +1385,7 @@ window.MILANO_DATA = {
    "devKey": "dw",
    "kind": "appl",
    "room": "Kitchen",
+   "label": "DW",
    "x": 0.565,
    "y": 0.225,
    "circuitId": 70,
@@ -1369,6 +1396,7 @@ window.MILANO_DATA = {
    "devKey": "disp",
    "kind": "appl",
    "room": "Kitchen",
+   "label": "DISP",
    "x": 0.545,
    "y": 0.245,
    "circuitId": 71,
@@ -1392,7 +1420,8 @@ window.MILANO_DATA = {
    "x": 0.53,
    "y": 0.415,
    "circuitId": 69,
-   "chainOrder": 1
+   "chainOrder": 1,
+   "censusNote": "CENSUS (Rev 5): GFI RECEPTACLE — NOT a fridge-area ceiling light. The source's separate fridge-area recessed point is now RECORDED as source candidate k_can_fridge (device 148) — SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED; it does not count as verified lighting coverage until a human verifies it."
   },
   {
    "id": 87,
@@ -1402,7 +1431,8 @@ window.MILANO_DATA = {
    "x": 0.575,
    "y": 0.415,
    "circuitId": 69,
-   "chainOrder": 0
+   "chainOrder": 0,
+   "censusNote": "CENSUS (Rev 5): GFI RECEPTACLE — NOT a fridge-area ceiling light. The source's separate fridge-area recessed point is now RECORDED as source candidate k_can_fridge (device 148) — SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED; it does not count as verified lighting coverage until a human verifies it."
   },
   {
    "id": 88,
@@ -1429,10 +1459,11 @@ window.MILANO_DATA = {
    "devKey": "pantry_lt",
    "kind": "can",
    "room": "Pantry",
-   "x": 0.635,
-   "y": 0.375,
+   "x": 0.580245,
+   "y": 0.391522,
    "circuitId": 83,
-   "chainOrder": 0
+   "chainOrder": 0,
+   "censusNote": "CENSUS (Rev 5): The pantry's ONE recessed can — the only mapped pantry light point; repositioned to its A7 vector centre this round (PLAC-090, vector 9424). The separate fridge-area recessed point is recorded as source candidate k_can_fridge (device 148) — unverified, no circuit assigned."
   },
   {
    "id": 91,
@@ -1442,7 +1473,8 @@ window.MILANO_DATA = {
    "x": 0.665,
    "y": 0.355,
    "circuitId": null,
-   "chainOrder": 0
+   "chainOrder": 0,
+   "censusNote": "CENSUS (Rev 4): SWITCH — a control, NOT a lighting fixture; do not count as a fixture / lighting coverage."
   },
   {
    "id": 92,
@@ -1499,8 +1531,8 @@ window.MILANO_DATA = {
    "devKey": "b3_fan",
    "kind": "fan",
    "room": "Bedroom #3",
-   "x": 0.81,
-   "y": 0.035,
+   "x": 0.709607,
+   "y": 0.09271,
    "circuitId": 86,
    "chainOrder": 3
   },
@@ -1519,8 +1551,8 @@ window.MILANO_DATA = {
    "devKey": "b3_sd",
    "kind": "sd",
    "room": "Bedroom #3",
-   "x": 0.685,
-   "y": 0.09,
+   "x": 0.618876,
+   "y": 0.134455,
    "circuitId": 86,
    "chainOrder": 4
   },
@@ -1531,16 +1563,17 @@ window.MILANO_DATA = {
    "room": "Hall",
    "x": 0.755,
    "y": 0.165,
-   "circuitId": null,
-   "chainOrder": 0
+   "circuitId": 82,
+   "chainOrder": 7,
+   "assignmentStatus": "UNAPPROVED PROPOSAL — DRAFT assignment to Space 18 — Gathering/Dining/Foyer Recepts; pending SABC/TV classification, laundry alternatives and added-load/capacity review"
   },
   {
    "id": 101,
    "devKey": "hall_sd4",
    "kind": "sd",
    "room": "Hall",
-   "x": 0.685,
-   "y": 0.175,
+   "x": 0.618932,
+   "y": 0.20904,
    "circuitId": 86,
    "chainOrder": 5
   },
@@ -1549,8 +1582,8 @@ window.MILANO_DATA = {
    "devKey": "hall_can",
    "kind": "can",
    "room": "Hall",
-   "x": 0.73,
-   "y": 0.205,
+   "x": 0.654404,
+   "y": 0.24075,
    "circuitId": 86,
    "chainOrder": 6
   },
@@ -1579,8 +1612,8 @@ window.MILANO_DATA = {
    "devKey": "bath3_tub",
    "kind": "can",
    "room": "Bath #3",
-   "x": 0.885,
-   "y": 0.23,
+   "x": 0.810259,
+   "y": 0.254036,
    "circuitId": 86,
    "chainOrder": 2
   },
@@ -1661,16 +1694,17 @@ window.MILANO_DATA = {
    "room": "Bedroom #4",
    "x": 0.715,
    "y": 0.465,
-   "circuitId": null,
-   "chainOrder": 0
+   "circuitId": 87,
+   "chainOrder": 5,
+   "assignmentStatus": "UNAPPROVED PROPOSAL — DRAFT assignment to Space 23 — Bedroom #4 Receptacles – AFCI; pending SABC/TV classification, laundry alternatives and added-load/capacity review"
   },
   {
    "id": 114,
    "devKey": "b4_fan",
    "kind": "fan",
    "room": "Bedroom #4",
-   "x": 0.815,
-   "y": 0.415,
+   "x": 0.729339,
+   "y": 0.421017,
    "circuitId": 88,
    "chainOrder": 0
   },
@@ -1689,8 +1723,8 @@ window.MILANO_DATA = {
    "devKey": "b4_sd",
    "kind": "sd",
    "room": "Bedroom #4",
-   "x": 0.74,
-   "y": 0.335,
+   "x": 0.654404,
+   "y": 0.363347,
    "circuitId": 88,
    "chainOrder": 1
   },
@@ -1729,6 +1763,7 @@ window.MILANO_DATA = {
    "devKey": "d_rec",
    "kind": "appl",
    "room": "Laundry",
+   "label": "DRYER",
    "x": 0.685,
    "y": 0.485,
    "circuitId": 72,
@@ -1761,16 +1796,17 @@ window.MILANO_DATA = {
    "room": "Laundry",
    "x": 0.545,
    "y": 0.475,
-   "circuitId": null,
-   "chainOrder": 0
+   "circuitId": 73,
+   "chainOrder": 3,
+   "assignmentStatus": "UNAPPROVED PROPOSAL — DRAFT assignment to Space 9 — Washer / Laundry Recepts; pending SABC/TV classification, laundry alternatives and added-load/capacity review"
   },
   {
    "id": 124,
    "devKey": "lau_can1",
    "kind": "can",
    "room": "Laundry",
-   "x": 0.6,
-   "y": 0.445,
+   "x": 0.564837,
+   "y": 0.462103,
    "circuitId": 91,
    "chainOrder": 2
   },
@@ -1779,8 +1815,8 @@ window.MILANO_DATA = {
    "devKey": "lau_can2",
    "kind": "can",
    "room": "Laundry",
-   "x": 0.6,
-   "y": 0.54,
+   "x": 0.564837,
+   "y": 0.524202,
    "circuitId": 91,
    "chainOrder": 0
   },
@@ -1789,8 +1825,8 @@ window.MILANO_DATA = {
    "devKey": "lau_sd",
    "kind": "sd",
    "room": "Laundry",
-   "x": 0.605,
-   "y": 0.49,
+   "x": 0.565336,
+   "y": 0.494754,
    "circuitId": 91,
    "chainOrder": 1
   },
@@ -1809,6 +1845,7 @@ window.MILANO_DATA = {
    "devKey": "lau_sw3",
    "kind": "sw",
    "room": "Laundry",
+   "label": "3",
    "x": 0.55,
    "y": 0.465,
    "circuitId": null,
@@ -1819,6 +1856,7 @@ window.MILANO_DATA = {
    "devKey": "ah",
    "kind": "appl",
    "room": "A/H Closet",
+   "label": "A/H",
    "x": 0.695,
    "y": 0.55,
    "circuitId": 75,
@@ -1829,6 +1867,7 @@ window.MILANO_DATA = {
    "devKey": "wh",
    "kind": "appl",
    "room": "WH Closet",
+   "label": "WH",
    "x": 0.885,
    "y": 0.525,
    "circuitId": 74,
@@ -1849,6 +1888,7 @@ window.MILANO_DATA = {
    "devKey": "cond",
    "kind": "appl",
    "room": "Exterior",
+   "label": "A/C",
    "x": 0.975,
    "y": 0.555,
    "circuitId": 76,
@@ -1889,6 +1929,7 @@ window.MILANO_DATA = {
    "devKey": "opener",
    "kind": "appl",
    "room": "Garage",
+   "label": "OPEN",
    "x": 0.735,
    "y": 0.755,
    "circuitId": 89,
@@ -1899,8 +1940,9 @@ window.MILANO_DATA = {
    "devKey": "gar_attic",
    "kind": "can",
    "room": "Garage",
-   "x": 0.735,
-   "y": 0.645,
+   "label": "ATTIC",
+   "x": 0.671253,
+   "y": 0.631534,
    "circuitId": 90,
    "chainOrder": 3
   },
@@ -1909,8 +1951,8 @@ window.MILANO_DATA = {
    "devKey": "gar_ext1",
    "kind": "can",
    "room": "Garage",
-   "x": 0.565,
-   "y": 0.915,
+   "x": 0.51839,
+   "y": 0.858635,
    "circuitId": 90,
    "chainOrder": 2
   },
@@ -1919,8 +1961,8 @@ window.MILANO_DATA = {
    "devKey": "gar_ext2",
    "kind": "can",
    "room": "Garage",
-   "x": 0.925,
-   "y": 0.915,
+   "x": 0.823229,
+   "y": 0.858635,
    "circuitId": 90,
    "chainOrder": 1
   },
@@ -1929,10 +1971,12 @@ window.MILANO_DATA = {
    "devKey": "flood",
    "kind": "appl",
    "room": "Exterior",
+   "label": "FLOOD",
    "x": 0.965,
    "y": 0.865,
    "circuitId": 90,
-   "chainOrder": 0
+   "chainOrder": 0,
+   "censusNote": "PROPOSED (Rev 3/Rev 4; still HOLD at Rev 5 — H-FLOOD140): flood point — no A7 / owner-addition evidence verified; stands as PROPOSED, not source-confirmed."
   },
   {
    "id": 141,
@@ -1949,8 +1993,8 @@ window.MILANO_DATA = {
    "devKey": "panel",
    "kind": "panel",
    "room": "Garage",
-   "x": 0.9735,
-   "y": 0.8369,
+   "x": 0.819955,
+   "y": 0.737274,
    "circuitId": null,
    "chainOrder": 0
   },
@@ -1959,10 +2003,81 @@ window.MILANO_DATA = {
    "devKey": "meter",
    "kind": "meter",
    "room": "Exterior",
-   "x": 1.0025,
-   "y": 0.8369,
+   "x": 0.853659,
+   "y": 0.737274,
    "circuitId": null,
    "chainOrder": 0
+  },
+  {
+   "id": 144,
+   "devKey": "alarm_feed",
+   "kind": "vnode",
+   "room": "Garage",
+   "label": "ALARM AREA FEED — UNSWITCHED · PROPOSED DRAFT",
+   "x": 0.94,
+   "y": 0.88,
+   "circuitId": null,
+   "chainOrder": 0
+  },
+  {
+   "id": 145,
+   "devKey": "lanai_lt_r",
+   "kind": "can",
+   "room": "Rear Lanai",
+   "x": 0.512848,
+   "y": 0.041258,
+   "circuitId": null,
+   "chainOrder": 0,
+   "candidateStatus": "SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED",
+   "censusNote": "CENSUS (Rev 5): SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED. Rear-lanai RIGHT recessed light (NEW-SRC-9492, A7 vector 9492), added from the 39-light source census. Verified=0 in the register — a human verifies it on E-1 before it counts as lighting coverage. Control intent HOLD."
+  },
+  {
+   "id": 146,
+   "devKey": "lanai_lt_l",
+   "kind": "can",
+   "room": "Rear Lanai",
+   "x": 0.38537,
+   "y": 0.041258,
+   "circuitId": null,
+   "chainOrder": 0,
+   "candidateStatus": "SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED",
+   "censusNote": "CENSUS (Rev 5): SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED. Rear-lanai LEFT recessed light (NEW-SRC-9526, A7 vector 9526), added from the 39-light source census. It sits ~10 px from lanai_rec (device 15) — that device is a RECEPTACLE, not this light and not a duplicate. Verified=0 — a human verifies it on E-1 before it counts. Control intent HOLD."
+  },
+  {
+   "id": 147,
+   "devKey": "k_can_sink",
+   "kind": "can",
+   "room": "Kitchen",
+   "x": 0.52615,
+   "y": 0.296724,
+   "circuitId": null,
+   "chainOrder": 0,
+   "candidateStatus": "SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED",
+   "censusNote": "CENSUS (Rev 5): SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED. Kitchen sink-area recessed light (NEW-SRC-9532, A7 vector 9532) — the third east-kitchen source point, previously UNMAPPED. Verified=0 — a human verifies it on E-1 before it counts. Control intent: the kitchen recessed group's source intent extends to it as INTENT ONLY (CTL-19) — no leg is created for it."
+  },
+  {
+   "id": 148,
+   "devKey": "k_can_fridge",
+   "kind": "can",
+   "room": "Kitchen",
+   "x": 0.512294,
+   "y": 0.39859,
+   "circuitId": null,
+   "chainOrder": 0,
+   "candidateStatus": "SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED",
+   "censusNote": "CENSUS (Rev 5): SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED. Fridge-area recessed light (NEW-SRC-9536, A7 vector 9536), previously UNMAPPED; frig1/frig2 (devices 86/87) are GFI receptacles, not this light. Verified=0 — a human verifies it on E-1 before it counts. Control intent HOLD."
+  },
+  {
+   "id": 149,
+   "devKey": "gar_linear",
+   "kind": "linear_fixture",
+   "room": "Garage",
+   "x": 0.669701,
+   "y": 0.663106,
+   "circuitId": null,
+   "chainOrder": 0,
+   "candidateStatus": "SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED",
+   "censusNote": "CENSUS (Rev 5): SOURCE CANDIDATE — UNVERIFIED, NO CIRCUIT ASSIGNED. Garage LINEAR fixture (NEW-SRC-11207-LINEAR, A7 vectors 11207–11210, source linear symbol) — previously ABSENT from the register. Distinct from gar_attic (device 137, a different symbol). Verified=0 — a human verifies it on E-1 before it counts. The garage source control arc points at THIS fixture, not attic 137 (CTL-16) — its control stays HOLD; leg 36 is unchanged."
   }
  ],
  "legs": [
@@ -1971,35 +2086,40 @@ window.MILANO_DATA = {
    "circuitId": 81,
    "from": 7,
    "to": 6,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-01): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BED2-FAN). Bedroom 2 switch bank → fan prewire. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 2,
    "circuitId": 81,
    "from": 12,
    "to": 9,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-09): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BATH2). Bath 2 vanity source control. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 3,
    "circuitId": 81,
    "from": 12,
    "to": 11,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-08): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BATH2). Bath 2 exhaust-fan source control. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 4,
    "circuitId": 81,
    "from": 12,
    "to": 10,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-07): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BATH2). Bath 2 wet/tub light source control. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 5,
    "circuitId": 83,
    "from": 14,
    "to": 13,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-10): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:LANAI). Lanai bank → fan prewire (separate source arc). Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 6,
@@ -2076,14 +2196,16 @@ window.MILANO_DATA = {
    "circuitId": 79,
    "from": 45,
    "to": 42,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-13): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:MASTER-CLOSET-LEFT). Master LEFT closet has its own source switch. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 17,
    "circuitId": 79,
    "from": 46,
    "to": 43,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-14): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:MASTER-CLOSET-RIGHT). Master RIGHT closet has its own source switch — distinct from the closet-ENTRY switch (see CTL-15 HOLD). Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 18,
@@ -2097,42 +2219,48 @@ window.MILANO_DATA = {
    "circuitId": 79,
    "from": 55,
    "to": 54,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-04): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:MASTER-FAN). Master bedroom switch bank → fan prewire. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 20,
    "circuitId": 83,
    "from": 88,
    "to": 76,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-20): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:KITCHEN-UPPER-AND-LOWER). Island three Ceiling Fixture Outlets share source control intent (legend semantic per ERRATA-01 — not pendants). Multiway terminal/conductor topology HOLD. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 21,
    "circuitId": 83,
    "from": 88,
    "to": 77,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-20): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:KITCHEN-UPPER-AND-LOWER). Island three Ceiling Fixture Outlets share source control intent (legend semantic per ERRATA-01 — not pendants). Multiway terminal/conductor topology HOLD. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 22,
    "circuitId": 83,
    "from": 88,
    "to": 78,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-20): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:KITCHEN-UPPER-AND-LOWER). Island three Ceiling Fixture Outlets share source control intent (legend semantic per ERRATA-01 — not pendants). Multiway terminal/conductor topology HOLD. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 23,
    "circuitId": 83,
    "from": 89,
    "to": 79,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-19): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:KITCHEN-UPPER-AND-LOWER). Kitchen recessed group source control intent; the group's third fixture is the sink-area endpoint added this round (NEW-SRC-9532) — the intent extends to it as intent only; NO leg is created for it. Multi-location terminal design HOLD. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 24,
    "circuitId": 83,
    "from": 89,
    "to": 80,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-19): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:KITCHEN-UPPER-AND-LOWER). Kitchen recessed group source control intent; the group's third fixture is the sink-area endpoint added this round (NEW-SRC-9532) — the intent extends to it as intent only; NO leg is created for it. Multi-location terminal design HOLD. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 25,
@@ -2146,21 +2274,24 @@ window.MILANO_DATA = {
    "circuitId": 71,
    "from": 85,
    "to": 84,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-06): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:DISPOSAL). Disposal switch → disposal symbol. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 27,
    "circuitId": 83,
    "from": 91,
    "to": 90,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-05): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:PANTRY). Pantry source switch → pantry recessed fixture (device 90 at its Rev 5 source position). Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 28,
    "circuitId": 86,
    "from": 98,
    "to": 97,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-02): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BED3-FAN). Bedroom 3 switch bank → fan prewire. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 29,
@@ -2188,7 +2319,8 @@ window.MILANO_DATA = {
    "circuitId": 88,
    "from": 115,
    "to": 114,
-   "kind": "leg"
+   "kind": "leg",
+   "legNote": "Rev 5 control intent (2026-11-08, CTL-03): SOURCE_SUPPORTED_CONTROL_INTENT_ONLY — the A7 dashed source arc supports this switch→load CONTROL INTENT only (source bank key A7:BANK:BED4-FAN). Bedroom 4 switch bank → fan prewire. Candidate bank identity UNCONFIRMED; electrical topology HOLD (terminals / mechanisms / neutrals / conductors / compatibility not issued). NOT installed wiring, NOT engineering approval. This leg's endpoints and circuit are unchanged."
   },
   {
    "id": 33,
@@ -2216,7 +2348,10 @@ window.MILANO_DATA = {
    "circuitId": 90,
    "from": 127,
    "to": 137,
-   "kind": "leg"
+   "kind": "leg",
+   "legStatus": "SOURCE-CONTROL HOLD",
+   "sourceConfirmed": false,
+   "legNote": "This control leg (lau_sw → gar_attic) has NO source arc/terminal evidence — SOURCE-CONTROL / topology HOLD. The leg is KEPT in the draft register but flagged unverified in place (not silently deleted, not isolated as a proposal, and no replacement switch connection is invented)."
   },
   {
    "id": 37,
@@ -2272,14 +2407,115 @@ window.MILANO_DATA = {
    "circuitId": 83,
    "from": 30,
    "to": 67,
-   "kind": "traveler"
+   "kind": "traveler",
+   "legStatus": "TOPOLOGY HOLD",
+   "sourceConfirmed": false,
+   "legNote": "Traveler pair with valid switch-bank endpoints, but NO common/traveler/neutral map, mechanism/gang evidence or source-arc equivalence — TOPOLOGY HOLD. Two traveler edges do not prove a correct multiway system."
   },
   {
    "id": 45,
    "circuitId": 91,
    "from": 127,
    "to": 128,
-   "kind": "traveler"
+   "kind": "traveler",
+   "legStatus": "TOPOLOGY HOLD",
+   "sourceConfirmed": false,
+   "legNote": "Traveler pair with valid switch-bank endpoints, but NO common/traveler/neutral map, mechanism/gang evidence or source-arc equivalence — TOPOLOGY HOLD. Two traveler edges do not prove a correct multiway system."
+  },
+  {
+   "id": 46,
+   "circuitId": null,
+   "from": 23,
+   "to": 24,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 47,
+   "circuitId": null,
+   "from": 24,
+   "to": 60,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 48,
+   "circuitId": null,
+   "from": 60,
+   "to": 61,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 49,
+   "circuitId": null,
+   "from": 61,
+   "to": 99,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 50,
+   "circuitId": null,
+   "from": 99,
+   "to": 101,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 51,
+   "circuitId": null,
+   "from": 101,
+   "to": 116,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 52,
+   "circuitId": null,
+   "from": 116,
+   "to": 126,
+   "kind": "alarm",
+   "cableType": "14/3",
+   "legStatus": "PROPOSED DRAFT",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "PROPOSED DRAFT interconnect — owner-directed alarm model (2026-11-08), structured Rev 3: cableType 14/3, sourceConfirmed=false, energized=false. ALTERNATIVE PROPOSED layer only — the detectors' active branch assignments (spaces 17/19/20/22/24/27) are the active design; this chain is not an implemented or supplied system. No conductor roles are claimed."
+  },
+  {
+   "id": 53,
+   "circuitId": null,
+   "from": 144,
+   "to": 23,
+   "kind": "feed_candidate",
+   "legStatus": "PROPOSED DRAFT — FEED/LISTING HOLD",
+   "sourceConfirmed": false,
+   "energized": false,
+   "legNote": "Feed-CANDIDATE edge only — NOT a power edge and NOT an implemented feed. circuit=null (no feed circuit selected), energized=false. Feed-circuit selection: HOLD. Manufacturer compatibility + listing: HOLD. No single implemented feed is claimed for the proposed alarm layer."
   }
  ]
 };
