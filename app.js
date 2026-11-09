@@ -230,6 +230,14 @@
   /* ---------- Photo backend: Netlify Function + Blobs, same origin ---------- */
   var API = "/api/photos";
   var META_API = "/api/jobmeta";
+  /* Directory this script was loaded from = the app root. Seed files live
+     there; resolving them against it keeps them working when the site is
+     served from a subpath (e.g. GitHub Pages project sites). */
+  var SCRIPT_BASE = "";
+  try {
+    var _cs = document.currentScript;
+    if (_cs && _cs.src) SCRIPT_BASE = _cs.src.replace(/[^\/]*$/, "");
+  } catch (e) { /* keep "" — fetch falls back to the page's directory */ }
   function fetchPhotos() {
     return fetch(API + "?job=" + encodeURIComponent(JOB.id))
       .then(function (r) { return r.ok ? r.json() : []; })
@@ -258,13 +266,15 @@
     return out;
   }
   function fetchSeeds() {
-    return fetch("/seed-photos.json")
+    return fetch(SCRIPT_BASE + "seed-photos.json")
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) {
         seeds = (Array.isArray(rows) ? rows : []).filter(function (s) { return s.job === JOB.id; })
           .map(function (s) {
+            var surl = s.url || "";
+            if (surl && surl.charAt(0) !== "/" && !/^https?:\/\//i.test(surl)) surl = SCRIPT_BASE + surl;
             return {
-              seed: true, caption: s.caption, url: s.url, name: s.name || "",
+              seed: true, caption: s.caption, url: surl, name: s.name || "",
               uploader: "", taken_at: s.taken_at || null, lat: null, lng: null,
               content_type: s.media_type || ""
             };
