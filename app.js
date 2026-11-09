@@ -134,7 +134,7 @@
       uploading: "Uploading…", uploaded: "Uploaded.", uploadFail: "Upload failed — try again.",
       gpsOff: "GPS unavailable", photoBy: "by",
       panelSchedule: "Panel schedule", meterSchedule: "Meter schedule",
-      jobDetails: "Job details", permitNo: "Permit #", lotNo: "Lot #", inspection: "Inspection",
+      jobDetails: "Job details", permitNo: "Building Permit #", lotNo: "Lot #", inspection: "Inspection",
       inspNone: "Not requested", inspRequested: "Requested", inspPassed: "Passed", inspFailed: "Failed",
       failReason: "Reason", crewLbl: "Assigned to", workDate: "Work date", tugInstall: "TUG install date",
       edit: "Edit", save: "Save", cancel: "Cancel",
@@ -160,7 +160,7 @@
       uploading: "Subiendo…", uploaded: "Subido.", uploadFail: "La subida falló — inténtalo de nuevo.",
       gpsOff: "GPS no disponible", photoBy: "por",
       panelSchedule: "Esquema del panel", meterSchedule: "Esquema del medidor",
-      jobDetails: "Datos del trabajo", permitNo: "Permiso #", lotNo: "Lote #", inspection: "Inspección",
+      jobDetails: "Datos del trabajo", permitNo: "Permiso de obra #", lotNo: "Lote #", inspection: "Inspección",
       inspNone: "No solicitada", inspRequested: "Solicitada", inspPassed: "Aprobada", inspFailed: "Reprobada",
       failReason: "Motivo", crewLbl: "Asignado a", workDate: "Fecha del trabajo", tugInstall: "Fecha de instalación TUG",
       edit: "Editar", save: "Guardar", cancel: "Cancelar",
@@ -186,7 +186,7 @@
       uploading: "Enviando…", uploaded: "Enviado.", uploadFail: "O envio falhou — tente de novo.",
       gpsOff: "GPS indisponível", photoBy: "por",
       panelSchedule: "Esquema do quadro", meterSchedule: "Esquema do medidor",
-      jobDetails: "Dados do trabalho", permitNo: "Alvará #", lotNo: "Lote #", inspection: "Inspeção",
+      jobDetails: "Dados do trabalho", permitNo: "Alvará de obra #", lotNo: "Lote #", inspection: "Inspeção",
       inspNone: "Não solicitada", inspRequested: "Solicitada", inspPassed: "Aprovada", inspFailed: "Reprovada",
       failReason: "Motivo", crewLbl: "Responsável", workDate: "Data do trabalho", tugInstall: "Data de instalação TUG",
       edit: "Editar", save: "Salvar", cancel: "Cancelar",
@@ -441,7 +441,7 @@
   }
   function renderJobMeta() {
     var set = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
-    set("jm-permit", metaText(jobMeta.permit));
+    var permitEl = document.getElementById("jm-permit"); if (permitEl && jobMeta.permit) permitEl.textContent = metaText(jobMeta.permit);
     set("jm-lot", metaText(jobMeta.lot));
     set("jm-crew", metaText(jobMeta.crew));
     var dateEl = document.getElementById("jm-date"); if (dateEl && jobMeta.date) dateEl.textContent = metaText(jobMeta.date);
