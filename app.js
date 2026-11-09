@@ -49,6 +49,9 @@
   ];
 
   var TUG_FREE_PREFIX = "TUG \u00b7 ";
+  var FREE_PREFIX = { tug: TUG_FREE_PREFIX, rough: "ROUGH \u00b7 ", hrough: "HVAC ROUGH \u00b7 " };
+  function freePrefix(phaseName) { return FREE_PREFIX[phaseName] || TUG_FREE_PREFIX; }
+  function isFreePhase(phaseName) { return phaseName === "tug" || phaseName === "rough" || phaseName === "hrough"; }
   /* TUG captions — legacy preset list (kept only so photos filed under the
      old caption-entry system still land in the TUG gallery). */
   /* TUG captions — temporary underground service install (8). Added at
@@ -403,7 +406,7 @@
     var name = getName();
     if (!fileList || !fileList.length) return;
     var files = Array.prototype.slice.call(fileList);
-    var caption = freeCaption != null ? TUG_FREE_PREFIX + (String(freeCaption).trim() || "Photo") : captionIdx == null ? "Other photos" : listFor(phaseName)[captionIdx].en;
+    var caption = freeCaption != null ? freePrefix(phaseName) + (String(freeCaption).trim() || "Photo") : captionIdx == null ? "Other photos" : listFor(phaseName)[captionIdx].en;
     setNote(t().uploading);
     getPosition().then(function (pos) {
       var chain = Promise.resolve();
@@ -541,13 +544,19 @@
     if (p.caption.indexOf(TUG_FREE_PREFIX) === 0) return true;
     return TUG.some(function (c) { return p.caption === c.en; });
   }
+  function isFreePhoto(phaseName, p) {
+    if (!p || !p.caption) return false;
+    if (p.caption.indexOf(freePrefix(phaseName)) === 0) return true;
+    return listFor(phaseName).some(function (c) { return p.caption === c.en; });
+  }
   function tugTilesHtml(rows) {
     if (!rows.length) return "";
     var html = '<div class="tiles">';
     rows.forEach(function (p) {
       var u = esc(fileUrl(p));
       var isVideo = /\.(mp4|mov|webm|m4v)$/i.test(p.key || p.url || "") || (p.content_type || "").indexOf("video") === 0;
-      var capText = p.caption.indexOf(TUG_FREE_PREFIX) === 0 ? p.caption.slice(TUG_FREE_PREFIX.length) : p.caption;
+      var capText = p.caption;
+      ["tug", "rough", "hrough"].forEach(function (ph) { var px = freePrefix(ph); if (capText.indexOf(px) === 0) capText = capText.slice(px.length); });
       var parts = [];
       if (p.uploader) parts.push(esc(p.uploader));
       if (p.taken_at) parts.push(esc(new Date(p.taken_at).toLocaleString()));
@@ -574,31 +583,37 @@
   }
   function renderPhotos() {
     var merged = allPhotos();
-    var roughDone = renderList("rough", merged);
+    var roughRows = merged.filter(function (p) { return isFreePhoto("rough", p); });
+    var roughTilesEl = document.getElementById("rough-tiles");
+    if (roughTilesEl) roughTilesEl.innerHTML = tugTilesHtml(roughRows);
+    var roughDone = roughRows.length;
     var trimDone = renderList("trim", merged);
     var tugRows = merged.filter(isTugPhoto);
     var tugTilesEl = document.getElementById("tug-tiles");
     if (tugTilesEl) tugTilesEl.innerHTML = tugTilesHtml(tugRows);
     var tugDone = tugRows.length;
     var ugDone = renderList("ug", merged);
-    var hroughDone = renderList("hrough", merged);
+    var hroughRows = merged.filter(function (p) { return isFreePhoto("hrough", p); });
+    var hroughTilesEl = document.getElementById("hrough-tiles");
+    if (hroughTilesEl) hroughTilesEl.innerHTML = tugTilesHtml(hroughRows);
+    var hroughDone = hroughRows.length;
     var htrimDone = renderList("htrim", merged);
     var hstartDone = renderList("hstart", merged);
     // Other photos — one shared section under both tabs
     var other = document.getElementById("other-tiles");
     if (other) other.innerHTML = tilesFor(null, null);
     // Section headings carry each phase's own count
-    var rd = document.getElementById("rough-done"); if (rd) rd.textContent = roughDone + " " + t().done16;
+    var rd = document.getElementById("rough-done"); if (rd) rd.textContent = roughDone + " " + t().photosWord;
     var td = document.getElementById("trim-done"); if (td) td.textContent = trimDone + " " + t().done12;
     var gd = document.getElementById("tug-done"); if (gd) gd.textContent = tugDone + " " + t().photosWord;
     var ud = document.getElementById("ug-done"); if (ud) ud.textContent = ugDone + " " + t().done8;
-    var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().done6;
+    var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().photosWord;
     var hd2 = document.getElementById("htrim-done"); if (hd2) hd2.textContent = htrimDone + " " + t().done12;
     var hd3 = document.getElementById("hstart-done"); if (hd3) hd3.textContent = hstartDone + " " + t().done8;
     // Ring + job bar reflect the ACTIVE phase
     var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : phase === "hstart" ? hstartDone : roughDone;
     var total = listFor(phase).length;
-    if (phase === "tug") total = tugDone || 1;
+    if (isFreePhase(phase)) total = done || 1;
     var pct = total ? done / total : 0;
     var ring = document.getElementById("ring-fg");
     if (ring) {
@@ -607,12 +622,12 @@
       ring.style.strokeDashoffset = C * (1 - pct);
     }
     var label = done + "/" + total;
-    if (phase === "tug") label = String(tugDone);
+    if (isFreePhase(phase)) label = String(done);
     var num = document.getElementById("ring-num"); if (num) num.textContent = label;
     var jbn = document.getElementById("jobbar-num"); if (jbn) jbn.textContent = label;
     var sub = document.getElementById("ring-sub");
     if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : phase === "hstart" ? t().captions8 : phase === "tug" ? t().captions6 : phase === "ug" ? t().captions8 : t().captions16);
-    if (sub && phase === "tug") sub.textContent = tugDone + " " + t().photosWord;
+    if (sub && isFreePhase(phase)) sub.textContent = done + " " + t().photosWord;
   }
   function applyPhase() {
     var r = document.getElementById("phase-rough");
@@ -718,6 +733,12 @@
         var tc = document.getElementById("tug-caption");
         handleFiles(inp.files, "tug", null, tc ? tc.value : "");
         if (tc) tc.value = "";
+      }
+      else if (idx === "roughfree" || idx === "hroughfree") {
+        var ph = idx === "roughfree" ? "rough" : "hrough";
+        var fc = document.getElementById(ph + "-caption");
+        handleFiles(inp.files, ph, null, fc ? fc.value : "");
+        if (fc) fc.value = "";
       }
       else if (idx === "other") handleFiles(inp.files, null, null);
       else handleFiles(inp.files, inp.getAttribute("data-phase") || "rough", Number(idx));
