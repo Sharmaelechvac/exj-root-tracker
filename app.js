@@ -531,7 +531,7 @@
       var cap = parts.join(" · ");
       html += "<figure>" + (isVideo
         ? '<video src="' + u + '" controls preload="metadata"></video>'
-        : '<a href="' + u + '" target="_blank" rel="noopener"><img src="' + u + '" alt="" loading="lazy"></a>') +
+        : '<img class="zoomable" src="' + u + '" alt="" loading="lazy">') +
         "<figcaption>" + cap + "</figcaption></figure>";
     });
     return html + "</div>";
@@ -553,7 +553,7 @@
       if (p.taken_at) parts.push(esc(new Date(p.taken_at).toLocaleString()));
       html += "<figure>" + (isVideo
         ? '<video src="' + u + '" controls preload="metadata"></video>'
-        : '<a href="' + u + '" target="_blank" rel="noopener"><img src="' + u + '" alt="" loading="lazy"></a>') +
+        : '<img class="zoomable" src="' + u + '" alt="" loading="lazy">') +
         "<figcaption><b>" + esc(capText) + "</b>" + (parts.length ? "<span>" + parts.join(" \u00b7 ") + "</span>" : "") + "</figcaption></figure>";
     });
     return html + "</div>";
@@ -746,6 +746,34 @@
     if (jmStatus) jmStatus.addEventListener("change", syncReasonRow);
     jmForm.addEventListener("submit", saveJobMeta);
   }
+  /* ---------- Lightbox: photos expand on this page ---------- */
+  var lbEl = null, lbImg = null, lbCap = null;
+  function ensureLightbox() {
+    if (lbEl) return;
+    lbEl = document.createElement("div");
+    lbEl.className = "lightbox"; lbEl.hidden = true;
+    lbEl.innerHTML = '<button type="button" class="lb-close" aria-label="Close">\u00d7</button><img alt=""><div class="lb-cap"></div>';
+    document.body.appendChild(lbEl);
+    lbImg = lbEl.querySelector("img"); lbCap = lbEl.querySelector(".lb-cap");
+    lbEl.addEventListener("click", function (e) { if (e.target !== lbImg) closeLightbox(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
+  }
+  function openLightbox(src, cap) {
+    ensureLightbox();
+    lbImg.src = src; lbCap.textContent = cap || "";
+    lbEl.hidden = false; document.body.classList.add("lb-open");
+  }
+  function closeLightbox() {
+    if (!lbEl) return;
+    lbEl.hidden = true; lbImg.src = ""; document.body.classList.remove("lb-open");
+  }
+  document.addEventListener("click", function (e) {
+    var img = e.target && e.target.closest ? e.target.closest("img.zoomable") : null;
+    if (!img) return;
+    var fig = img.closest("figure");
+    var capEl = fig ? fig.querySelector("figcaption") : null;
+    openLightbox(img.getAttribute("src"), capEl ? capEl.textContent.trim() : "");
+  });
   applyPhase();
   renderText();
   fetchPhotos();
