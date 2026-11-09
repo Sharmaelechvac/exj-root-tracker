@@ -52,13 +52,11 @@
      Sanjay's direction 2026-11-06 as its own section, separate from
      Underground. EN strings are the storage keys, like ROUGH/TRIM. */
   var TUG = [
-    { en: "Trench open for TUG", es: "Zanja abierta para TUG", pt: "Vala aberta para TUG" },
-    { en: "Conduit in trench — TUG run", es: "Conduit en la zanja — tramo TUG", pt: "Eletroduto na vala — trecho TUG" },
-    { en: "TUG pedestal / post set", es: "Pedestal / poste TUG instalado", pt: "Pedestal / poste TUG instalado" },
     { en: "Meter base mounted", es: "Base del medidor montada", pt: "Base do medidor montada" },
-    { en: "Riser & connection point", es: "Riser y punto de conexión", pt: "Riser e ponto de conexão" },
+    { en: "TUG Service GFCI Outlet", es: "Toma GFCI de servicio — TUG", pt: "Tomada GFCI de serviço — TUG" },
+    { en: "Intersystem grounding bridge", es: "Puente de puesta a tierra entre sistemas", pt: "Ponte de aterramento entre sistemas" },
+    { en: "Locknut & bushing check", es: "Revisión de contratuerca y buje", pt: "Verificação de contraporca e bucha" },
     { en: "Ground rod & grounding — TUG", es: "Varilla de tierra y grounding — TUG", pt: "Haste de aterramento e grounding — TUG" },
-    { en: "Conductors pulled & terminated", es: "Conductores jalados y terminados", pt: "Condutores puxados e terminados" },
     { en: "TUG complete — wide shot", es: "TUG completo — foto general", pt: "TUG completo — foto geral" }
   ];
 
@@ -554,7 +552,7 @@
     // Section headings carry each phase's own count
     var rd = document.getElementById("rough-done"); if (rd) rd.textContent = roughDone + " " + t().done16;
     var td = document.getElementById("trim-done"); if (td) td.textContent = trimDone + " " + t().done12;
-    var gd = document.getElementById("tug-done"); if (gd) gd.textContent = tugDone + " " + t().done8;
+    var gd = document.getElementById("tug-done"); if (gd) gd.textContent = tugDone + " " + t().done6;
     var ud = document.getElementById("ug-done"); if (ud) ud.textContent = ugDone + " " + t().done8;
     var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().done6;
     var hd2 = document.getElementById("htrim-done"); if (hd2) hd2.textContent = htrimDone + " " + t().done12;
@@ -573,7 +571,7 @@
     var num = document.getElementById("ring-num"); if (num) num.textContent = label;
     var jbn = document.getElementById("jobbar-num"); if (jbn) jbn.textContent = label;
     var sub = document.getElementById("ring-sub");
-    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : phase === "hstart" ? t().captions8 : (phase === "tug" || phase === "ug") ? t().captions8 : t().captions16);
+    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : phase === "hstart" ? t().captions8 : phase === "tug" ? t().captions6 : phase === "ug" ? t().captions8 : t().captions16);
   }
   function applyPhase() {
     var r = document.getElementById("phase-rough");
@@ -595,8 +593,6 @@
     document.querySelectorAll(".tradeswitch button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-trade") === trade);
     });
-    var tb = document.getElementById("tradebanner-img");
-    if (tb) { tb.src = trade === "hvac" ? "../logo-hvac-full.png?v=3" : "../logo-elec-e.png?v=4"; tb.alt = trade === "hvac" ? "Sharma Electric & HVAC" : "Sharma Electric"; }
     document.querySelectorAll(".phasetabs button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-phase") === phase);
     });

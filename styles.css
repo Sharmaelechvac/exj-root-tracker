@@ -254,8 +254,6 @@ html[data-theme="dark"] .tradeswitch button{background:#10283d;color:#bcd8f5;bor
 html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;border-color:#12325e}
 .tradeswitch button{display:flex;align-items:center;justify-content:center;gap:10px}
 .trade-ic{height:30px;width:auto;background:#fff;border-radius:8px;padding:2px 5px}
-.tradebanner{text-align:center;margin:0 0 12px}
-.tradebanner img{height:64px;width:auto;max-width:86%}
 
 /* caption definition line (switch box neatness) */
 .capdef{color:var(--muted);font-size:.92rem;line-height:1.45;margin-top:9px;
