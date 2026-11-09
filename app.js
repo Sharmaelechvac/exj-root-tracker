@@ -596,7 +596,7 @@
       b.classList.toggle("on", b.getAttribute("data-trade") === trade);
     });
     var tb = document.getElementById("tradebanner-img");
-    if (tb) { tb.src = trade === "hvac" ? "../logo-hvac-full.png?v=3" : "../logo-elec-e.png?v=3"; tb.alt = trade === "hvac" ? "Sharma Electric & HVAC" : "Sharma Electric"; }
+    if (tb) { tb.src = trade === "hvac" ? "../logo-hvac-full.png?v=3" : "../logo-elec-e.png?v=4"; tb.alt = trade === "hvac" ? "Sharma Electric & HVAC" : "Sharma Electric"; }
     document.querySelectorAll(".phasetabs button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-phase") === phase);
     });
