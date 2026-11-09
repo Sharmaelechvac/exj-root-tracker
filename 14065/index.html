@@ -191,12 +191,19 @@
       <div class="upnote" id="jm-note"></div>
     </form>
   </div>
-  <div class="phasetabs" role="tablist">
+  <div class="tradeswitch" role="tablist" aria-label="Trade">
+    <button type="button" data-trade="elec" class="on" data-i18n="tradeElec">⚡ Electric</button>
+    <button type="button" data-trade="hvac" data-i18n="tradeHvac">❄️ HVAC</button>
+  </div>
+  <div class="phasetabs" id="tabs-elec" role="tablist">
     <button type="button" data-phase="ug" data-i18n="tabUg">Underground</button>
     <button type="button" data-phase="tug" data-i18n="tabTug">TUG</button>
     <button type="button" data-phase="rough" class="on" data-i18n="tabRough">Rough-in</button>
     <button type="button" data-phase="trim" data-i18n="tabTrim">Trim</button>
-    <button type="button" data-phase="hvac" data-i18n="tabHvac">HVAC</button>
+  </div>
+  <div class="phasetabs" id="tabs-hvac" role="tablist" hidden>
+    <button type="button" data-phase="hrough" data-i18n="tabHRough">HVAC Rough</button>
+    <button type="button" data-phase="htrim" data-i18n="tabHTrim">Machine &amp; Trims</button>
   </div>
   <div class="section" id="phase-ug" hidden>
     <h2><span data-i18n="ugIn">Underground</span> — <span id="ug-done">0 of 8 done</span></h2>

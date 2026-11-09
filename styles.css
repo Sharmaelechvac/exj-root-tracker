@@ -245,6 +245,12 @@ details.section li{margin-bottom:8px}
   transition:background .15s,color .15s,transform .1s}
 .phasetabs button:active{transform:scale(.97)}
 .phasetabs button.on{background:#0058a3;color:#fff;border-color:#0058a3;box-shadow:var(--sh-pop)}
+.tradeswitch{display:flex;gap:8px;margin-bottom:10px}
+.tradeswitch button{flex:1;border:2px solid #12325e;background:#eaf3fb;color:#12325e;border-radius:14px;padding:12px 8px;font-size:1.15rem;font-weight:900;cursor:pointer;transition:background .15s,color .15s,transform .1s}
+.tradeswitch button:active{transform:scale(.97)}
+.tradeswitch button.on{background:#12325e;color:#fff;border-color:#12325e;box-shadow:var(--sh-pop)}
+html[data-theme="dark"] .tradeswitch button{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
+html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;border-color:#12325e}
 
 /* caption definition line (switch box neatness) */
 .capdef{color:var(--muted);font-size:.92rem;line-height:1.45;margin-top:9px;
