@@ -108,7 +108,7 @@
   var UI = {
     en: {
       language: "Language", builder: "Builder", plan: "Plan", phase: "Phase",
-      photoProgress: "Photo progress", captions16: "of 16 captions", captions12: "of 12 captions", captions8: "of 8 captions", captions7: "of 7 captions", captions6: "of 6 captions", captions11: "of 11 captions",
+      photoProgress: "Photo progress", captions16: "of 16 captions", captions12: "of 12 captions", captions8: "of 8 captions", captions7: "of 7 captions", captions6: "of 6 captions", captions11: "of 11 captions", captions18: "of 18 captions",
       openInMaps: "Open in Maps", howToUse: "How to use",
       steps: [
         "Your name is optional. Add it below only if you want your photos tagged with it.",
@@ -118,7 +118,7 @@
       ],
       prints: "PRINTS", printSet: "Electrical Set v13v", printMaster: "Master Plans", printInstr: "Printable instructions",
       roughIn: "Electrical Rough-in", trimIn: "Electrical Trim", tugIn: "TUG Install", ugIn: "Underground", hroughIn: "HVAC Rough-in", htrimIn: "HVAC Machine & Trims Install", done16: "of 16 done", done12: "of 12 done", done8: "of 8 done", done7: "of 7 done", done6: "of 6 done", done11: "of 11 done",
-      tabRough: "Rough-in", tabTrim: "Trim", tabTug: "TUG", tabUg: "Underground", tabHRough: "HVAC Rough", tabHTrim: "Machine & Trims",
+      tabRough: "Rough-in", tabTrim: "Trim", tabTug: "TUG", tabUg: "Underground", tabHRough: "HVAC Rough", tabHTrim: "Machine & Trims", tabHvac: "HVAC",
       needsPhoto: "Needs photo", camera: "Camera", gallery: "Gallery",
       otherPhotos: "OTHER PHOTOS", otherSub: "Anything that doesn't fit a caption above.", videoRule: "Videos: 15 seconds max",
       yourName: "Your name", otherCamera: "Other camera", otherGallery: "Other gallery",
@@ -128,13 +128,13 @@
       panelSchedule: "Panel schedule", meterSchedule: "Meter schedule",
       jobDetails: "Job details", permitNo: "Permit #", lotNo: "Lot #", inspection: "Inspection",
       inspNone: "Not requested", inspRequested: "Requested", inspPassed: "Passed", inspFailed: "Failed",
-      failReason: "Reason", crewLbl: "Assigned to", workDate: "Work date",
+      failReason: "Reason", crewLbl: "Assigned to", workDate: "Work date", tugInstall: "TUG install date",
       edit: "Edit", save: "Save", cancel: "Cancel",
       saved: "Saved.", saving: "Saving…", saveFail: "Save failed — try again."
     },
     es: {
       language: "Idioma", builder: "Constructor", plan: "Plano", phase: "Etapa",
-      photoProgress: "Progreso de fotos", captions16: "de 16 títulos", captions12: "de 12 títulos", captions8: "de 8 títulos", captions7: "de 7 títulos", captions6: "de 6 títulos", captions11: "de 11 títulos",
+      photoProgress: "Progreso de fotos", captions16: "de 16 títulos", captions12: "de 12 títulos", captions8: "de 8 títulos", captions7: "de 7 títulos", captions6: "de 6 títulos", captions11: "de 11 títulos", captions18: "de 18 títulos",
       openInMaps: "Abrir en Maps", howToUse: "Cómo usar",
       steps: [
         "Tu nombre es opcional. Agrégalo abajo solo si quieres que tus fotos lleven tu nombre.",
@@ -144,7 +144,7 @@
       ],
       prints: "PLANOS", printSet: "Juego eléctrico v13v", printMaster: "Planos maestros", printInstr: "Instrucciones imprimibles",
       roughIn: "Instalación eléctrica preliminar", trimIn: "Acabado eléctrico", tugIn: "Instalación TUG", ugIn: "Subterráneo", hroughIn: "Instalación HVAC preliminar", htrimIn: "Instalación de máquina y remates HVAC", done16: "de 16 listos", done12: "de 12 listos", done8: "de 8 listos", done7: "de 7 listos", done6: "de 6 listos", done11: "de 11 listos",
-      tabRough: "Preliminar", tabTrim: "Remates", tabTug: "TUG", tabUg: "Subterráneo", tabHRough: "HVAC Preliminar", tabHTrim: "Máquina y Remates",
+      tabRough: "Preliminar", tabTrim: "Remates", tabTug: "TUG", tabUg: "Subterráneo", tabHRough: "HVAC Preliminar", tabHTrim: "Máquina y Remates", tabHvac: "HVAC",
       needsPhoto: "Falta foto", camera: "Cámara", gallery: "Galería",
       otherPhotos: "OTRAS FOTOS", otherSub: "Lo que no encaje en un título de arriba.", videoRule: "Videos: máximo 15 segundos",
       yourName: "Tu nombre", otherCamera: "Otra cámara", otherGallery: "Otra galería",
@@ -154,13 +154,13 @@
       panelSchedule: "Esquema del panel", meterSchedule: "Esquema del medidor",
       jobDetails: "Datos del trabajo", permitNo: "Permiso #", lotNo: "Lote #", inspection: "Inspección",
       inspNone: "No solicitada", inspRequested: "Solicitada", inspPassed: "Aprobada", inspFailed: "Reprobada",
-      failReason: "Motivo", crewLbl: "Asignado a", workDate: "Fecha del trabajo",
+      failReason: "Motivo", crewLbl: "Asignado a", workDate: "Fecha del trabajo", tugInstall: "Fecha de instalación TUG",
       edit: "Editar", save: "Guardar", cancel: "Cancelar",
       saved: "Guardado.", saving: "Guardando…", saveFail: "No se pudo guardar — inténtalo de nuevo."
     },
     pt: {
       language: "Idioma", builder: "Construtora", plan: "Planta", phase: "Fase",
-      photoProgress: "Progresso das fotos", captions16: "de 16 legendas", captions12: "de 12 legendas", captions8: "de 8 legendas", captions7: "de 7 legendas", captions6: "de 6 legendas", captions11: "de 11 legendas",
+      photoProgress: "Progresso das fotos", captions16: "de 16 legendas", captions12: "de 12 legendas", captions8: "de 8 legendas", captions7: "de 7 legendas", captions6: "de 6 legendas", captions11: "de 11 legendas", captions18: "de 18 legendas",
       openInMaps: "Abrir no Maps", howToUse: "Como usar",
       steps: [
         "Seu nome é opcional. Adicione-o abaixo apenas se quiser suas fotos identificadas.",
@@ -170,7 +170,7 @@
       ],
       prints: "PLANTAS", printSet: "Jogo elétrico v13v", printMaster: "Plantas mestras", printInstr: "Instruções imprimíveis",
       roughIn: "Instalação elétrica bruta", trimIn: "Acabamento elétrico", tugIn: "Instalação TUG", ugIn: "Subterrâneo", hroughIn: "Instalação HVAC bruta", htrimIn: "Instalação da máquina e acabamentos HVAC", done16: "de 16 prontos", done12: "de 12 prontos", done8: "de 8 prontos", done7: "de 7 prontos", done6: "de 6 prontos", done11: "de 11 prontos",
-      tabRough: "Bruto", tabTrim: "Acabamento", tabTug: "TUG", tabUg: "Subterrâneo", tabHRough: "HVAC Bruto", tabHTrim: "Máquina e Acabamentos",
+      tabRough: "Bruto", tabTrim: "Acabamento", tabTug: "TUG", tabUg: "Subterrâneo", tabHRough: "HVAC Bruto", tabHTrim: "Máquina e Acabamentos", tabHvac: "HVAC",
       needsPhoto: "Falta foto", camera: "Câmera", gallery: "Galeria",
       otherPhotos: "OUTRAS FOTOS", otherSub: "Qualquer coisa que não caiba numa legenda acima.", videoRule: "Vídeos: no máximo 15 segundos",
       yourName: "Seu nome", otherCamera: "Outra câmera", otherGallery: "Outra galeria",
@@ -180,7 +180,7 @@
       panelSchedule: "Esquema do quadro", meterSchedule: "Esquema do medidor",
       jobDetails: "Dados do trabalho", permitNo: "Alvará #", lotNo: "Lote #", inspection: "Inspeção",
       inspNone: "Não solicitada", inspRequested: "Solicitada", inspPassed: "Aprovada", inspFailed: "Reprovada",
-      failReason: "Motivo", crewLbl: "Responsável", workDate: "Data do trabalho",
+      failReason: "Motivo", crewLbl: "Responsável", workDate: "Data do trabalho", tugInstall: "Data de instalação TUG",
       edit: "Editar", save: "Salvar", cancel: "Cancelar",
       saved: "Salvo.", saving: "Salvando…", saveFail: "Falha ao salvar — tente de novo."
     }
@@ -205,7 +205,8 @@
   var lang = localStorage.getItem("crew-lang") || "en";
   if (!UI[lang]) lang = "en";
   var phase = localStorage.getItem("crew-phase-" + JOB.id) || JOB.phase || "rough";
-  if (["rough", "trim", "tug", "ug", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
+  if (phase === "hrough" || phase === "htrim") phase = "hvac";
+  if (["rough", "trim", "tug", "ug", "hvac", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
   var photos = []; // metadata records from GET /api/photos?job=<id>
   var seeds = [];  // migrated photos shipped with the site (seed-photos.json); display-only, never uploaded or deleted
   var jobMeta = {}; // record from GET /api/jobmeta?job=<id>
@@ -432,7 +433,7 @@
     set("jm-permit", metaText(jobMeta.permit));
     set("jm-lot", metaText(jobMeta.lot));
     set("jm-crew", metaText(jobMeta.crew));
-    set("jm-date", metaText(jobMeta.date));
+    var dateEl = document.getElementById("jm-date"); if (dateEl && jobMeta.date) dateEl.textContent = metaText(jobMeta.date);
     set("jm-insp", inspLabel());
     var row = document.getElementById("jm-reason-row");
     if (row) row.hidden = (jobMeta.inspection_status || "") !== "failed";
@@ -544,8 +545,8 @@
     var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().done6;
     var hd2 = document.getElementById("htrim-done"); if (hd2) hd2.textContent = htrimDone + " " + t().done12;
     // Ring + job bar reflect the ACTIVE phase
-    var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : roughDone;
-    var total = listFor(phase).length;
+    var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hvac" ? hroughDone + htrimDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : roughDone;
+    var total = phase === "hvac" ? HROUGH.length + HTRIM.length : listFor(phase).length;
     var pct = total ? done / total : 0;
     var ring = document.getElementById("ring-fg");
     if (ring) {
@@ -557,7 +558,7 @@
     var num = document.getElementById("ring-num"); if (num) num.textContent = label;
     var jbn = document.getElementById("jobbar-num"); if (jbn) jbn.textContent = label;
     var sub = document.getElementById("ring-sub");
-    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : (phase === "tug" || phase === "ug") ? t().captions8 : t().captions16);
+    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hvac" ? t().captions18 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : (phase === "tug" || phase === "ug") ? t().captions8 : t().captions16);
   }
   function applyPhase() {
     var r = document.getElementById("phase-rough");
@@ -570,8 +571,8 @@
     if (tr) tr.hidden = phase !== "trim";
     if (tg) tg.hidden = phase !== "tug";
     if (ug) ug.hidden = phase !== "ug";
-    if (hv) hv.hidden = phase !== "hrough";
-    if (hv2) hv2.hidden = phase !== "htrim";
+    if (hv) hv.hidden = phase !== "hvac";
+    if (hv2) hv2.hidden = phase !== "hvac";
     document.querySelectorAll(".phasetabs button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-phase") === phase);
     });
@@ -626,7 +627,7 @@
   document.querySelectorAll(".phasetabs button").forEach(function (b) {
     b.addEventListener("click", function () {
       phase = b.getAttribute("data-phase");
-      if (["rough", "trim", "tug", "ug", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
+      if (["rough", "trim", "tug", "ug", "hvac", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
       localStorage.setItem("crew-phase-" + JOB.id, phase);
       applyPhase();
     });
