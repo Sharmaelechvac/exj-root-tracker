@@ -103,6 +103,16 @@
     { en: "Start-Up — system running, wide shot", es: "Arranque (Start-Up) — sistema funcionando, foto general", pt: "Partida (Start-Up) — sistema funcionando, foto geral" }
   ];
 
+  var HSTART = [
+    { en: "Thermostat calling for cooling", es: "Termostato pidiendo enfriamiento", pt: "Termostato chamando resfriamento" },
+    { en: "System running — cooling", es: "Sistema en marcha — enfriamiento", pt: "Sistema ligado — resfriamento" },
+    { en: "System running — heating", es: "Sistema en marcha — calefacción", pt: "Sistema ligado — aquecimento" },
+    { en: "Temperature split reading — supply vs return", es: "Lectura de diferencial de temperatura — suministro vs retorno", pt: "Leitura do diferencial de temperatura — insuflação vs retorno" },
+    { en: "Refrigerant gauge readings", es: "Lecturas de manómetros de refrigerante", pt: "Leituras dos manômetros de refrigerante" },
+    { en: "Condensate draining — no leaks", es: "Drenaje de condensado — sin fugas", pt: "Dreno de condensado — sem vazamentos" },
+    { en: "Airflow & filter check", es: "Revisión de flujo de aire y filtro", pt: "Verificação de fluxo de ar e filtro" },
+    { en: "Start-up complete — wide shot", es: "Arranque completo — foto general", pt: "Partida completa — foto geral" }
+  ];
   var SWITCH_DEF_IDX = 5; // "Switch box neatness throughout home" in ROUGH
 
   var UI = {
@@ -118,7 +128,7 @@
       ],
       prints: "PRINTS", printSet: "Electrical Set v13v", printMaster: "Master Plans", printInstr: "Printable instructions",
       roughIn: "Electrical Rough-in", trimIn: "Electrical Trim", tugIn: "TUG Install", ugIn: "Underground", hroughIn: "HVAC Rough-in", htrimIn: "HVAC Machine & Trims Install", done16: "of 16 done", done12: "of 12 done", done8: "of 8 done", done7: "of 7 done", done6: "of 6 done", done11: "of 11 done",
-      tabRough: "Rough-in", tabTrim: "Trim", tabTug: "TUG", tabUg: "Underground", tabHRough: "HVAC Rough", tabHTrim: "Machine & Trims", tabHvac: "HVAC", tradeElec: "⚡ Electric", tradeHvac: "❄️ HVAC",
+      tabRough: "Rough-in", tabTrim: "Trim", tabTug: "TUG", tabUg: "Underground", tabHRough: "HVAC Rough", tabHTrim: "Machine & Trims", tabHvac: "HVAC", tradeElec: "Electric", tradeHvac: "HVAC", tabHStart: "Start-Up", hstartIn: "HVAC Start-Up",
       needsPhoto: "Needs photo", camera: "Camera", gallery: "Gallery",
       otherPhotos: "OTHER PHOTOS", otherSub: "Anything that doesn't fit a caption above.", videoRule: "Videos: 15 seconds max",
       yourName: "Your name", otherCamera: "Other camera", otherGallery: "Other gallery",
@@ -144,7 +154,7 @@
       ],
       prints: "PLANOS", printSet: "Juego eléctrico v13v", printMaster: "Planos maestros", printInstr: "Instrucciones imprimibles",
       roughIn: "Instalación eléctrica preliminar", trimIn: "Acabado eléctrico", tugIn: "Instalación TUG", ugIn: "Subterráneo", hroughIn: "Instalación HVAC preliminar", htrimIn: "Instalación de máquina y remates HVAC", done16: "de 16 listos", done12: "de 12 listos", done8: "de 8 listos", done7: "de 7 listos", done6: "de 6 listos", done11: "de 11 listos",
-      tabRough: "Preliminar", tabTrim: "Remates", tabTug: "TUG", tabUg: "Subterráneo", tabHRough: "HVAC Preliminar", tabHTrim: "Máquina y Remates", tabHvac: "HVAC", tradeElec: "⚡ Eléctrico", tradeHvac: "❄️ HVAC",
+      tabRough: "Preliminar", tabTrim: "Remates", tabTug: "TUG", tabUg: "Subterráneo", tabHRough: "HVAC Preliminar", tabHTrim: "Máquina y Remates", tabHvac: "HVAC", tradeElec: "Eléctrico", tradeHvac: "HVAC", tabHStart: "Arranque", hstartIn: "Arranque HVAC",
       needsPhoto: "Falta foto", camera: "Cámara", gallery: "Galería",
       otherPhotos: "OTRAS FOTOS", otherSub: "Lo que no encaje en un título de arriba.", videoRule: "Videos: máximo 15 segundos",
       yourName: "Tu nombre", otherCamera: "Otra cámara", otherGallery: "Otra galería",
@@ -170,7 +180,7 @@
       ],
       prints: "PLANTAS", printSet: "Jogo elétrico v13v", printMaster: "Plantas mestras", printInstr: "Instruções imprimíveis",
       roughIn: "Instalação elétrica bruta", trimIn: "Acabamento elétrico", tugIn: "Instalação TUG", ugIn: "Subterrâneo", hroughIn: "Instalação HVAC bruta", htrimIn: "Instalação da máquina e acabamentos HVAC", done16: "de 16 prontos", done12: "de 12 prontos", done8: "de 8 prontos", done7: "de 7 prontos", done6: "de 6 prontos", done11: "de 11 prontos",
-      tabRough: "Bruto", tabTrim: "Acabamento", tabTug: "TUG", tabUg: "Subterrâneo", tabHRough: "HVAC Bruto", tabHTrim: "Máquina e Acabamentos", tabHvac: "HVAC", tradeElec: "⚡ Elétrica", tradeHvac: "❄️ HVAC",
+      tabRough: "Bruto", tabTrim: "Acabamento", tabTug: "TUG", tabUg: "Subterrâneo", tabHRough: "HVAC Bruto", tabHTrim: "Máquina e Acabamentos", tabHvac: "HVAC", tradeElec: "Elétrica", tradeHvac: "HVAC", tabHStart: "Partida", hstartIn: "Partida HVAC",
       needsPhoto: "Falta foto", camera: "Câmera", gallery: "Galeria",
       otherPhotos: "OUTRAS FOTOS", otherSub: "Qualquer coisa que não caiba numa legenda acima.", videoRule: "Vídeos: no máximo 15 segundos",
       yourName: "Seu nome", otherCamera: "Outra câmera", otherGallery: "Outra galeria",
@@ -207,8 +217,8 @@
   var trade = localStorage.getItem("crew-trade-" + JOB.id) || "elec";
   var phase = localStorage.getItem("crew-phase-" + JOB.id) || JOB.phase || "rough";
   if (phase === "hvac") { trade = "hvac"; phase = "hrough"; }
-  if (["rough", "trim", "tug", "ug", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
-  if (phase === "hrough" || phase === "htrim") trade = "hvac";
+  if (["rough", "trim", "tug", "ug", "hrough", "htrim", "hstart"].indexOf(phase) < 0) phase = "rough";
+  if (phase === "hrough" || phase === "htrim" || phase === "hstart") trade = "hvac";
   if (trade !== "elec" && trade !== "hvac") trade = "elec";
   var photos = []; // metadata records from GET /api/photos?job=<id>
   var seeds = [];  // migrated photos shipped with the site (seed-photos.json); display-only, never uploaded or deleted
@@ -216,7 +226,7 @@
 
   function t() { return UI[lang]; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
-  function listFor(p) { return p === "trim" ? TRIM : p === "tug" ? TUG : p === "ug" ? UG : p === "hrough" ? HROUGH : p === "htrim" ? HTRIM : ROUGH; }
+  function listFor(p) { return p === "trim" ? TRIM : p === "tug" ? TUG : p === "ug" ? UG : p === "hrough" ? HROUGH : p === "htrim" ? HTRIM : p === "hstart" ? HSTART : ROUGH; }
   function prefixFor(p) { return p === "trim" ? "tcap-" : p === "tug" ? "gcap-" : p === "ug" ? "ucap-" : p === "hrough" ? "hrcap-" : p === "htrim" ? "htcap-" : "cap-"; }
 
   /* ---------- Photo backend: Netlify Function + Blobs, same origin ---------- */
@@ -537,6 +547,7 @@
     var ugDone = renderList("ug", merged);
     var hroughDone = renderList("hrough", merged);
     var htrimDone = renderList("htrim", merged);
+    var hstartDone = renderList("hstart", merged);
     // Other photos — one shared section under both tabs
     var other = document.getElementById("other-tiles");
     if (other) other.innerHTML = tilesFor(null, null);
@@ -547,8 +558,9 @@
     var ud = document.getElementById("ug-done"); if (ud) ud.textContent = ugDone + " " + t().done8;
     var hd = document.getElementById("hrough-done"); if (hd) hd.textContent = hroughDone + " " + t().done6;
     var hd2 = document.getElementById("htrim-done"); if (hd2) hd2.textContent = htrimDone + " " + t().done12;
+    var hd3 = document.getElementById("hstart-done"); if (hd3) hd3.textContent = hstartDone + " " + t().done8;
     // Ring + job bar reflect the ACTIVE phase
-    var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : roughDone;
+    var done = phase === "trim" ? trimDone : phase === "tug" ? tugDone : phase === "ug" ? ugDone : phase === "hrough" ? hroughDone : phase === "htrim" ? htrimDone : phase === "hstart" ? hstartDone : roughDone;
     var total = listFor(phase).length;
     var pct = total ? done / total : 0;
     var ring = document.getElementById("ring-fg");
@@ -561,7 +573,7 @@
     var num = document.getElementById("ring-num"); if (num) num.textContent = label;
     var jbn = document.getElementById("jobbar-num"); if (jbn) jbn.textContent = label;
     var sub = document.getElementById("ring-sub");
-    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : (phase === "tug" || phase === "ug") ? t().captions8 : t().captions16);
+    if (sub) sub.textContent = done + " " + (phase === "trim" ? t().captions12 : phase === "hrough" ? t().captions6 : phase === "htrim" ? t().captions12 : phase === "hstart" ? t().captions8 : (phase === "tug" || phase === "ug") ? t().captions8 : t().captions16);
   }
   function applyPhase() {
     var r = document.getElementById("phase-rough");
@@ -570,17 +582,21 @@
     var ug = document.getElementById("phase-ug");
     var hv = document.getElementById("phase-hrough");
     var hv2 = document.getElementById("phase-htrim");
+    var hv3 = document.getElementById("phase-hstart");
     if (r) r.hidden = phase !== "rough";
     if (tr) tr.hidden = phase !== "trim";
     if (tg) tg.hidden = phase !== "tug";
     if (ug) ug.hidden = phase !== "ug";
     if (hv) hv.hidden = phase !== "hrough";
     if (hv2) hv2.hidden = phase !== "htrim";
+    if (hv3) hv3.hidden = phase !== "hstart";
     var te = document.getElementById("tabs-elec"); if (te) { te.hidden = trade !== "elec"; te.style.display = trade === "elec" ? "" : "none"; }
     var th = document.getElementById("tabs-hvac"); if (th) { th.hidden = trade !== "hvac"; th.style.display = trade === "hvac" ? "" : "none"; }
     document.querySelectorAll(".tradeswitch button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-trade") === trade);
     });
+    var tb = document.getElementById("tradebanner-img");
+    if (tb) { tb.src = trade === "hvac" ? "../logo-hvac.png" : "../logo-elec.png"; tb.alt = trade === "hvac" ? "Sharma HVAC — lion blowing air" : "Sharma Electric"; }
     document.querySelectorAll(".phasetabs button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-phase") === phase);
     });
@@ -615,6 +631,9 @@
     document.querySelectorAll("#phase-htrim .capcard .cap").forEach(function (el, i) {
       if (HTRIM[i]) el.textContent = HTRIM[i][lang];
     });
+    document.querySelectorAll("#phase-hstart .capcard .cap").forEach(function (el, i) {
+      if (HSTART[i]) el.textContent = HSTART[i][lang];
+    });
     var def = document.getElementById("switch-def");
     if (def && ROUGH[SWITCH_DEF_IDX].def) def.textContent = ROUGH[SWITCH_DEF_IDX].def[lang];
     var nameInp = document.getElementById("uploader-name");
@@ -644,8 +663,8 @@
   document.querySelectorAll(".phasetabs button").forEach(function (b) {
     b.addEventListener("click", function () {
       phase = b.getAttribute("data-phase");
-      if (["rough", "trim", "tug", "ug", "hrough", "htrim"].indexOf(phase) < 0) phase = "rough";
-      trade = (phase === "hrough" || phase === "htrim") ? "hvac" : "elec";
+      if (["rough", "trim", "tug", "ug", "hrough", "htrim", "hstart"].indexOf(phase) < 0) phase = "rough";
+      trade = (phase === "hrough" || phase === "htrim" || phase === "hstart") ? "hvac" : "elec";
       localStorage.setItem("crew-phase-" + JOB.id, phase);
       localStorage.setItem("crew-trade-" + JOB.id, trade);
       applyPhase();
