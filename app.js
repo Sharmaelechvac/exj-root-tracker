@@ -138,7 +138,7 @@
       gpsOff: "GPS unavailable", photoBy: "by",
       panelSchedule: "Panel schedule", meterSchedule: "Meter schedule",
       jobDetails: "Job details", permitNo: "Building Permit #", lotNo: "Lot #", inspection: "Inspection",
-      inspNone: "Not requested", inspRequested: "Requested", inspPassed: "Passed", inspFailed: "Failed",
+      inspNone: "Not requested", inspRequested: "Requested", inspPassed: "Passed", inspFailed: "Failed", inspections: "Inspections", inspStage: "Stage", inspNext: "Next inspection", inspWhen: "Date", inspStatus: "Status",
       failReason: "Reason", crewLbl: "Assigned to", workDate: "Work date", tugInstall: "TUG install date",
       edit: "Edit", save: "Save", cancel: "Cancel",
       saved: "Saved.", saving: "Saving…", saveFail: "Save failed — try again."
@@ -164,7 +164,7 @@
       gpsOff: "GPS no disponible", photoBy: "por",
       panelSchedule: "Esquema del panel", meterSchedule: "Esquema del medidor",
       jobDetails: "Datos del trabajo", permitNo: "Permiso de obra #", lotNo: "Lote #", inspection: "Inspección",
-      inspNone: "No solicitada", inspRequested: "Solicitada", inspPassed: "Aprobada", inspFailed: "Reprobada",
+      inspNone: "No solicitada", inspRequested: "Solicitada", inspPassed: "Aprobada", inspFailed: "Reprobada", inspections: "Inspecciones", inspStage: "Etapa", inspNext: "Pr\u00f3xima inspecci\u00f3n", inspWhen: "Fecha", inspStatus: "Estado",
       failReason: "Motivo", crewLbl: "Asignado a", workDate: "Fecha del trabajo", tugInstall: "Fecha de instalación TUG",
       edit: "Editar", save: "Guardar", cancel: "Cancelar",
       saved: "Guardado.", saving: "Guardando…", saveFail: "No se pudo guardar — inténtalo de nuevo."
@@ -190,7 +190,7 @@
       gpsOff: "GPS indisponível", photoBy: "por",
       panelSchedule: "Esquema do quadro", meterSchedule: "Esquema do medidor",
       jobDetails: "Dados do trabalho", permitNo: "Alvará de obra #", lotNo: "Lote #", inspection: "Inspeção",
-      inspNone: "Não solicitada", inspRequested: "Solicitada", inspPassed: "Aprovada", inspFailed: "Reprovada",
+      inspNone: "Não solicitada", inspRequested: "Solicitada", inspPassed: "Aprovada", inspFailed: "Reprovada", inspections: "Inspe\u00e7\u00f5es", inspStage: "Etapa", inspNext: "Pr\u00f3xima inspe\u00e7\u00e3o", inspWhen: "Data", inspStatus: "Status",
       failReason: "Motivo", crewLbl: "Responsável", workDate: "Data do trabalho", tugInstall: "Data de instalação TUG",
       edit: "Editar", save: "Salvar", cancel: "Cancelar",
       saved: "Salvo.", saving: "Salvando…", saveFail: "Falha ao salvar — tente de novo."
