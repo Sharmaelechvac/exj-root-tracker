@@ -91,6 +91,22 @@
   #selBanner .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #selBanner button{pointer-events:auto;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;width:22px;height:22px;line-height:1;font-size:14px;cursor:pointer;flex:0 0 22px;padding:0}
   #selBanner button:hover{background:rgba(255,255,255,.32)}
+
+  /* ---- phone optimisation (Sanjay, 2026-11-08) ---- */
+  @media (max-width:700px){
+    header.status{padding:8px 12px 10px}
+    header.status h1{font-size:15px}
+    .chips .chip:nth-child(3),.chips .chip:nth-child(5){display:none}
+    main{padding:8px;gap:8px}
+    aside{padding:10px}
+    .ckt{padding:8px 12px 8px 9px;min-height:40px}
+    .ckt .sw{width:12px;height:12px;flex:0 0 12px}
+    .ckt .t b{font-size:13px}
+    .toolbar button{padding:9px 13px;font-size:13.5px;min-height:40px}
+    .toolbar .note{display:none}
+    #readout,#inspector{font-size:13.5px}
+    button{touch-action:manipulation}
+  }
 </style>
 </head>
 <body>
@@ -330,7 +346,7 @@ D.devices.forEach(function(d){
   } else {
     el('circle', {cx:x, cy:y, r:15, fill:col, stroke:'#fff', 'stroke-width':3.5}, g);
   }
-  el('circle', {'class':'hit', cx:x, cy:y, r:32}, g);
+  el('circle', {'class':'hit', cx:x, cy:y, r:(window.innerWidth < 700 ? 56 : 32)}, g);
 });
 
 /* ---------- circuit list + readout ---------- */
@@ -551,7 +567,7 @@ function endPointer(e){
       var rx = (s.x - state.tx) / state.k, ry = (s.y - state.ty) / state.k;
       var best = null, bd = 1e9;
       D.devices.forEach(function(d){ var dist = Math.hypot(px(d) - rx, py(d) - ry); if(dist < bd){ bd = dist; best = d; } });
-      if(best && bd <= 42) inspect(best);
+      if(best && bd <= (window.innerWidth < 700 ? 84 : 42)) inspect(best);
     }
   }
 }
