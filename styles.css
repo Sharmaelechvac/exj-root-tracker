@@ -465,3 +465,28 @@ html[data-theme="dark"] .jobchip.home{background:#10283d;color:#bcd8f5;border-co
 html[data-theme="dark"] .duo-sharma{border-radius:14px}
 html[data-theme="dark"] .st-footer{background:#fff;border-radius:16px;padding:12px 10px 8px;max-width:520px}
 html[data-theme="dark"] .app-hero .app-name{color:#fff}
+
+/* ——— Design softening pass (2026-11-09, Sanjay: "it feels so blocky") ———
+   Pills instead of boxes, borders traded for soft shadows, more air. */
+.section{border:none;border-radius:26px;padding:20px 18px;box-shadow:0 2px 8px rgba(8,22,44,.05),0 18px 40px rgba(8,22,44,.09)}
+.progress{border:none;border-radius:26px}
+.capcard{border:none;border-radius:24px;padding:16px;box-shadow:0 1px 5px rgba(8,22,44,.05),0 10px 26px rgba(8,22,44,.07)}
+.capcard .btns label{border-radius:999px}
+.hero{border-radius:30px}
+.logo-box{border:none;border-radius:26px}
+.prints a{border:none;border-radius:18px;box-shadow:0 1px 5px rgba(8,22,44,.05),0 8px 20px rgba(8,22,44,.06)}
+.gear .card{border:none}
+.jm-rows>div{border-radius:14px}
+/* trade switch: one floating pill bar */
+.tradeswitch{background:rgba(0,69,133,.08);border-radius:999px;padding:5px;gap:5px;margin-bottom:12px}
+.tradeswitch button{border:none;border-radius:999px;background:transparent;box-shadow:none;color:var(--navy)}
+.tradeswitch button.on{background:#12325e;color:#fff;box-shadow:0 6px 16px rgba(10,35,70,.35)}
+html[data-theme="dark"] .tradeswitch{background:rgba(120,180,240,.12)}
+html[data-theme="dark"] .tradeswitch button{background:transparent;color:#bcd8f5;box-shadow:none}
+html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.45)}
+/* phase tabs: soft pills, no hard outline */
+.phasetabs{gap:7px}
+.phasetabs button{border:none;border-radius:999px;background:rgba(0,69,133,.08);color:var(--navy);box-shadow:none;padding:11px 6px}
+.phasetabs button.on{background:#0058a3;color:#fff;box-shadow:0 6px 16px rgba(0,88,163,.35)}
+html[data-theme="dark"] .phasetabs button{background:rgba(120,180,240,.12);color:#bcd8f5}
+html[data-theme="dark"] .phasetabs button.on{background:#0058a3;color:#fff}
