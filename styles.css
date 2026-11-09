@@ -239,6 +239,7 @@ details.section li{margin-bottom:8px}
 .jobbtn .chip.st2{background:linear-gradient(135deg,#004585,#003a6b);color:#fff}
 
 /* phase tabs (rough-in / trim) */
+.phasetabs[hidden]{display:none}
 .phasetabs{display:flex;gap:8px;margin-bottom:14px}
 .phasetabs button{flex:1;border:1.5px solid #bcd6ee;background:#fff;
   color:#004585;border-radius:14px;padding:13px 8px;font-size:1.05rem;font-weight:800;cursor:pointer;
