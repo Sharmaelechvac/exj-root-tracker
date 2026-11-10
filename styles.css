@@ -540,3 +540,7 @@ body.lb-open{overflow:hidden}
 
 /* EXJ Root builder logo (real logo, cropped from their permit-box label) */
 .duo-exj{height:64px;width:auto;max-width:100%}
+
+/* Address clarity (Sanjay, 2026-11-10): never cut the address off in the sticky bar; city line dark + bold */
+.jobbar .jb-addr{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15}
+.hero .city{color:#004585;font-weight:700}
