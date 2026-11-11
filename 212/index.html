@@ -67,6 +67,7 @@
     <h2 data-i18n="jobDetails">Job details</h2>
     <dl class="jm-rows">
       <div><dt data-i18n="permitNo">Building Permit #</dt><dd id="jm-permit">BLDR-26-09-23294</dd></div>
+      <div><dt>Electrical permit #</dt><dd>Under BLDR-26-09-23294 — no separate # · Sub of record: Sharma Electric LLC (Michael Jesram)</dd></div>
       <div><dt data-i18n="lotNo">Lot #</dt><dd id="jm-lot">11</dd></div>
       <div><dt data-i18n="meterLbl">Meter combo</dt><dd><img class="eqlogo" src="../logo-eaton.png" alt="Eaton">MBT48B200BTS · Type BR</dd></div>
       <div><dt data-i18n="panelLbl">Interior panel</dt><dd><img class="eqlogo" src="../logo-siemens.png" alt="Siemens">Type QP</dd></div>
@@ -94,10 +95,22 @@
     <h2 data-i18n="inspections">Inspections</h2>
     <dl class="jm-rows">
       <div><dt data-i18n="inspStage">Stage</dt><dd>TUG Install</dd></div>
-      <div><dt data-i18n="inspNext">Next inspection</dt><dd>TUG inspection</dd></div>
+      <div><dt>Inspection</dt><dd>(TUG) Preliminary Power Release</dd></div>
+      <div><dt>Inspection #</dt><dd>261544-2026</dd></div>
       <div><dt data-i18n="inspWhen">Date</dt><dd>Tue 11/10/2026</dd></div>
       <div><dt data-i18n="inspStatus">Status</dt><dd id="jm-insp">\u2014</dd></div>
+      <div><dt>Inspector</dt><dd>Anthony Prinzi</dd></div>
+      <div><dt>Result note</dt><dd>Green sticker in meter can</dd></div>
       <div id="jm-reason-row" hidden><dt data-i18n="failReason">Reason</dt><dd id="jm-reason">\u2014</dd></div>
+    </dl>
+  </div>
+  </div>
+  <div id="hvac-details" hidden>
+  <div class="section jobmeta">
+    <h2>HVAC job details</h2>
+    <dl class="jm-rows">
+      <div><dt>Building Permit #</dt><dd>BLDR-26-09-23294</dd></div>
+      <div><dt>Mechanical permit #</dt><dd>Under BLDR-26-09-23294 — no separate # · Sub of record: Sharma Electric LLC (Wally Deagrella)</dd></div>
     </dl>
   </div>
   </div>
@@ -459,6 +472,6 @@
   <label class="ocam"><span data-i18n="otherCamera">Other camera</span><input type="file" accept="image/*,video/*" capture="environment" data-caption="other"></label>
   <label class="ogal"><span data-i18n="otherGallery">Other gallery</span><input type="file" accept="image/*,video/*" multiple data-caption="other"></label>
 </div></div>
-<script>window.JOB_PAGE = { id: "212", address: "212 Marion Oaks Golf Rd, Ocala, FL", phase: "tug" };</script>
+<script>window.JOB_PAGE = { id: "212", defaultMeta: { inspection_status: "passed" }, address: "212 Marion Oaks Golf Rd, Ocala, FL", phase: "tug" };</script>
 <script src="../app.js?v=30"></script>
 </body></html>

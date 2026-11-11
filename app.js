@@ -444,8 +444,8 @@
   function fetchJobMeta() {
     return fetch(META_API + "?job=" + encodeURIComponent(JOB.id))
       .then(function (r) { return r.ok ? r.json() : {}; })
-      .then(function (m) { jobMeta = m && typeof m === "object" ? m : {}; renderJobMeta(); })
-      .catch(function () { jobMeta = {}; renderJobMeta(); });
+      .then(function (m) { jobMeta = m && typeof m === "object" && Object.keys(m).length ? m : (JOB.defaultMeta || {}); renderJobMeta(); })
+      .catch(function () { jobMeta = JOB.defaultMeta || {}; renderJobMeta(); });
   }
   function metaText(v) { return v == null || v === "" ? "—" : String(v); }
   function inspLabel() {
@@ -646,6 +646,7 @@
     if (hv3) hv3.hidden = phase !== "hstart";
     var te = document.getElementById("tabs-elec"); if (te) { te.hidden = trade !== "elec"; te.style.display = trade === "elec" ? "" : "none"; }
     var ed = document.getElementById("elec-details"); if (ed) ed.hidden = trade !== "elec";
+    var hd = document.getElementById("hvac-details"); if (hd) hd.hidden = trade !== "hvac";
     var th = document.getElementById("tabs-hvac"); if (th) { th.hidden = trade !== "hvac"; th.style.display = trade === "hvac" ? "" : "none"; }
     document.querySelectorAll(".tradeswitch button").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-trade") === trade);
