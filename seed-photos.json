@@ -86,5 +86,61 @@
     "name": "17385-tug-complete-wide-shot.jpg",
     "taken_at": "2026-11-09T13:44:15",
     "media_type": "image/jpeg"
+  },
+  {
+    "job": "14065",
+    "caption": "Riser at meter",
+    "url": "seed-photos/14065-underground-electrical.jpg?v=11",
+    "name": "14065-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "15133",
+    "caption": "Trench open — full UG run",
+    "url": "seed-photos/15133-underground-electrical.jpg?v=11",
+    "name": "15133-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:10",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "16321",
+    "caption": "Trench open — full UG run",
+    "url": "seed-photos/16321-underground-electrical.jpg?v=11",
+    "name": "16321-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:20",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "17385",
+    "caption": "Riser at meter",
+    "url": "seed-photos/17385-underground-electrical.jpg?v=11",
+    "name": "17385-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:30",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "Riser at meter",
+    "url": "seed-photos/212-underground-electrical.jpg?v=11",
+    "name": "212-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:40",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "601",
+    "caption": "Trench open — full UG run",
+    "url": "seed-photos/601-underground-electrical.jpg?v=11",
+    "name": "601-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:00:50",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "498",
+    "caption": "Trench open — full UG run",
+    "url": "seed-photos/498-underground-electrical.jpg?v=11",
+    "name": "498-underground-electrical.jpg",
+    "taken_at": "2026-11-12T12:01:00",
+    "media_type": "image/jpeg"
   }
 ]
