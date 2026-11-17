@@ -102,5 +102,45 @@
     "name": "14065-meter-base-open.jpg",
     "taken_at": "2026-11-16T11:35:05",
     "media_type": "image/jpeg"
+  },
+  {
+    "job": "16321",
+    "caption": "TUG \u00b7 TUG complete \u2014 wide shot",
+    "url": "seed-photos/16321-tug-complete-wide-shot.jpg?v=10",
+    "name": "16321-tug-complete-wide-shot.jpg",
+    "taken_at": "2026-11-16T12:15:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "16321",
+    "caption": "TUG \u00b7 Meter base \u2014 mounted (GFCI & intersystem bridge below)",
+    "url": "seed-photos/16321-meter-base-mounted.jpg?v=10",
+    "name": "16321-meter-base-mounted.jpg",
+    "taken_at": "2026-11-16T12:15:05",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "16321",
+    "caption": "TUG \u00b7 Meter base \u2014 open (200A main, GFCI breaker)",
+    "url": "seed-photos/16321-meter-base-open.jpg?v=10",
+    "name": "16321-meter-base-open.jpg",
+    "taken_at": "2026-11-16T12:15:10",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "601",
+    "caption": "TUG \u00b7 Meter base \u2014 mounted (GFCI & intersystem bridge below)",
+    "url": "seed-photos/601-meter-base-mounted.jpg?v=10",
+    "name": "601-meter-base-mounted.jpg",
+    "taken_at": "2026-11-16T12:50:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "601",
+    "caption": "TUG \u00b7 Meter base \u2014 open (200A main, GFCI breaker)",
+    "url": "seed-photos/601-meter-base-open.jpg?v=10",
+    "name": "601-meter-base-open.jpg",
+    "taken_at": "2026-11-16T12:50:05",
+    "media_type": "image/jpeg"
   }
 ]
