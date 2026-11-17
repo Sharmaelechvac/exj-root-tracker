@@ -142,5 +142,45 @@
     "name": "601-meter-base-open.jpg",
     "taken_at": "2026-11-16T12:50:05",
     "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/212-underground.jpg?v=10",
+    "name": "212-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "17385",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/17385-underground.jpg?v=10",
+    "name": "17385-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "14065",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/14065-underground.jpg?v=10",
+    "name": "14065-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "16321",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/16321-underground.jpg?v=10",
+    "name": "16321-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "601",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/601-underground.jpg?v=10",
+    "name": "601-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
   }
 ]
