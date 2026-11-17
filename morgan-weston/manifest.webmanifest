@@ -1,0 +1,18 @@
+{
+  "id": "/exj-root-tracker/morgan-weston/",
+  "name": "EXJ Root / Morgan Weston",
+  "short_name": "EXJ MW",
+  "start_url": "/exj-root-tracker/morgan-weston/",
+  "scope": "/exj-root-tracker/morgan-weston/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0058a3",
+  "icons": [
+    {
+      "src": "/exj-root-tracker/sharmatrack-app-icon.png",
+      "sizes": "748x748",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

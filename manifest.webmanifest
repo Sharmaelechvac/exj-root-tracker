@@ -1,0 +1,18 @@
+{
+  "id": "/exj-root-tracker/",
+  "name": "EXJRoot",
+  "short_name": "EXJRoot",
+  "start_url": "/exj-root-tracker/",
+  "scope": "/exj-root-tracker/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0058a3",
+  "icons": [
+    {
+      "src": "/exj-root-tracker/sharmatrack-app-icon.png",
+      "sizes": "748x748",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
