@@ -672,25 +672,32 @@
       b.classList.toggle("on", b.getAttribute("data-lang") === lang);
     });
     document.querySelectorAll("#phase-rough .capcard .cap").forEach(function (el, i) {
-      if (ROUGH[i]) el.textContent = ROUGH[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (ROUGH[_i]) el.textContent = ROUGH[_i][lang];
     });
     document.querySelectorAll("#phase-trim .capcard .cap").forEach(function (el, i) {
-      if (TRIM[i]) el.textContent = TRIM[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (TRIM[_i]) el.textContent = TRIM[_i][lang];
     });
     document.querySelectorAll("#phase-tug .capcard .cap").forEach(function (el, i) {
-      if (TUG[i]) el.textContent = TUG[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (TUG[_i]) el.textContent = TUG[_i][lang];
     });
     document.querySelectorAll("#phase-ug .capcard .cap").forEach(function (el, i) {
-      if (UG[i]) el.textContent = UG[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (UG[_i]) el.textContent = UG[_i][lang];
     });
     document.querySelectorAll("#phase-hrough .capcard .cap").forEach(function (el, i) {
-      if (HROUGH[i]) el.textContent = HROUGH[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (HROUGH[_i]) el.textContent = HROUGH[_i][lang];
     });
     document.querySelectorAll("#phase-htrim .capcard .cap").forEach(function (el, i) {
-      if (HTRIM[i]) el.textContent = HTRIM[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (HTRIM[_i]) el.textContent = HTRIM[_i][lang];
     });
     document.querySelectorAll("#phase-hstart .capcard .cap").forEach(function (el, i) {
-      if (HSTART[i]) el.textContent = HSTART[i][lang];
+      var _c = el.closest(".capcard"); var _m = _c && /(\d+)$/.exec(_c.id); var _i = _m ? Number(_m[1]) : i;
+      if (HSTART[_i]) el.textContent = HSTART[_i][lang];
     });
     var def = document.getElementById("switch-def");
     if (def && ROUGH[SWITCH_DEF_IDX].def) def.textContent = ROUGH[SWITCH_DEF_IDX].def[lang];
