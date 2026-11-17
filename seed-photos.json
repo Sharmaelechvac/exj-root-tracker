@@ -182,5 +182,21 @@
     "name": "601-underground.jpg",
     "taken_at": "2026-11-12T16:09:00",
     "media_type": "image/jpeg"
+  },
+  {
+    "job": "498",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/498-underground.jpg?v=10",
+    "name": "498-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "15133",
+    "caption": "Conduit laid in trench",
+    "url": "seed-photos/15133-underground.jpg?v=10",
+    "name": "15133-underground.jpg",
+    "taken_at": "2026-11-12T16:09:00",
+    "media_type": "image/jpeg"
   }
 ]
