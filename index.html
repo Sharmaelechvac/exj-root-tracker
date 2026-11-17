@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SHARMATRACK — Job Tracker · EXJ Root</title>
+<title>SHARMATRACK — EXJRoot</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="EXJRoot">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0058a3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=24">
 <link rel="icon" href="sharmatrack-app-icon.png">
 <link rel="apple-touch-icon" href="sharmatrack-app-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <script>try{if(localStorage.getItem("sharma-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head><body>
 
@@ -19,22 +25,20 @@
 </div>
 <div class="wrap nobar home">
   <div class="duo"><span class="duo-card"><img class="duo-sharma" src="logo.png?v=2" alt="Sharma Electric &amp; HVAC"></span><span class="duo-card"><img class="duo-exj" src="logo-exj.png" alt="EXJ Root LLC"></span></div>
-  <div class="builder-ed">EXJ Root LLC · Builder edition</div>
-  <h2 data-i18n="crewJobs">Jobs</h2>
-  <div class="searchbar"><input id="job-search" type="search" autocomplete="off" placeholder="Search address, city, builder…"></div>
-  <!-- HOUSE-CARDS: tools/add_house.py inserts one jobbtn card per house above this line -->
-  <a class="jobbtn" href="498/" data-jobcard="498" data-search="498 marion oaks golf rd ocala, fl 34473 exj root —"><span class="a">498 Marion Oaks Golf Rd</span><span class="b">Ocala, FL 34473</span><span class="b2">EXJ Root · Owner: — · Underground · Living SF: not on file · Under Roof SF: not on file</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="15133/" data-jobcard="15133" data-search="15133 sw 27th ct ocala, fl exj root —"><span class="a">15133 SW 27th Ct</span><span class="b">Ocala, FL</span><span class="b2">EXJ Root · Owner: — · Underground · Living SF: not on file · Under Roof SF: not on file</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="601/" data-jobcard="601" data-search="601 marion oaks golf rd ocala, fl 34473 exj root florence 1"><span class="a">601 Marion Oaks Golf Rd</span><span class="b">Ocala, FL 34473</span><span class="b2">EXJ Root · Owner: VTX/Morgan Weston Development · TUG · Living SF: 2,325 · Under Roof SF: 3,076</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="16321/" data-jobcard="16321" data-search="16321 sw 26th terrace rd ocala, fl 34473 exj root florence 1"><span class="a">16321 SW 26th Terrace Rd</span><span class="b">Ocala, FL 34473</span><span class="b2">EXJ Root · Owner: VTX/Morgan Weston Development · TUG · Living SF: 2,325 · Under Roof SF: 3,076</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="14065/" data-jobcard="14065" data-search="14065 sw 48th avenue ocala, fl 34473 exj root milano"><span class="a">14065 SW 48th Avenue</span><span class="b">Ocala, FL 34473</span><span class="b2">EXJ Root · Owner: Infinity Homes Developments, LLC · TUG · Living SF: 2,123 · Under Roof SF: 2,788</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="17385/" data-jobcard="17385" data-search="17385 sw 25th cir ocala, fl exj root —"><span class="a">17385 SW 25th Cir</span><span class="b">Ocala, FL</span><span class="b2">EXJ Root · Owner: Infinity Homes Developments, LLC · TUG install · Living SF: 2,325 · Under Roof SF: 3,076</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <a class="jobbtn" href="212/" data-jobcard="212" data-search="212 marion oaks golf rd ocala, fl exj root —"><span class="a">212 Marion Oaks Golf Rd</span><span class="b">Ocala, FL</span><span class="b2">EXJ Root · Owner: VTX/Morgan Weston Development · TUG · Living SF: 2,325 · Under Roof SF: 3,076</span><span class="crow"><span class="prog" data-prog>—/16</span><span class="chip" data-chip hidden></span></span><span class="arr">→</span></a>
-  <div class="empty-houses" id="empty-houses" hidden>Houses will appear here as they are added.</div>
-  <h2 data-i18n="employees">Employees</h2>
-  <a class="greenbtn" href="code-of-conduct/" data-i18n="coc">📃 Code of Conduct →</a>
+  <div class="builder-ed">EXJRoot</div>
+  <div class="hub-tiles">
+    <a class="hub-tile" href="morgan-weston/">
+      <span class="hub-kicker">EXJ Root</span>
+      <span class="hub-name">Morgan Weston</span>
+    </a>
+    <a class="hub-tile" href="infinity/">
+      <span class="hub-kicker">EXJ Root</span>
+      <span class="hub-name">Infinity</span>
+    </a>
+  </div>
+
   <div class="home-lic">Sharma Electric &amp; HVAC · Lic. EC13013924 · CAC1823596</div>
   <div class="st-footer"><a class="st-link" href="https://sharmaelechvac.github.io/sharmatrack" target="_blank" rel="noopener"><img src="sharmatrack-logo-blue-on-white.png" alt="SHARMATRACK"></a><div class="st-tag">JOB TRACKER</div><div class="dev-credit">Developed by Sanjay Sharma</div></div>
 </div>
-<script src="home.js?v=8"></script>
+<script src="home.js?v=9"></script>
 </body></html>

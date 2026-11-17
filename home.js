@@ -103,8 +103,13 @@
         });
     });
   }
+  var ASSET_BASE = (function () {
+    var s = document.querySelector('script[src*="home.js"]');
+    if (!s || !s.src) return "";
+    return s.src.replace(/home\.js(?:\?.*)?$/, "");
+  })();
   function loadSeedsThenCounts() {
-    fetch("/seed-photos.json")
+    fetch(ASSET_BASE + "seed-photos.json")
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) { loadCounts(Array.isArray(rows) ? rows : []); })
       .catch(function () { loadCounts([]); });
