@@ -206,5 +206,61 @@
     "name": "212-hvac-rough-in.mp4",
     "taken_at": "2026-11-18T09:31:21",
     "media_type": "video/mp4"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Ductwork in trusses — flex runs",
+    "url": "seed-photos/212-hvac-rough-ductwork.jpg?v=10",
+    "name": "212-hvac-rough-ductwork.jpg",
+    "taken_at": "2026-11-18T09:35:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Supply boot & return opening",
+    "url": "seed-photos/212-hvac-rough-supply-boot.jpg?v=10",
+    "name": "212-hvac-rough-supply-boot.jpg",
+    "taken_at": "2026-11-18T09:36:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Air handler closet — return duct drop",
+    "url": "seed-photos/212-hvac-rough-air-handler.jpg?v=10",
+    "name": "212-hvac-rough-air-handler.jpg",
+    "taken_at": "2026-11-18T09:37:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Exhaust duct in wall framing",
+    "url": "seed-photos/212-hvac-rough-exhaust.jpg?v=10",
+    "name": "212-hvac-rough-exhaust.jpg",
+    "taken_at": "2026-11-18T09:38:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Trunk line across trusses",
+    "url": "seed-photos/212-hvac-rough-trunk.jpg?v=10",
+    "name": "212-hvac-rough-trunk.jpg",
+    "taken_at": "2026-11-18T09:39:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Supply boots set in trusses",
+    "url": "seed-photos/212-hvac-rough-boots.jpg?v=10",
+    "name": "212-hvac-rough-boots.jpg",
+    "taken_at": "2026-11-18T09:40:00",
+    "media_type": "image/jpeg"
+  },
+  {
+    "job": "212",
+    "caption": "HVAC ROUGH · Ductwork over living area",
+    "url": "seed-photos/212-hvac-rough-living.jpg?v=10",
+    "name": "212-hvac-rough-living.jpg",
+    "taken_at": "2026-11-18T09:41:00",
+    "media_type": "image/jpeg"
   }
 ]
