@@ -51,3 +51,16 @@ html.sk .tile.loading, html.sk .capcard.loading{
   html.sk .b, html.sk .b2, html.sk .ps, html.sk .dvhint{ color:#A7B0BE; }
   html.sk input, html.sk select, html.sk textarea{ background:#2C2C2E; color:#F2F4F8; border-color:#3A3F46; }
 }
+
+/* EXJ only: this app already uses data-theme for its own Dark/White toggle
+   (74 selectors + localStorage "sharma-theme"), so the kit's Track tokens are
+   pinned here on html.sk and follow the app's own dark attribute instead. */
+html.sk{
+  --sk-brand:#0058a3; --sk-brand-press:#00467f; --sk-tint:#0058a3; --sk-accent:#0058a3;
+  --sk-header-bg:#fff; --sk-header-fg:#0058a3; --sk-header-rule:#0058a3;
+  --sk-s-prog-fg:#0058a3; --sk-s-prog-bg:rgba(0,88,163,.1);
+}
+html.sk[data-theme="dark"]{
+  --sk-header-bg:#1C1C1E; --sk-header-fg:#5AA9F0; --sk-tint:#5AA9F0;
+  --sk-s-prog-fg:#8CC4F5; --sk-s-prog-bg:rgba(90,169,240,.2);
+}
