@@ -20,25 +20,25 @@
     en: {
       language: "Language", byLine: "by Sharma Electric & HVAC", builderEd: "Builder edition",
       crewJobs: "Jobs", employees: "Employees",
-      coc: "📃 Code of Conduct →", searchPh: "Search address, city, builder…",
+      coc: "Code of Conduct →", searchPh: "Search address, city, builder…",
       st0: "Not started", st1: "In progress", st2: "Complete"
     },
     es: {
       language: "Idioma", byLine: "por Sharma Electric & HVAC", builderEd: "Edição do construtor", builderEd: "Edición del constructor",
       crewJobs: "Trabajos", employees: "Empleados",
-      coc: "📃 Código de conducta →", searchPh: "Buscar dirección, ciudad, constructor…",
+      coc: "Código de conducta →", searchPh: "Buscar dirección, ciudad, constructor…",
       st0: "Sin empezar", st1: "En progreso", st2: "Completo"
     },
     pt: {
       language: "Idioma", byLine: "por Sharma Electric & HVAC",
       crewJobs: "Trabalhos", employees: "Funcionários",
-      coc: "📃 Código de conduta →", searchPh: "Buscar endereço, cidade, construtora…",
+      coc: "Código de conduta →", searchPh: "Buscar endereço, cidade, construtora…",
       st0: "Não iniciado", st1: "Em andamento", st2: "Concluído"
     }
   };
 
   var themeBtn = document.querySelector(".theme-toggle");
-  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "☀️ White" : "🌙 Dark"; }
+  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "White" : "Dark"; }
   if (themeBtn) themeBtn.addEventListener("click", function () {
     if (document.documentElement.getAttribute("data-theme") === "dark") {
       document.documentElement.removeAttribute("data-theme");

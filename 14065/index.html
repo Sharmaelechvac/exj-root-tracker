@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" class="sk" data-theme="track"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SHARMATRACK — 14065 SW 48th Avenue</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=24">
+<meta name="theme-color" content="#0058a3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EXJRoot"><link rel="manifest" href="../manifest.webmanifest"><link rel="stylesheet" href="https://sharma-kit.sharma-crew.workers.dev/sharma-kit.css"><script src="https://sharma-kit.sharma-crew.workers.dev/sharma-kit.js" defer></script>
+<link rel="stylesheet" href="../styles.css?v=24">
+<link rel="stylesheet" href="../sk-bridge.css?v=1">
 <link rel="icon" href="../sharmatrack-app-icon.png">
 <link rel="apple-touch-icon" href="../sharmatrack-app-icon.png">
 <script>try{if(localStorage.getItem("sharma-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
-</head><body>
+</head><body class="sk">
+<div class="sk-offline" aria-live="polite"></div>
 
 <div class="langbar" role="group" aria-label="Language">
-  <span class="lbl" data-i18n="language">Language</span>
-  <button type="button" data-lang="en" class="on">🇺🇸 English</button>
-  <button type="button" data-lang="es">🇲🇽 Español</button>
-  <button type="button" data-lang="pt">🇧🇷 Português</button>
-  <button type="button" class="theme-toggle" aria-label="Dark or white background">🌙 Dark</button>
+ <span class="lbl" data-i18n="language">Language</span>
+ <button type="button" data-lang="en" class="on"> English</button>
+ <button type="button" data-lang="es"> Español</button>
+ <button type="button" data-lang="pt"> Português</button>
+ <button type="button" class="theme-toggle" aria-label="Dark or white background"> Dark</button>
 </div>
 <div class="jobbar"><span class="jb-brand"><a href="https://sharmaelechvac.github.io/sharmatrack" target="_blank" rel="noopener"><img src="../sharmatrack-app-icon.png" alt="">SHARMATRACK</a></span><span class="jb-addr">14065 SW 48th Avenue · Ocala, FL 34473</span><span class="jb-num" id="jobbar-num">0/16</span></div>
 <a class="backhome" href="../infinity/">← EXJ Root / Infinity</a>
@@ -55,7 +56,7 @@
     .bdsub { color:#456; font-size:13px; margin:8px 0 0; }
   </style>
   <div class="dvwrap">
-    <div class="dvhead"><span>📐 Interactive Drawings &amp; Map</span><a class="dvfull" href="../map-14065-sw-48th-ave.html">Open full page &#8599;</a></div>
+    <div class="dvhead"><span>Interactive Drawings &amp; Map</span><a class="dvfull" href="../map-14065-sw-48th-ave.html">Open full page &#8599;</a></div>
     <p class="dvset">Electrical Set v3 — Draft, in review · Interactive drawings</p>
     <div class="dvtabs" id="dvtabs"></div>
     <div class="dvstage"><div class="dvviewport" id="dvvp"><img id="dvsheet" alt="Drawing sheet"></div></div>
@@ -69,7 +70,7 @@
     </div>
     <p class="dvhint">Tap a sheet tab to jump. Pinch, scroll or use + / &#8722; to zoom; drag to move around the sheet.</p>
     <div class="dvmap">
-      <div class="dvmt">&#128205; Property map</div>
+      <div class="dvmt">Property map</div>
       <iframe title="Map — 14065 SW 48th Ave, Ocala, FL 34473" src="https://www.google.com/maps?q=14065%20SW%2048th%20Ave%2C%20Ocala%2C%20FL%2034473&amp;output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
       <div class="dvacts">
         <a class="dvdir" href="https://www.google.com/maps/dir/?api=1&amp;destination=14065%20SW%2048th%20Ave%2C%20Ocala%2C%20FL%2034473">Get Directions</a>
@@ -476,4 +477,5 @@
 </div></div>
 <script>window.JOB_PAGE = { id: "14065", defaultMeta: { inspection_status: "passed" }, address: "14065 SW 48th Avenue, Ocala, FL 34473", phase: "tug" };</script>
 <script src="../app.js?v=31"></script>
+<script src="../sk-init.js?v=1" defer></script>
 </body></html>

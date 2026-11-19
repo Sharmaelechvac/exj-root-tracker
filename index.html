@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" class="sk" data-theme="track"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SHARMATRACK — EXJRoot</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="EXJRoot">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0058a3">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="https://sharma-kit.sharma-crew.workers.dev/sharma-kit.css"><script src="https://sharma-kit.sharma-crew.workers.dev/sharma-kit.js" defer></script>
+<link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="sk-bridge.css?v=1">
 <link rel="icon" href="sharmatrack-app-icon.png">
 <link rel="apple-touch-icon" href="sharmatrack-app-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <script>try{if(localStorage.getItem("sharma-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
-</head><body>
+</head><body class="sk">
+<div class="sk-offline" aria-live="polite"></div>
 
 <div class="langbar" role="group" aria-label="Language">
-  <span class="lbl" data-i18n="language">Language</span>
-  <button type="button" data-lang="en" class="on">🇺🇸 English</button>
-  <button type="button" data-lang="es">🇲🇽 Español</button>
-  <button type="button" data-lang="pt">🇧🇷 Português</button>
-  <button type="button" class="theme-toggle" aria-label="Dark or white background">🌙 Dark</button>
+ <span class="lbl" data-i18n="language">Language</span>
+ <button type="button" data-lang="en" class="on"> English</button>
+ <button type="button" data-lang="es"> Español</button>
+ <button type="button" data-lang="pt"> Português</button>
+ <button type="button" class="theme-toggle" aria-label="Dark or white background"> Dark</button>
 </div>
 <div class="wrap nobar home">
   <div class="duo"><span class="duo-card"><img class="duo-sharma" src="logo.png?v=2" alt="Sharma Electric &amp; HVAC"></span><span class="duo-card"><img class="duo-exj" src="logo-exj.png" alt="EXJ Root LLC"></span></div>
@@ -41,4 +42,5 @@
   <div class="st-footer"><a class="st-link" href="https://sharmaelechvac.github.io/sharmatrack" target="_blank" rel="noopener"><img src="sharmatrack-logo-blue-on-white.png" alt="SHARMATRACK"></a><div class="st-tag">JOB TRACKER</div><div class="dev-credit">Developed by Sanjay Sharma</div></div>
 </div>
 <script src="home.js?v=9"></script>
+<script src="sk-init.js?v=1" defer></script>
 </body></html>
