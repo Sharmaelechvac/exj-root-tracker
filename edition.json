@@ -1,0 +1,69 @@
+{
+  "app": "SHARMATRACK",
+  "edition": "exj",
+  "builder": "EXJ Root (Morgan Weston + Infinity groups)",
+  "builderLogo": "logo-exj.png",
+  "builderLogoStatus": "on-file",
+  "trades": [
+    "Electrical",
+    "HVAC"
+  ],
+  "liveUrl": "https://sharmaelechvac.github.io/exj-root-tracker/",
+  "repo": "sharmaelechvac/exj-root-tracker",
+  "shell": {
+    "macos": "canonical",
+    "skBridge": "pinned"
+  },
+  "shellSource": "~/workspace/sharmatrack-core (edit the shell there, run tools/sync.py \u2014 never fork shell files here)",
+  "houses": [
+    {
+      "dir": "212",
+      "jobId": "212",
+      "address": "212 Marion Oaks Golf Rd",
+      "city": "Ocala, FL",
+      "trades": null
+    },
+    {
+      "dir": "16321",
+      "jobId": "16321",
+      "address": "16321 SW 26th Terrace Rd",
+      "city": "Ocala, FL 34473",
+      "trades": null
+    },
+    {
+      "dir": "498",
+      "jobId": "498",
+      "address": "498 Marion Oaks Golf Rd",
+      "city": "Ocala, FL 34473",
+      "trades": null
+    },
+    {
+      "dir": "601",
+      "jobId": "601",
+      "address": "601 Marion Oaks Golf Rd",
+      "city": "Ocala, FL 34473",
+      "trades": null
+    },
+    {
+      "dir": "15133",
+      "jobId": "15133",
+      "address": "15133 SW 27th Ct",
+      "city": "Ocala, FL",
+      "trades": null
+    },
+    {
+      "dir": "14065",
+      "jobId": "14065",
+      "address": "14065 SW 48th Avenue",
+      "city": "Ocala, FL 34473",
+      "trades": null
+    },
+    {
+      "dir": "17385",
+      "jobId": "17385",
+      "address": "17385 SW 25th Cir",
+      "city": "Ocala, FL",
+      "trades": null
+    }
+  ]
+}

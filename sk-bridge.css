@@ -40,9 +40,9 @@ html.sk .tile.loading, html.sk .capcard.loading{
 @media (prefers-reduced-motion: reduce){ html.sk *{ animation:none!important; transition:none!important; } }
 /* Light always (Sanjay, 2026-11-19): dark only via the kit Appearance switch (v1.3). */
 
-/* EXJ only: the kit's Track tokens are pinned here on html.sk; the dark
-   variant follows the kit Appearance switch (data-scheme), which replaced
-   this app's old Dark/White toggle in the v1.3 rebuild. */
+/* DNR only: this app already uses data-theme for its own Dark/White toggle
+   (localStorage "sharma-theme"), so the kit's Track tokens are pinned here on
+   html.sk and follow the app's own dark attribute instead. */
 html.sk{
   --sk-brand:#0058a3; --sk-brand-press:#00467f; --sk-tint:#0058a3; --sk-accent:#0058a3;
   --sk-header-bg:#fff; --sk-header-fg:#0058a3; --sk-header-rule:#0058a3;
@@ -63,3 +63,6 @@ html.sk[data-scheme="dark"] .progress,
 html.sk[data-scheme="dark"] .hero,
 html.sk[data-scheme="dark"] .coc-sec,
 html.sk[data-scheme="dark"] .coc-hero{ color:#17293c; }
+/* Job-header address contrast (Steve's review): explicit ink + brand blue */
+html.sk .hero h1{ color:#0d2137; }
+html.sk .hero .city{ color:#004585; }
