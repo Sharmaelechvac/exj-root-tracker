@@ -14,7 +14,7 @@
     "Range & water heater", "HVAC power & disconnects",
     "Exterior & garage boxes", "Sealed penetrations"
   ];
-  var JOBS = ["212", "17385", "14065", "16321", "601", "498", "15133"]; // seeded by tools/add_house.py
+  var JOBS = ["212", "17385", "14065", "16321", "601", "498", "15133", "2670", "16463", "6188"]; // seeded by tools/add_house.py
 
   var UI = {
     en: {

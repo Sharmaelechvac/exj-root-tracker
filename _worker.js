@@ -36,7 +36,7 @@
 //                                 "", "requested", "passed" or "failed")
 
 // House ids are seeded by tools/add_house.py — one entry per EXJ Root house.
-const JOBS = new Set(["212", "17385", "14065", "16321", "601", "498", "15133"]);
+const JOBS = new Set(["212", "17385", "14065", "16321", "601", "498", "15133", "2670", "16463", "6188"]);
 const EXT_BY_TYPE = {
   "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp",
   "image/gif": "gif", "video/mp4": "mp4", "video/quicktime": "mov",
